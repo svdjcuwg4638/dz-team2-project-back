@@ -1,0 +1,5 @@
+package com.dz.production.domain.product;
+
+public class Product {
+
+}

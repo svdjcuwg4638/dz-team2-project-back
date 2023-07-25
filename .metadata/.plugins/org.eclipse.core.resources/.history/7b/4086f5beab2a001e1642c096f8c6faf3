@@ -1,0 +1,12 @@
+package com.dz.production.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.dz.production.domain.product.Product;
+
+@Mapper
+public interface ProductMapper {
+
+	void insertProduct(Product product);
+	
+}

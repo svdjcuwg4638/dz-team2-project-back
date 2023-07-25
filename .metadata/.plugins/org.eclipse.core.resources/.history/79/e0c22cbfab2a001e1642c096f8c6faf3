@@ -1,0 +1,5 @@
+package com.dz.production.web.dto.production;
+
+public class ProductionDto {
+
+}
