@@ -8,4 +8,4 @@ server.servlet.context-path=/
 server.servlet.encoding.charset=utf-8
 server.servlet.encoding.enabled=true
 
-mybatis.mapper-locations=classpath:mappp[er/*.xml
+mybatis.mapper-locations=classpath:mapper/*.xml
