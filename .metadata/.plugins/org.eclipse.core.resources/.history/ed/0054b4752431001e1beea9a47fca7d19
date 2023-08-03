@@ -1,0 +1,12 @@
+package com.dz.factory.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.dz.factory.domain.management.Storage;
+
+@Mapper
+public interface StorageMapper {
+
+	void insertStorage(String storage);
+	
+}

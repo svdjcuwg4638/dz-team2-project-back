@@ -1,0 +1,5 @@
+package com.dz.factory.mapper;
+
+public interface StorageMapper {
+
+}

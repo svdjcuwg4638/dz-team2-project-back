@@ -1,0 +1,5 @@
+package com.dz.factory.domain.management;
+
+public class Storage {
+
+}

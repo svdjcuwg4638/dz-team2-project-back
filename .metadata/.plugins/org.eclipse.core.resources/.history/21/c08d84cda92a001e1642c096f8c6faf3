@@ -1,5 +1,0 @@
-package com.dz.production.mapper;
-
-public interface ProductMapper {
-
-}

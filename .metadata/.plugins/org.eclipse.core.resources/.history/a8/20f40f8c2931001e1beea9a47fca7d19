@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.mapper.StroageMapper">
+
+    <insert id="insertStorage" parameterType="string">
+        INSERT INTO Storage (stroage_name,company_id)
+        VALUES (#{stroage_name},#{1})
+    </insert>
+    
+</mapper>

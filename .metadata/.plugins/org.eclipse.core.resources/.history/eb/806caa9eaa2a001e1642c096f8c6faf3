@@ -1,5 +1,0 @@
-package com.dz.production.handler;
-
-public class ControllerExceptionHandler {
-
-}

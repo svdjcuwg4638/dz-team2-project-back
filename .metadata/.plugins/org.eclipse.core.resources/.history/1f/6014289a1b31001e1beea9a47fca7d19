@@ -1,0 +1,23 @@
+package com.dz.factory.domain.management;
+
+import javax.validation.constraints.NotBlank;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Storage {
+
+	private int stroage_id;
+	
+	private String stroage_name;
+	
+	private int company_id;
+	
+	
+}
