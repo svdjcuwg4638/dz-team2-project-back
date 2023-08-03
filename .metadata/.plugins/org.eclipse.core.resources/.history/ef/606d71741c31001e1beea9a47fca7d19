@@ -1,0 +1,16 @@
+package com.dz.factory.web.api;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dz.factory.service.StroageService;
+
+@RestController
+public class StorageController {
+
+	private final StroageService storageService;
+	
+	public storageAdd() {
+		storageService.insert();
+	}
+	
+}
