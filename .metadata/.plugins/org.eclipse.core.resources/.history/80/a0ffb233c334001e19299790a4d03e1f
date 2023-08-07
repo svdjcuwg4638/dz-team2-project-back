@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.mapper.StorageMapper">
+
+	<insert id="insertStorage" parameterType="Storage">
+		INSERT INTO Storage (storage_name,company_id)
+		VALUES (#{storage_name},#{company_id})
+	</insert>
+
+	<select id="selectAll" resultType="Storage">
+		select * from storage
+	</select>
+
+	<select id="locationSelAll" resultType="Location">
+		SELECT s.storage_id, d.location_name, s.storage_name FROM detail_location d
+		JOIN storage s
+		ON s.storage_id = d.storage_id
+	</select>
+
+	<insert id="insertLocation" parameterType="Location">
+		INSERT INTO detail_location (storage_id, location_name)
+		values(#{storage_id},#{location_name})
+	</insert>
+
+
+
+</mapper>
