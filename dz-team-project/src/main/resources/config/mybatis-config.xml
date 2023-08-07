@@ -3,5 +3,6 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="Storage" type="com.dz.factory.domain.management.Storage"/>
+        <typeAlias alias="Location" type="com.dz.factory.web.dto.management.LocationDto"/>
     </typeAliases>
 </configuration>

@@ -1,0 +1,5 @@
+package com.dz.factory.web.dto.management;
+
+public class LocationDto {
+
+}
