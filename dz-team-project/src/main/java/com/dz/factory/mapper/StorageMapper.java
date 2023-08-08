@@ -17,5 +17,11 @@ public interface StorageMapper {
 	void insertLocation(LocationDto locationDto);
 
 	ArrayList<LocationDto> selectLocationAll();
+
+	void updateLocation(LocationDto locationDto);
+
+	void deleteLocation(int id);
+
+	void deleteStorage(int id);
 	
 }
