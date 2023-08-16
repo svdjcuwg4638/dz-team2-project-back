@@ -1,0 +1,31 @@
+package com.dz.factory.service.management;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.dz.factory.domain.management.Item;
+import com.dz.factory.mapper.management.ItemMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ItemService {
+
+	private final ItemMapper itemMapper;
+
+	public ArrayList<Item> getAllItem() {
+		return itemMapper.selAllItem();
+	}
+
+	public void itemAdd(Item item) {
+		itemMapper.insertItem(item);
+	}
+
+	public void delItem(List<Integer> ids) {
+		itemMapper.deleteItem(ids);
+	}
+	
+}
