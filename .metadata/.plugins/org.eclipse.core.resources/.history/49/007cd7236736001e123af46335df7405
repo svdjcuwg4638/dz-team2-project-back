@@ -1,0 +1,22 @@
+package com.dz.factory.service.management;
+
+import org.springframework.stereotype.Service;
+
+import com.dz.factory.domain.management.Partner;
+import com.dz.factory.mapper.management.PartnerMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class PartnerService {
+
+	private PartnerMapper partnerMapper;
+
+	public void insert(Partner partner) {
+		System.out.println("service" + partner.toString());
+		partnerMapper.insertPartner(partner);
+	}
+	
+	
+}

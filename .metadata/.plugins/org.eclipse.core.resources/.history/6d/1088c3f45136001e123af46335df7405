@@ -1,0 +1,5 @@
+package com.dz.factory.web.api.management;
+
+public class PartnerApiController {
+
+}

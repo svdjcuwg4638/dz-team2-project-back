@@ -1,0 +1,5 @@
+package com.dz.factory.web.service.management;
+
+public class PartnerService {
+
+}

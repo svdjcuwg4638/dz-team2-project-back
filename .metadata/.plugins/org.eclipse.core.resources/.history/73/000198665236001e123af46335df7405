@@ -1,0 +1,5 @@
+package com.dz.factory.mapper.management;
+
+public interface PartnerMapper {
+
+}
