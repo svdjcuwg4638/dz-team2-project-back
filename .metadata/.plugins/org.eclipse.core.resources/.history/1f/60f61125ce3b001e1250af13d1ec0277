@@ -1,0 +1,10 @@
+package com.dz.factory.web.api.management;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class ItemApiController {
+
+	private final ItemService itemService;
+	
+}

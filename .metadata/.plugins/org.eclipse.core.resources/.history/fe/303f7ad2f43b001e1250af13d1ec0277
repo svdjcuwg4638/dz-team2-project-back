@@ -1,0 +1,23 @@
+package com.dz.factory.domain.management;
+
+import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+public class Item {
+
+	private int itemId;
+	private String ItemName;
+	private int locationId;
+	private LocalDateTime registDate;
+	private String itemSKU; 
+	private int storageId;
+	private int companyId;
+}

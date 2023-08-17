@@ -1,0 +1,13 @@
+package com.dz.factory.service.management;
+
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ItemService {
+
+	private final ItemMapper itemMapper;
+	
+}

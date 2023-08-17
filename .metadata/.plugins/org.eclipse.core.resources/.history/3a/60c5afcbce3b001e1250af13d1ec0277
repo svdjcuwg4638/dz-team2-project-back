@@ -1,0 +1,10 @@
+package com.dz.factory.mapper.management;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ItemMapper {
+
+	
+	
+}
