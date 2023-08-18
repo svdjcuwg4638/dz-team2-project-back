@@ -1,0 +1,19 @@
+package com.dz.factory.service.management;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.dz.factory.mapper.management.ProductRelationMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ProductRelationService {
+
+	private final ProductRelationMapper prodcuMapper;
+	
+	
+	
+	
+}

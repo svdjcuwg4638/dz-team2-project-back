@@ -20,4 +20,5 @@ public class Item {
 	private String itemSKU; 
 	private int storage_id;
 	private int company_id;
+	private String category;
 }
