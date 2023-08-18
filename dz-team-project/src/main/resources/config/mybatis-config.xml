@@ -6,5 +6,6 @@
         <typeAlias alias="Location" type="com.dz.factory.web.dto.management.LocationDto"/>
         <typeAlias alias="Partner" type="com.dz.factory.domain.management.Partner"/>
         <typeAlias alias="Item" type="com.dz.factory.domain.management.Item"/>
+        <typeAlias alias="ProductRelation" type="com.dz.factory.domain.management.ProductRelation"/>
     </typeAliases>
 </configuration>
