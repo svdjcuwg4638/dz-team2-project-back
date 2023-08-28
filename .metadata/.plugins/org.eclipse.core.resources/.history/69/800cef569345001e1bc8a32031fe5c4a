@@ -16,6 +16,4 @@ public interface CodeMapper {
 
 	void insertCode(Code data);
 
-	void insertManageCode(ManageCode data);
-
 }

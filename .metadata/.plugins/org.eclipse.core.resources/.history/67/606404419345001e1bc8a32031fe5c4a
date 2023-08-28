@@ -9,14 +9,9 @@
 		select * from management_code
 	</select>
 	
-	<insert id="insertCode" parameterType="Code">
+	<insert id="insertManageCode" parameterType="Code">
 		insert into common_code (code,name,management_code_id) 
 		values(#{code},#{name},#{management_code_id})
-	</insert>
-	
-	<insert id="insertManageCode" parameterType="ManageCode">
-		insert into management_code (management_name,management_code) 
-		values(#{management_name},#{management_code})
 	</insert>
 
 

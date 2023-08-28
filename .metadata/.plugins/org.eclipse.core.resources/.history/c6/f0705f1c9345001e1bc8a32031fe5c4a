@@ -36,7 +36,7 @@ public class CodeApiController {
 	
 	@PostMapping("/code/add")
 	public ResponseEntity<?> CodeAdd(@RequestBody Code data){
-		codeService.addCode(data);
+		codeService.addManageCode(data);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",data),HttpStatus.OK);
 	}
 	@PostMapping("/managecode/add")
