@@ -1,0 +1,5 @@
+package com.dz.factory.management.api;
+
+public class CodeApiController {
+
+}

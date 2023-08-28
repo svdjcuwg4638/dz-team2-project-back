@@ -1,0 +1,17 @@
+package com.dz.factory.mapper.management;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.dz.factory.domain.management.Item;
+import com.dz.factory.domain.management.UnitPrice;
+
+@Mapper
+public interface UnitPriceMapper {
+
+	ArrayList<UnitPrice> selectAll();
+
+	
+	
+}

@@ -1,0 +1,15 @@
+package com.dz.factory.management.api;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.dz.factory.management.service.CodeService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@RestController
+public class CodeApiController {
+
+	private final CodeService codeService;
+	
+}

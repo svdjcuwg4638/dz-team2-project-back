@@ -1,0 +1,5 @@
+package com.dz.factory.management.mapper;
+
+public interface CodeMapper {
+
+}
