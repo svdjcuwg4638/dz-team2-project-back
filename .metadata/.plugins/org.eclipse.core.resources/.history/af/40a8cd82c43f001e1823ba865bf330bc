@@ -1,0 +1,15 @@
+package com.dz.factory.service.management;
+
+import org.springframework.stereotype.Service;
+
+import com.dz.factory.mapper.management.UnitPriceMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class UnitPriceService {
+
+	private final UnitPriceMapper unitPriceMapper;
+	
+}

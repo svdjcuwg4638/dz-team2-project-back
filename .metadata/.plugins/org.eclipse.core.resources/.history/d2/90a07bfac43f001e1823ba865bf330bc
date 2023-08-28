@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="Storage" type="com.dz.factory.domain.management.Storage"/>
+        <typeAlias alias="Location" type="com.dz.factory.web.dto.management.LocationDto"/>
+        <typeAlias alias="Partner" type="com.dz.factory.domain.management.Partner"/>
+        <typeAlias alias="Item" type="com.dz.factory.domain.management.Item"/>
+        <typeAlias alias="ProductRelation" type="com.dz.factory.domain.management.ProductRelation"/>
+        <typeAlias alias="ProductRelation" type="com.dz.factory.domain.management.UnitPrice"/>
+    </typeAliases>
+</configuration>

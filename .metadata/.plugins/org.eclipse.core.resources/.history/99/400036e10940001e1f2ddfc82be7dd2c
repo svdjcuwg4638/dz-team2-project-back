@@ -1,0 +1,26 @@
+package com.dz.factory.service.management;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+
+import com.dz.factory.domain.management.UnitPrice;
+import com.dz.factory.mapper.management.UnitPriceMapper;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class UnitPriceService {
+
+	private final UnitPriceMapper unitPriceMapper;
+
+	public ArrayList<UnitPrice> getAll() {
+		return unitPriceMapper.selectAll();
+	}
+
+	public void addUnitPrice(UnitPrice unitPrice) {
+		unitPriceMapper.insert(unitPrice);
+	}
+}
