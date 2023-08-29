@@ -14,6 +14,8 @@ public interface CodeMapper {
 
 	ArrayList<ManageCode> selManageCodeAll();
 
+	void insertCode(Code data);
+
 	void insertManageCode(ManageCode data);
 
 }

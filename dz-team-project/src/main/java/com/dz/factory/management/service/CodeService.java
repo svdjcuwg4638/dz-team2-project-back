@@ -26,6 +26,10 @@ public class CodeService {
 	}
 
 	@Transactional
+	public void addCode(Code data) {
+		codeMapper.insertCode(data);
+	}
+
 	public void addManageCode(ManageCode data) {
 		codeMapper.insertManageCode(data);
 	}
