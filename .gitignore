@@ -25,3 +25,14 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
+### OS Generated ###
+.DS_Store
+Thumbs.db
+
+### Logs and Temp ###
+*.log
+*.tmp
+
+### Environment Configurations ###
+src/main/resources/application*.properties
