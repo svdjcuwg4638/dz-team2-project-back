@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dz.factory.management.domain.Storage;
+import com.dz.factory.common.domain.Storage;
 import com.dz.factory.management.dto.LocationDto;
 import com.dz.factory.management.mapper.StorageMapper;
 

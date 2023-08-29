@@ -2,13 +2,13 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="Storage" type="com.dz.factory.management.domain.Storage"/>
+        <typeAlias alias="Storage" type="com.dz.factory.common.domain.Storage"/>
         <typeAlias alias="Location" type="com.dz.factory.management.dto.LocationDto"/>
-        <typeAlias alias="Partner" type="com.dz.factory.management.domain.Partner"/>
-        <typeAlias alias="Item" type="com.dz.factory.management.domain.Item"/>
-        <typeAlias alias="ProductRelation" type="com.dz.factory.management.domain.ProductRelation"/>
-        <typeAlias alias="UnitPrice" type="com.dz.factory.management.domain.UnitPrice"/>
-        <typeAlias alias="code" type="com.dz.factory.management.domain.Code"/>
-        <typeAlias alias="ManageCode" type="com.dz.factory.management.domain.ManageCode"/>
+        <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
+        <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
+        <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>
+        <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
+        <typeAlias alias="code" type="com.dz.factory.common.domain.Code"/>
+        <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>
     </typeAliases>
 </configuration>

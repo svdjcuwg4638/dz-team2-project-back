@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dz.factory.management.domain.Code;
-import com.dz.factory.management.domain.ManageCode;
+import com.dz.factory.common.domain.Code;
+import com.dz.factory.common.domain.ManageCode;
 import com.dz.factory.management.mapper.CodeMapper;
 
 import lombok.RequiredArgsConstructor;

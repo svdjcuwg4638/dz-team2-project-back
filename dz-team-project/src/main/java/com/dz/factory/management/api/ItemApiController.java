@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dz.factory.management.domain.Item;
-import com.dz.factory.management.dto.CMRespDto;
+import com.dz.factory.common.domain.CMRespDto;
+import com.dz.factory.common.domain.Item;
 import com.dz.factory.management.service.ItemService;
 
 import lombok.RequiredArgsConstructor;

@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dz.factory.management.domain.Storage;
+import com.dz.factory.common.domain.Storage;
 import com.dz.factory.management.dto.LocationDto;
 
 

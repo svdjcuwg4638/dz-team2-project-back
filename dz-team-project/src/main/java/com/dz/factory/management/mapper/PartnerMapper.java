@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dz.factory.management.domain.Partner;
+import com.dz.factory.common.domain.Partner;
 
 
 @Mapper

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.dz.factory.management.domain.UnitPrice;
-import com.dz.factory.management.dto.CMRespDto;
+import com.dz.factory.common.domain.CMRespDto;
+import com.dz.factory.common.domain.UnitPrice;
 import com.dz.factory.management.service.UnitPriceService;
 
 import lombok.RequiredArgsConstructor;
