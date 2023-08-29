@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.management.mapper.StorageMapper">
+
+	<insert id="insertStorage" parameterType="Storage">
+		INSERT INTO Storage
+		(storage_code,storage_name,company_id)
+		VALUES (#{storage_code}, #{storage_name},#{company_id})
+	</insert>
+
+	<select id="selectAll" resultType="Storage">
+		select * from storage
+	</select>
+
+	<select id="selectLocationAll" resultType="Location">
+		SELECT s.storage_code,
+		d.location_id, d.location_name, s.storage_name FROM detail_location d
+		JOIN storage s
+		ON s.storage_code = d.storage_code
+	</select>
+
+	<insert id="insertLocation" parameterType="Location">
+		INSERT INTO
+		detail_location (storage_code, location_name)
+		values(#{storage_code},#{location_name})
+	</insert>
+
+	<update id="updateLocation" parameterType="Location">
+		UPDATE detail_location
+		SET storage_code=#{storage_code}, location_name=#{location_name}
+		WHERE
+		location_id =#{location_id}
+	</update>
+
+	<delete id="deleteLocation" parameterType="string">
+		DELETE from
+		detail_location
+		WHERE location_id = #{code}
+	</delete>
+	
+	<delete id="deleteStorage" parameterType="string">
+		CALL DeleteStorageAndDetailLocations(#{code})
+	</delete>
+	
+	<select id="selSearchStorage" parameterType="hashmap" resultType="Storage">
+		SELECT * FROM storage
+		WHERE storage_code LIKE '%${sotorage_code}%' AND  storage_name LIKE '%${storage_code}%'
+	</select>
+
+
+</mapper>
