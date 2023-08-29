@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.dz.factory.management.mapper.StorageMapper">
+
+	<insert id="insertStorage" parameterType="Storage">
+		INSERT INTO Storage
+		(storage_code,storage_name,company_id)
+		VALUES (#{storage_code},
+		#{storage_name},#{company_id})
+	</insert>
+
+	<select id="selectAll" resultType="Storage">
+		select * from storage
+	</select>
+
+	<select id="selectLocationAll" resultType="Location">
+		SELECT s.storage_code,
+		d.location_id, d.location_name, s.storage_name FROM detail_location d
+		JOIN storage s
+		ON s.storage_code = d.storage_code
+	</select>
+
+	<insert id="insertLocation" parameterType="Location">
+		INSERT INTO
+		detail_location (storage_code, location_name)
+		values(#{storage_code},#{location_name})
+	</insert>
+
+	<update id="updateLocation" parameterType="Location">
+		UPDATE detail_location
+		SET storage_code=#{storage_code}, location_name=#{location_name}
+		WHERE
+		location_id =#{location_id}
+	</update>
+
+	<delete id="deleteLocation" parameterType="string">
+		DELETE from
+		detail_location
+		WHERE location_id = #{code}
+	</delete>
+
+	<delete id="deleteStorage" parameterType="string">
+		CALL
+		DeleteStorageAndDetailLocations(#{code})
+	</delete>
+
+	<select id="selSearchStorage" parameterType="hashmap"
+		resultType="Storage">
+		SELECT * FROM storage
+		<where>
+			<if test="storage_code != null and storage_code != ''">
+				storage_code LIKE CONCAT('%', #{storage_code}, '%')
+			</if>
+			<if test="storage_name != null and storage_name != ''">
+				<choose>
+					<when test="storage_code != null and storage_code != ''">AND</when>
+					<otherwise></otherwise>
+				</choose>
+				storage_name LIKE CONCAT('%', #{storage_name}, '%')
+			</if>
+		</where>
+	</select>
+
+	<select id="selSearchLocation" parameterType="hashmap"
+		resultType="Location">
+		SELECT * FROM detail_location
+		<where>
+			<if test="storage_code != null and storage_code != ''">
+				storage_code LIKE CONCAT('%', #{storage_code}, '%')
+			</if>
+			<if test="location_name != null and location_name != ''">
+				<choose>
+					<when test="storage_code != null and storage_code != ''">AND</when>
+					<otherwise></otherwise>
+				</choose>
+				location_name LIKE CONCAT('%', #{location_name}, '%')
+			</if>
+		</where>
+	</select>
+
+</mapper>

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class LocationDto {
-	private int storage_id;
+	private String storage_code;
 
 	private int location_id;
 	private String location_name;
