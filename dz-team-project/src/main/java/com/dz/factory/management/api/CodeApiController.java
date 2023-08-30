@@ -44,11 +44,6 @@ public class CodeApiController {
 		codeService.addManageCode(data);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",data),HttpStatus.OK);
 	}
-	
-	@PostMapping("/managecode/delete")
-	public ResponseEntity<?> manageCodeAdd(@RequestBody ManageCode data){
-		codeService.addManageCode(data);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",data),HttpStatus.OK);
-	}
+
 	
 }
