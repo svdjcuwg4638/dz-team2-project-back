@@ -4,20 +4,74 @@
 	<select id="selCodeAll" resultType="Code">
 		select * from code_common
 	</select>
-	
+
 	<select id="selManageCodeAll" resultType="ManageCode">
-		select * from code_management
+		select * from
+		code_management
 	</select>
-	
+
 	<insert id="insertCode" parameterType="Code">
-		insert into code_common (common_code,common_name,management_code,company_id) 
+		insert into code_common
+		(common_code,common_name,management_code,company_id)
 		values(#{common_code},#{common_name},#{management_code},#{company_id})
 	</insert>
-	
+
 	<insert id="insertManageCode" parameterType="ManageCode">
-		insert into code_management (management_name,management_code,company_id) 
+		insert into
+		code_management (management_name,management_code,company_id)
 		values(#{management_name},#{management_code},#{company_id})
 	</insert>
+
+	<select id="selManageSearchAll" parameterType="hashmap"
+		resultType="ManageCode">
+		SELECT * FROM code_management
+		<where>
+			<if test="management_code != null and management_code != ''">
+				management_code LIKE CONCAT('%', #{management_code}, '%')
+			</if>
+			<if test="management_name != null and management_name != ''">
+				<choose>
+					<when test="management_code != null and management_code != ''">AND</when>
+					<otherwise></otherwise>
+				</choose>
+				management_name LIKE CONCAT('%', #{management_name}, '%')
+			</if>
+		</where>
+	</select>
+
+	<!-- 관리코드삭제시 자식코드까지 같이 삭제 -->
+	<delete id="deleteManageCode" parameterType="string">
+		DELETE FROM
+		code_management WHERE management_code = #{code}
+	</delete>
+	<!-- 관리코드삭제시 자식코드까지 같이 삭제 end -->
+
+	<select id="selSearchCodeList" parameterType="hashmap"
+		resultType="Code">
+		SELECT * FROM code_common
+		<where>
+			<if test="common_code != null and common_code != ''">
+				common_code LIKE CONCAT('%', #{common_code}, '%')
+			</if>
+			<if test="common_name != null and common_name != ''">
+				<choose>
+					<when test="common_code != null and common_code != ''">AND</when>
+					<otherwise></otherwise>
+				</choose>
+				common_name LIKE CONCAT('%', #{common_name}, '%')
+			</if>
+			<if test="common_name != null and common_name != ''
+					or common_code != null and common_code != '' ">
+				and 
+			</if>
+			management_code like CONCAT('%', #{management_code}, '%')
+		</where>
+	</select>
+	
+	<delete id="deleteCode" parameterType="string">
+		DELETE FROM
+		code_common WHERE common_code = #{code}
+	</delete>
 
 
 </mapper>
