@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Code {
 
-	private int common_code_id;
-	private String code;
-	private String name;
-	private int  management_code_id;
+	private int company_id;
 	
+	private String management_code;
+	
+	private String common_code;
+	private String common_name;
 }

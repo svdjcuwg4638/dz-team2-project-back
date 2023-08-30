@@ -10,13 +10,13 @@
 	</select>
 	
 	<insert id="insertCode" parameterType="Code">
-		insert into code_common (common_code,common_name,management_code) 
-		values(#{common_code},#{common_name},#{management_code})
+		insert into code_common (common_code,common_name,management_code,company_id) 
+		values(#{common_code},#{common_name},#{management_code},#{company_id})
 	</insert>
 	
 	<insert id="insertManageCode" parameterType="ManageCode">
-		insert into code_management (management_name,management_code) 
-		values(#{management_name},#{management_code})
+		insert into code_management (management_name,management_code,company_id) 
+		values(#{management_name},#{management_code},#{company_id})
 	</insert>
 
 
