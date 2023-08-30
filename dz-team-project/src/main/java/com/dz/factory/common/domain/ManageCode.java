@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ManageCode {
 
-	private int management_code_id;
-	private String management_name;
+	private int company_id;
+	
 	private String management_code;
+	private String management_name;
 	
 }
