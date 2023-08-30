@@ -8,7 +8,7 @@
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
         <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
-        <typeAlias alias="code" type="com.dz.factory.common.domain.Code"/>
+        <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>
     </typeAliases>
 </configuration>
