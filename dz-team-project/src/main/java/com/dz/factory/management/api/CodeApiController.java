@@ -44,6 +44,7 @@ public class CodeApiController {
 		codeService.addManageCode(data);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",data),HttpStatus.OK);
 	}
+	
 
 	
 }
