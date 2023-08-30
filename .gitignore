@@ -11,6 +11,7 @@
 .settings
 .springBeans
 .sts4-cache
+.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
 ### IntelliJ IDEA ###
 .idea
