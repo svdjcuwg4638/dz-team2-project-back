@@ -15,9 +15,10 @@ public class Partner {
 	private String bizNum; 
 	private String partner_name;
 	private int company_id;
-	private String owner;
+	private String representative;
 	private String ph_num; 
-	private String add; 
+	private String address; 
+	private String address_detail;
 	private String email;
 	private String createdate; 
 	private String post_num;
