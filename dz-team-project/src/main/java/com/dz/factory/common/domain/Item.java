@@ -13,17 +13,13 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Item {
 
-	private int item_id;
-	private String item_name;
-	private int location_id;
 	private LocalDateTime registDate;
-	private String itemSKU; 
-	private int storage_id;
 	private int company_id;
-	private int partner_id;
 	private String category;
-	
 	private String item_code;
+	private String item_name;
+	private String storage_code;
+	private int location_id;
 	private String width;
 	private String length;
 	private String height;
@@ -31,4 +27,5 @@ public class Item {
 	private String weight;
 	private String discription;
 	private String partner_code;
+	private int quantity;
 }

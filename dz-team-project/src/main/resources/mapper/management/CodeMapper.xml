@@ -60,6 +60,7 @@
 				</choose>
 				common_name LIKE CONCAT('%', #{common_name}, '%')
 			</if>
+			
 			<if test="common_name != null and common_name != ''
 					or common_code != null and common_code != '' ">
 				and 
