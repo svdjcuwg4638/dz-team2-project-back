@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class Storage {
 
-	private int storage_id;
-	
+//	private int storage_id;
+	private String storage_code;	
 	private String storage_name;
 	
 	private int company_id;
