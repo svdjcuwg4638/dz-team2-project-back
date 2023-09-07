@@ -5,8 +5,8 @@ import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.dz.factory.common.domain.Location;
 import com.dz.factory.common.domain.Storage;
-import com.dz.factory.management.dto.LocationDto;
 
 
 @Mapper
@@ -16,11 +16,11 @@ public interface StorageMapper {
 
 	ArrayList<Storage> selectAll();
 
-	void insertLocation(LocationDto locationDto);
+	void insertLocation(Location locationDto);
 
-	ArrayList<LocationDto> selectLocationAll();
+	ArrayList<Location> selectLocationAll();
 
-	void updateLocation(LocationDto locationDto);
+	void updateLocation(Location locationDto);
 
 	void deleteLocation(int id);
 
