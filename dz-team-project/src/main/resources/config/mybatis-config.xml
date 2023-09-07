@@ -3,7 +3,7 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="Storage" type="com.dz.factory.common.domain.Storage"/>
-        <typeAlias alias="Location" type="com.dz.factory.management.dto.LocationDto"/>
+        <typeAlias alias="Location" type="com.dz.factory.common.domain.Location"/>
         <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
         <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>

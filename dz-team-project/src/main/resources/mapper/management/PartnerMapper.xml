@@ -5,9 +5,9 @@
 	<insert id="insertPartner" parameterType="Partner">
 		INSERT INTO partner
 		(partner_code, bizNum, partner_name,company_id, representative,
-		address,email,post_num,url,ph_num,account_num,account_holder,collect_date,account_name,address_detail)
+		address,email,post_num,url,ph_num,account_num,account_holder,collect_date,account_code,address_detail)
 		VALUES
-		(#{partner_code},#{bizNum},#{partner_name},#{company_id},#{representative},#{address},#{email},#{post_num},#{url},#{ph_num},#{account_num},#{account_holder},#{collect_date},#{account_name},#{address_detail})
+		(#{partner_code},#{bizNum},#{partner_name},#{company_id},#{representative},#{address},#{email},#{post_num},#{url},#{ph_num},#{account_num},#{account_holder},#{collect_date},#{account_code},#{address_detail})
 	</insert>
 
 	<select id="seletAllPartner" resultType="Partner">

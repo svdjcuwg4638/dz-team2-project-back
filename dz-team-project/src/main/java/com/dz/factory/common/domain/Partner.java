@@ -26,5 +26,5 @@ public class Partner {
 	private String account_num; 
 	private String account_holder; 
 	private String collect_date;
-	private String account_name;
+	private String account_code;
 }
