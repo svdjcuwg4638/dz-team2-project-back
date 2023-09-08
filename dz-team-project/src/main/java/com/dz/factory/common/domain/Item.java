@@ -13,19 +13,19 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Item {
 
-	private LocalDateTime registDate;
-	private int company_id;
-	private String category;
 	private String item_code;
+	private int company_id;
 	private String item_name;
-	private String storage_code;
-	private int location_id;
+	private LocalDateTime registDate;
+	private String category;
+	private String description;
+	private String partner_code;
 	private String width;
 	private String length;
 	private String height;
 	private String volume;
 	private String weight;
-	private String discription;
-	private String partner_code;
-	private int quantity;
+	private String unit;
+	private String storage_code;
+	private String location_code;
 }
