@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.dz.factory.management.domain.ProductRelation;
-import com.dz.factory.management.dto.CMRespDto;
+import com.dz.factory.common.domain.CMRespDto;
+import com.dz.factory.common.domain.ProductRelation;
 import com.dz.factory.management.dto.ProductRelationDto;
 import com.dz.factory.management.service.ProductRelationService;
 

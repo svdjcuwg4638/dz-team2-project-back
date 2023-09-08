@@ -1,10 +1,11 @@
 package com.dz.factory.management.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dz.factory.management.domain.Storage;
+import com.dz.factory.common.domain.Storage;
 import com.dz.factory.management.dto.LocationDto;
 
 
@@ -23,6 +24,10 @@ public interface StorageMapper {
 
 	void deleteLocation(int id);
 
-	void deleteStorage(int id);
+	void deleteStorage(String code);
+
+	ArrayList<Storage> selSearchStorage(HashMap<String, String> formData);
+
+	ArrayList<Storage> selSearchLocation(HashMap<String, String> formData);
 	
 }

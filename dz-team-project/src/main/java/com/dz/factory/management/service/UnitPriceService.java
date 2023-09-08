@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Service;
 
-import com.dz.factory.management.domain.UnitPrice;
+import com.dz.factory.common.domain.UnitPrice;
 import com.dz.factory.management.mapper.UnitPriceMapper;
 
 import lombok.RequiredArgsConstructor;
