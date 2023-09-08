@@ -12,3 +12,4 @@ public class ProductRelationDto {
 	private String component_code;
 
 }
+
