@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;com.dz.factory.domain.management.Product_relation&apos; to &apos;ProductRelation&apos;&#x0D;&#x0A;- Original project: &apos;dz-team-project&apos;&#x0D;&#x0A;- Original element: &apos;com.dz.factory.domain.management.Product_relation&apos;&#x0D;&#x0A;- Renamed element: &apos;com.dz.factory.domain.management.ProductRelation&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Product_relation&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.dz.factory.domain.management{Product_relation.java[Product_relation" matchStrategy="1" name="ProductRelation" qualified="false" references="true" similarDeclarations="false" stamp="1692344034341" textual="false" version="1.0"/>
-</session>

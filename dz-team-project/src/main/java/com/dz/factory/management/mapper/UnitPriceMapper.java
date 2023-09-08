@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.dz.factory.management.domain.UnitPrice;
+import com.dz.factory.common.domain.UnitPrice;
 
 
 @Mapper

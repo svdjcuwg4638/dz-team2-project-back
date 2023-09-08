@@ -1,6 +1,7 @@
 package com.dz.factory.management.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dz.factory.management.domain.Partner;
-import com.dz.factory.management.dto.CMRespDto;
+import com.dz.factory.common.domain.CMRespDto;
+import com.dz.factory.common.domain.Partner;
 import com.dz.factory.management.service.PartnerService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class PartnerApiController {
 	
 	@PostMapping("/partner/add")
 	public ResponseEntity<?> partnerAdd(@RequestBody Partner partner) {
+		System.out.println(partner.toString());
 		partnerService.insert(partner);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",partner),HttpStatus.CREATED);
 	}
@@ -35,8 +37,14 @@ public class PartnerApiController {
 	}
 	
 	@PostMapping("/partner/delete")
-	public ResponseEntity<?> partnerdelete(@RequestBody List<Integer> ids) {
-		partnerService.delete(ids);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",ids),HttpStatus.OK);
+	public ResponseEntity<?> partnerdelete(@RequestBody List<String> codes) {
+		partnerService.delete(codes);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",codes),HttpStatus.OK);
+	}
+	
+	@PostMapping("/partner/search")
+	public ResponseEntity<?> searchPartner(@RequestBody HashMap<String, String> search) {
+		ArrayList<Partner> list =  partnerService.search(search);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",list),HttpStatus.OK);
 	}
 }

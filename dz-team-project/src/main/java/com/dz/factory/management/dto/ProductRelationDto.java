@@ -2,7 +2,7 @@ package com.dz.factory.management.dto;
 
 import java.util.ArrayList;
 
-import com.dz.factory.management.domain.ProductRelation;
+import com.dz.factory.common.domain.ProductRelation;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

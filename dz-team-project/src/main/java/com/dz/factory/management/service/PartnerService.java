@@ -1,12 +1,13 @@
 package com.dz.factory.management.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dz.factory.management.domain.Partner;
+import com.dz.factory.common.domain.Partner;
 import com.dz.factory.management.mapper.PartnerMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -27,10 +28,14 @@ public class PartnerService {
 	}
 
 	@Transactional
-	public void delete(List<Integer> ids) {
-		for(int id : ids) {
-			partnerMapper.deletePartner(id);
+	public void delete(List<String> codes) {
+		for(String code : codes) {
+			partnerMapper.deletePartner(code);
 		}
+	}
+
+	public ArrayList<Partner> search(HashMap<String, String> search) {
+		return partnerMapper.selectSearchPartner(search);
 	}
 	
 	
