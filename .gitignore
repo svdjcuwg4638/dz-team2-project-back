@@ -28,5 +28,18 @@
 /nbdist/
 /.nb-gradle/
 
+<<<<<<< HEAD
 ### Commit Message ###
 gitTemplate.txt
+=======
+### OS Generated ###
+.DS_Store
+Thumbs.db
+
+### Logs and Temp ###
+*.log
+*.tmp
+
+### Environment Configurations ###
+src/main/resources/application*.properties
+>>>>>>> dc321b177ca346dc6e7799e99cc3d897f1344115

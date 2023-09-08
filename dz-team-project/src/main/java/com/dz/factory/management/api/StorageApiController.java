@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dz.factory.common.domain.CMRespDto;
+import com.dz.factory.common.domain.Location;
 import com.dz.factory.common.domain.Storage;
-import com.dz.factory.management.dto.LocationDto;
 import com.dz.factory.management.service.StorageService;
 
 import lombok.RequiredArgsConstructor;
@@ -43,19 +43,19 @@ public class StorageApiController {
 	}
 	
 	@PostMapping("/storage/locationAdd")
-	public ResponseEntity<?> loacationAdd(@RequestBody LocationDto locationDto){
+	public ResponseEntity<?> loacationAdd(@RequestBody Location locationDto){
 		storageService.addLocation(locationDto);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",locationDto),HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/location/all")
 	public ResponseEntity<?> locationAll(){
-		ArrayList<LocationDto> locationList = storageService.getLocationAll();
+		ArrayList<Location> locationList = storageService.getLocationAll();
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",locationList),HttpStatus.OK);
 	}
 	
 	@PostMapping("/location/edit")
-	public ResponseEntity<?> locationEdit(@RequestBody LocationDto locationDto){
+	public ResponseEntity<?> locationEdit(@RequestBody Location locationDto){
 		storageService.editLocation(locationDto);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",locationDto),HttpStatus.OK);
 	}

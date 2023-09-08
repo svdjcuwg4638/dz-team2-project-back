@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.production.mapper.ProductionAddMapper">
+	<select id="getProductRelation" resultType="ProductRelationDto">
+		select * from product_relation where item_code=#{itemCode};
+	</select>
+	<select id="getItemByCode" resultType="Item">
+		select * from item where item_code=#{itemCode};
+	</select>
+</mapper>

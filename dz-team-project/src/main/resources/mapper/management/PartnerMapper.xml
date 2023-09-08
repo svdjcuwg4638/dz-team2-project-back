@@ -4,18 +4,35 @@
 	namespace="com.dz.factory.management.mapper.PartnerMapper">
 	<insert id="insertPartner" parameterType="Partner">
 		INSERT INTO partner
-		(bizNum, name, company_id,emp_name, ph_num, address,email)
+		(partner_code, bizNum, partner_name,company_id, representative,
+		address,email,post_num,url,ph_num,account_num,account_holder,collect_date,account_code,address_detail)
 		VALUES
-		(#{bizNum},#{name},1,#{emp_name},#{ph_num},#{address},#{email})
+		(#{partner_code},#{bizNum},#{partner_name},#{company_id},#{representative},#{address},#{email},#{post_num},#{url},#{ph_num},#{account_num},#{account_holder},#{collect_date},#{account_code},#{address_detail})
 	</insert>
 
 	<select id="seletAllPartner" resultType="Partner">
 		select * from partner
 	</select>
 
-	<delete id="deletePartner" parameterType="int">
+	<delete id="deletePartner" parameterType="string">
 		DELETE from
 		partner
-		WHERE partner_id = ${id}
+		WHERE partner_code = #{code}
 	</delete>
+
+	<select id="selectSearchPartner" parameterType="hashmap"
+		resultType="Partner">
+		select * from partner
+		<where>
+			<choose>
+				<when test="searchCategory == 'collect_date'">
+					${searchCategory} = #{searchValue}
+				</when>
+				<otherwise>
+					${searchCategory} like concat('%', #{searchValue}, '%')
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+
 </mapper>

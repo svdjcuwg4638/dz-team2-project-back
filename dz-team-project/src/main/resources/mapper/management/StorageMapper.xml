@@ -15,16 +15,13 @@
 	</select>
 
 	<select id="selectLocationAll" resultType="Location">
-		SELECT s.storage_code,
-		d.location_id, d.location_name, s.storage_name FROM detail_location d
-		JOIN storage s
-		ON s.storage_code = d.storage_code
+		SELECT * from detail_location
 	</select>
 
 	<insert id="insertLocation" parameterType="Location">
 		INSERT INTO
-		detail_location (storage_code, location_name)
-		values(#{storage_code},#{location_name})
+		detail_location (storage_code,location_code, location_name,company_id)
+		values(#{storage_code},#{location_code},#{location_name},#{company_id})
 	</insert>
 
 	<update id="updateLocation" parameterType="Location">

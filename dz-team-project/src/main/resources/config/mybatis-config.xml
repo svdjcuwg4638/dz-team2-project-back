@@ -3,13 +3,13 @@
 <configuration>
     <typeAliases>
         <typeAlias alias="Storage" type="com.dz.factory.common.domain.Storage"/>
-        <typeAlias alias="Location" type="com.dz.factory.management.dto.LocationDto"/>
+        <typeAlias alias="Location" type="com.dz.factory.common.domain.Location"/>
         <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
         <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>
         <typeAlias alias="ProductRelationDto" type="com.dz.factory.production.dto.ProductRelationDto"/>        
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
-        <typeAlias alias="code" type="com.dz.factory.common.domain.Code"/>
+        <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>
     </typeAliases>
 </configuration>
