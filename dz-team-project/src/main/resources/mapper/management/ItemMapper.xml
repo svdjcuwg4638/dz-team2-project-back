@@ -10,6 +10,7 @@
 		(company_id, item_code, item_name, location_code,storage_code,width,length,height ,volume,weight,unit,description,partner_code )
 		VALUES
 		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{partner_code});
+
 	</insert>
 
 	<delete id="deleteItem" parameterType="int">

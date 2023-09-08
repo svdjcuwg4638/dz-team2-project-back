@@ -12,7 +12,9 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class Item {
-
+	
+	private String location_code;
+	private String storage_code; 
 	private String item_code;
 	private int company_id;
 	private String item_name;
@@ -26,6 +28,4 @@ public class Item {
 	private String volume;
 	private String weight;
 	private String unit;
-	private String storage_code;
-	private String location_code;
 }

@@ -12,6 +12,7 @@
         <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
+        <typeAlias alias="Inventory" type="com.dz.factory.storage.dto.Inventory"/>
     </typeAliases>
     
  

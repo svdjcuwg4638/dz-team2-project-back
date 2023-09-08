@@ -16,6 +16,7 @@
 
 	<select id="selectLocationAll" resultType="Location">
 		SELECT * from detail_location
+
 	</select>
 
 	<insert id="insertLocation" parameterType="Location">
@@ -28,13 +29,13 @@
 		UPDATE detail_location
 		SET storage_code=#{storage_code}, location_name=#{location_name}
 		WHERE
-		location_id =#{location_id}
+		location_code =#{location_code}
 	</update>
 
 	<delete id="deleteLocation" parameterType="int">
 		DELETE from
 		detail_location
-		WHERE location_id = #{id}
+		WHERE location_code = #{id}
 	</delete>
 
 	<delete id="deleteStorage" parameterType="string">
