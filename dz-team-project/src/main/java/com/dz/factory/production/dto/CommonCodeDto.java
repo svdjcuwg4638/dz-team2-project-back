@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CodeDto {
+public class CommonCodeDto {
 	private String common_code;
 	private String common_name;
 }

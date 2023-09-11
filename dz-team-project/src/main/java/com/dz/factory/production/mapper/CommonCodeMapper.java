@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.dz.factory.common.domain.Code;
-import com.dz.factory.production.dto.CodeDto;
+import com.dz.factory.production.dto.CommonCodeDto;
 
 @Mapper
 public interface CommonCodeMapper {
-	ArrayList<CodeDto> getAllTeam();
-	ArrayList<CodeDto> getByCodeValue(String keyword);
-	ArrayList<CodeDto> getByCodeName(String keyword);
-	ArrayList<CodeDto> getByAll(String keyword);
+	ArrayList<CommonCodeDto> getAllTeam();
+	ArrayList<CommonCodeDto> getByCodeValue(String keyword);
+	ArrayList<CommonCodeDto> getByCodeName(String keyword);
+	ArrayList<CommonCodeDto> getByAll(String keyword);
 }
