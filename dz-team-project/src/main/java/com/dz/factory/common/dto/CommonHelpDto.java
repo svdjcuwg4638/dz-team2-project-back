@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommonHelpDto {
 
-	private String searchoption ;
+	private String searchOption ;
 	private String keyword;
 	private String codeType;
 	private String tableName;

@@ -7,12 +7,13 @@
         <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
         <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>
-        <typeAlias alias="ProductRelationDto" type="com.dz.factory.production.dto.ProductRelationDto"/>        
+        <typeAlias alias="ComponentItemDto" type="com.dz.factory.production.dto.ComponentItemDto"/>        
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
         <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
         <typeAlias alias="CommonCodeDto" type="com.dz.factory.production.dto.CommonCodeDto"/>        
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
+        <typeAlias alias="RelationDto" type="com.dz.factory.production.dto.RelationDto"/>        
     </typeAliases>
     
  
