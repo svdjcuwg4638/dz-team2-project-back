@@ -5,6 +5,8 @@
 		select * from item
 	</select>
 
+
+
 	<insert id="insertItem" parameterType="Item">
 		INSERT INTO item
 		(company_id, item_code, item_name, location_code,storage_code,width,length,height ,volume,weight,unit,description,partner_code )

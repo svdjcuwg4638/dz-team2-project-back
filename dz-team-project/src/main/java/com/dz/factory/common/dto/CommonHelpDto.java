@@ -1,0 +1,16 @@
+package com.dz.factory.common.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CommonHelpDto {
+
+	private String searchoption ;
+	private String keyword;
+	private String codeType;
+	
+}
