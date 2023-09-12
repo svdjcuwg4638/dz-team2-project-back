@@ -12,5 +12,8 @@ public class CommonHelpDto {
 	private String searchoption ;
 	private String keyword;
 	private String codeType;
+	private String tableName;
+	private String column_name;
+	private String column_code;
 	
 }
