@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dz.factory.common.domain.CMRespDto;
 import com.dz.factory.common.domain.Item;
-import com.dz.factory.production.dto.ProductRelationDto;
+import com.dz.factory.common.domain.ProductRelation;
+import com.dz.factory.production.dto.ComponentItemDto;
+import com.dz.factory.production.dto.RelationDto;
 import com.dz.factory.production.service.ProductionAddService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,15 +28,11 @@ public class ProductionAddController {
 	private final ProductionAddService addService;
 	
 	@GetMapping("/component")
-	public ResponseEntity<?> getComponent(@RequestParam String itemCode){
-		List<ProductRelationDto> relation= addService.getRelation(itemCode);
-		List<Item> componentList=addService.getComponent(itemCode);
+	public ResponseEntity<?> getComponentItems(@RequestParam String itemCode){
+//		List<ComponentItemDto> componentItems= addService.getComponentItems(itemCode);		
+//		return new ResponseEntity<>(new CMRespDto<>(1,"seccess",componentItems),HttpStatus.OK);
 		
-		HashMap<String, List> result = new HashMap<String,List>();
-		result.put("componentList", componentList);
-		result.put("relation", relation);
-		
-		
-		return new ResponseEntity<>(new CMRespDto<>(1,"seccess",result),HttpStatus.OK);
+		List<RelationDto> relationList= addService.getRelation(itemCode);
+		return new ResponseEntity<>(new CMRespDto<>(1,"seccess",relationList),HttpStatus.OK);
 	}
 }

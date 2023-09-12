@@ -22,6 +22,9 @@ public class CommonHelpController {
 	
 	@PostMapping("/common/help")
 	public ResponseEntity<?> CodeAdd(@RequestBody CommonHelpDto data){
+		System.out.println(data.getCodeType());
+		System.out.println(data.getKeyword());
+		System.out.println(data.getSearchOption());
 		ArrayList<?> list  = commonHelpService.searchHelp(data);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",list),HttpStatus.OK);
 	}
