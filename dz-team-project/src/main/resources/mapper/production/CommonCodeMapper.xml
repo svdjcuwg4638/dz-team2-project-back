@@ -13,5 +13,5 @@
 	<select id="getByCodeName" resultType="CommonCodeDto">
 		  select common_code,common_name from code_common where management_code = 'TEAM' and common_name like concat('%',#{keyword},'%');
 	</select>
-
+	
 </mapper>
