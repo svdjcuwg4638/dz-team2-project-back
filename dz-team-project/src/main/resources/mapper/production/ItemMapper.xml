@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.production.mapper.ItemCodeMapper">	
+	<select id="getAll" resultType="CodeDto">
+		  select item_code,item_name from item;
+	</select>
+	<select id="getByAll" resultType="CodeDto">
+		  select item_code,item_name from item where item_name like concat('%',#{keyword},'%') or item_code like concat('%',#{keyword},'%');
+	</select>
+	<select id="getByCodeValue" resultType="CodeDto">
+		  select item_code,item_name from code_item where item_code like concat('%',#{keyword},'%');
+	</select>
+	<select id="getByCodeName" resultType="CodeDto">
+		  select item_code,item_name from code_item where item_name like concat('%',#{keyword},'%');
+	</select>
+
+</mapper>
