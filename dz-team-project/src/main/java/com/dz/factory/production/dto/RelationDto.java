@@ -5,11 +5,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ProductRelationDto {
-	private int relation_id;
+public class RelationDto {
 	private String item_code;
-	private int quantity;
 	private String component_code;
-
+	private String component_name;
+	private int quantity;
 }
-
