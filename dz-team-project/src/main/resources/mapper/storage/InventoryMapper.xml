@@ -6,37 +6,141 @@
 
 	<select id="selectInventoryAll" resultType="Inventory">
 		SELECT
-    i.inventory_id,
-    i.total,
-    i.item_code,
-    i.storage_code,
-    i.location_code,
-    i.company_id,
-    it.item_name,
-    it.category,
-    it.width,
-    it.length,
-    it.height,
-    it.volume,
-    it.weight,
-    it.unit, 
-    sl.storage_name,
-    dl.location_name,
-    pa.partner_code, 
-    pa.partner_name
-FROM
-    inventory AS i
-JOIN
-    item AS it ON i.item_code = it.item_code
-JOIN
-    storage AS sl ON i.storage_code = sl.storage_code
-JOIN
-    detail_location AS dl ON i.location_code = dl.location_code
-JOIN 
-	partner AS pa ON it.partner_code = pa.partner_code;
+		    i.inventory_id,
+		    i.total,
+		    i.item_code,
+		    i.storage_code,
+		    i.location_code,
+		    i.company_id,
+		    it.item_name,
+		    it.category,
+		    it.width,
+		    it.length,
+		    it.height,
+		    it.volume,
+		    it.weight,
+		    it.unit, 
+		    sl.storage_name,
+		    dl.location_name,
+		    pa.partner_code, 
+		    pa.partner_name
+		FROM
+		    inventory AS i
+		JOIN
+		    item AS it ON i.item_code = it.item_code
+		JOIN
+		    storage AS sl ON i.storage_code = sl.storage_code
+		JOIN
+		    detail_location AS dl ON i.location_code = dl.location_code
+		JOIN 
+			partner AS pa ON it.partner_code = pa.partner_code;
 	</select>
-<select id="">
+<!-- 스토리지에 따른 재고 검색 쿼리 -->
+<select id="searchInventoryByStorage" parameterType="string" resultType="Inventory">
+    SELECT
+        i.inventory_id,
+        i.total,
+        i.item_code,
+        i.storage_code,
+        i.location_code,
+        i.company_id,
+        it.item_name,
+        it.category,
+        it.width,
+        it.length,
+        it.height,
+        it.volume,
+        it.weight,
+        it.unit, 
+        sl.storage_name,
+        dl.location_name,
+        pa.partner_code, 
+        pa.partner_name
+    FROM
+        inventory AS i
+    JOIN
+        item AS it ON i.item_code = it.item_code
+    JOIN
+        storage AS sl ON i.storage_code = sl.storage_code
+    JOIN
+        detail_location AS dl ON i.location_code = dl.location_code
+    JOIN 
+        partner AS pa ON it.partner_code = pa.partner_code
+    WHERE
+		FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
+
 </select>
 
+<!-- 로케이션에 따른 재고 검색 쿼리 -->
+<select id="searchInventoryByLocation" parameterType="string" resultType="Inventory">
+    SELECT
+        i.inventory_id,
+        i.total,
+        i.item_code,
+        i.storage_code,
+        i.location_code,
+        i.company_id,
+        it.item_name,
+        it.category,
+        it.width,
+        it.length,
+        it.height,
+        it.volume,
+        it.weight,
+        it.unit, 
+        sl.storage_name,
+        dl.location_name,
+        pa.partner_code, 
+        pa.partner_name
+    FROM
+        inventory AS i
+    JOIN
+        item AS it ON i.item_code = it.item_code
+    JOIN
+        storage AS sl ON i.storage_code = sl.storage_code
+    JOIN
+        detail_location AS dl ON i.location_code = dl.location_code
+    JOIN 
+        partner AS pa ON it.partner_code = pa.partner_code
+    WHERE
+		FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
+        AND FIND_IN_SET(i.location_code, #{locationCodes}) > 0
+</select>
 
+<!-- 카테고리에 따른 재고 검색 쿼리 -->
+<select id="searchInventoryByCategory" parameterType="string" resultType="Inventory">
+    SELECT
+        i.inventory_id,
+        i.total,
+        i.item_code,
+        i.storage_code,
+        i.location_code,
+        i.company_id,
+        it.item_name,
+        it.category,
+        it.width,
+        it.length,
+        it.height,
+        it.volume,
+        it.weight,
+        it.unit, 
+        sl.storage_name,
+        dl.location_name,
+        pa.partner_code, 
+        pa.partner_name
+    FROM
+        inventory AS i
+    JOIN
+        item AS it ON i.item_code = it.item_code
+    JOIN
+        storage AS sl ON i.storage_code = sl.storage_code
+    JOIN
+        detail_location AS dl ON i.location_code = dl.location_code
+    JOIN 
+        partner AS pa ON it.partner_code = pa.partner_code
+    WHERE
+		FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
+        AND FIND_IN_SET(i.location_code, #{locationCodes}) > 0
+         AND FIND_IN_SET(it.category, #{categorys}) > 0
+</select>
 </mapper>
