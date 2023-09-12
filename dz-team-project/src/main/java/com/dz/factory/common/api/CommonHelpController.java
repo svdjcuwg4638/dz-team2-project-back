@@ -14,17 +14,19 @@ import com.dz.factory.common.service.CommonHelpService;
 
 import lombok.RequiredArgsConstructor;
 
+
 @RestController
 @RequiredArgsConstructor
 public class CommonHelpController {
 
 	private final CommonHelpService commonHelpService;
-	
+
 	@PostMapping("/common/help")
-	public ResponseEntity<?> CodeAdd(@RequestBody CommonHelpDto data){
+	public ResponseEntity<?> commonHelp(@RequestBody CommonHelpDto data){
 		ArrayList<?> list  = commonHelpService.searchHelp(data);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",list),HttpStatus.OK);
 	}
+
 	
 	
 }
