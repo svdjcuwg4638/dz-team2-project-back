@@ -28,10 +28,23 @@
 		        WHERE item_code = #{itemCode}
 		    );
 	</select>
+	
 	<select id="getRelation" resultType="RelationDto">
 		select r.item_code, r.component_code, r.quantity, item.item_name
 		 from product_relation r
 		 left join item on item.item_code=r.component_code
 		 WHERE r.item_code=#{itemCode};
 	</select>
+	
+	<select id="getInventory" resultType="Inventory">
+		select * from inventory
+		<where>
+		    <if test="itemCode != null"> item_code=#{itemCode}</if>
+		    <if test="storageCode != null"> AND storage_code=#{storageCode}</if>
+		    <if test="locationCode != null"> AND location_code=#{locationCode}</if>
+		</where>
+	</select>
+
+	
+	
 </mapper>
