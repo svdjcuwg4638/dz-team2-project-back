@@ -31,7 +31,7 @@ public class ProductionAddController {
 	public ResponseEntity<?> getComponentItems(@RequestParam String itemCode){
 //		List<ComponentItemDto> componentItems= addService.getComponentItems(itemCode);		
 //		return new ResponseEntity<>(new CMRespDto<>(1,"seccess",componentItems),HttpStatus.OK);
-		
+		System.out.println(itemCode);
 		List<RelationDto> relationList= addService.getRelation(itemCode);
 		return new ResponseEntity<>(new CMRespDto<>(1,"seccess",relationList),HttpStatus.OK);
 	}
