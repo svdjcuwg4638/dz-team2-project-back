@@ -43,3 +43,4 @@ Thumbs.db
 ### Environment Configurations ###
 src/main/resources/application*.properties
 >>>>>>> dc321b177ca346dc6e7799e99cc3d897f1344115
+/.metadata/

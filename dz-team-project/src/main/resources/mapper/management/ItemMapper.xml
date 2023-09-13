@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dz.factory.management.mapper.ItemMapper">
+
 	<select id="selAllItem" resultType="Item">
 		select * from item
 	</select>
 
-
-
 	<insert id="insertItem" parameterType="Item">
 		INSERT INTO item
-		(company_id, item_code, item_name, location_code,storage_code,width,length,height ,volume,weight,unit,description,partner_code )
+		(company_id, item_code, item_name,
+		location_code,storage_code,width,length,height
+		,volume,weight,unit,description,partner_code )
 		VALUES
 		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{partner_code});
 	</insert>
 
-	<delete id="deleteItem" parameterType="int">
+	<delete id="deleteItem" parameterType="string">
 		DELETE from
 		item
-		WHERE item_id = ${id}
+		WHERE
+		item_code = #{id}
 	</delete>
+
+	<select id="selectSearchItem" parameterType="hashmap"
+		resultType="Item">
+		select * from item
+		<where>
+			<if test="item_code != null and item_code != ''">
+				item_code LIKE CONCAT('%', #{item_code}, '%')
+			</if>
+			<if test="item_name != null and item_name != ''">
+				<choose>
+					<when test="item_code != null and item_code != ''">AND</when>
+					<otherwise></otherwise>
+				</choose>
+				item_name LIKE CONCAT('%', #{item_name}, '%')
+			</if>
+		</where>
+	</select>
 
 </mapper>
