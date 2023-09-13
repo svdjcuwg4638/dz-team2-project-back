@@ -8,10 +8,10 @@
 		SELECT * FROM ${tableName}
 		<where>
 			<choose>
-				<when test="searchoption == 2 ">
+				<when test="searchOption == 2 ">
 					${column_code} LIKE CONCAT('%', #{keyword}, '%')
 				</when>
-				<when test="searchoption == 3 ">
+				<when test="searchOption == 3 ">
 					${column_name} LIKE CONCAT('%', #{keyword}, '%')
 				</when>
 				<otherwise>
