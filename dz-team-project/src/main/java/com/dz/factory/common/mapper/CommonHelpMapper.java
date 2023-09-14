@@ -12,4 +12,6 @@ public interface CommonHelpMapper {
 
 	ArrayList<HashMap<String, Object>> getValue(CommonHelpDto data);
 
+	ArrayList<HashMap<String, Object>> getCommonValue(CommonHelpDto data);
+
 }

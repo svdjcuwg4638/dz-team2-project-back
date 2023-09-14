@@ -1,6 +1,7 @@
 package com.dz.factory.management.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,5 +15,11 @@ public interface ItemMapper {
 
 	void insertItem(Item item);
 
-	void deleteItem(int id);
+	void deleteItem(String id);
+
+	ArrayList<Item> selectSearchItem(HashMap<String, String> map);
+
+	int updateItem(Item item);
+
+	void insertUnitPrice(Item item);
 }

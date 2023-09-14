@@ -1,6 +1,7 @@
 package com.dz.factory.management.api;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -30,14 +31,28 @@ public class ItemApiController {
 	
 	@PostMapping("/item/add")
 	public ResponseEntity<?> itemAdd(@RequestBody Item item){
+		System.out.println("-------------------------------");
+		System.out.println(item.toString());
 		itemService.itemAdd(item);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",item),HttpStatus.OK);
 	}
 	
 	@PostMapping("/item/delete")
-	public ResponseEntity<?> itemAdd(@RequestBody List<Integer> ids){
+	public ResponseEntity<?> itemAdd(@RequestBody List<String> ids){
 		itemService.delItem(ids);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",ids),HttpStatus.OK);
+	}
+	
+	@PostMapping("/item/search")
+	public ResponseEntity<?> itemSearch(@RequestBody HashMap<String, String> map){
+		ArrayList<Item> list = itemService.getSearch(map);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",list),HttpStatus.OK);
+	}
+	
+	@PostMapping("/item/modify")
+	public ResponseEntity<?> itemModify(@RequestBody Item item){
+		int result  = itemService.itemModify(item);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",item),HttpStatus.OK);
 	}
 	
 }

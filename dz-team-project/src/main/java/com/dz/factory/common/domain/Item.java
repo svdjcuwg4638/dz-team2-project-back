@@ -28,4 +28,6 @@ public class Item {
 	private String volume;
 	private String weight;
 	private String unit;
+	private String unit_price;
+	private String type;
 }

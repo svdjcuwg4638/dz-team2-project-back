@@ -1,6 +1,7 @@
 package com.dz.factory.management.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,13 +25,22 @@ public class ItemService {
 	@Transactional
 	public void itemAdd(Item item) {
 		itemMapper.insertItem(item);
+		itemMapper.insertUnitPrice(item);
 	}
 
 	@Transactional
-	public void delItem(List<Integer> ids) {
-		for(int id : ids) {
+	public void delItem(List<String> ids) {
+		for(String id : ids) {
 			itemMapper.deleteItem(id);
 		}
+	}
+
+	public ArrayList<Item> getSearch(HashMap<String, String> map) {
+		return itemMapper.selectSearchItem(map);
+	}
+
+	public int itemModify(Item item) {
+		return itemMapper.updateItem(item);
 	}
 	
 }
