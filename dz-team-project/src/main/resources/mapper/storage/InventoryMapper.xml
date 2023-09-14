@@ -35,8 +35,61 @@
 		JOIN 
 			partner AS pa ON it.partner_code = pa.partner_code;
 	</select>
-<!-- 스토리지에 따른 재고 검색 쿼리 -->
-<select id="searchInventoryByStorage" parameterType="string" resultType="Inventory">
+
+	<!-- 재고 검색 쿼리 -->
+	<select id="searchInventoryByTable" parameterType="string" resultType="Inventory">
+	    SELECT
+	        i.inventory_id,
+	        i.total,
+	        i.item_code,
+	        i.storage_code,
+	        i.location_code,
+	        i.company_id,
+	        it.item_name,
+	        it.category,
+	        it.width,
+	        it.length,
+	        it.height,
+	        it.volume,
+	        it.weight,
+	        it.unit, 
+	        sl.storage_name,
+	        dl.location_name,
+	        pa.partner_code, 
+	        pa.partner_name
+	    FROM
+	        inventory AS i
+	    JOIN
+	        item AS it ON i.item_code = it.item_code
+	    JOIN
+	        storage AS sl ON i.storage_code = sl.storage_code
+	    JOIN
+	        detail_location AS dl ON i.location_code = dl.location_code
+	    JOIN 
+	        partner AS pa ON it.partner_code = pa.partner_code
+	    <where>
+	    	<if test="storageCodes!=null and storageCodes!=''">
+				FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
+			</if>		
+	    	<if test="locationCodes!=null and locationCodes!=''">
+		    	AND
+			</if>		
+			
+	    	<if test="locationCodes!=null and locationCodes!=''">	
+		        FIND_IN_SET(i.location_code, #{locationCodes}) > 0
+			</if>		
+	    	<if test="categorys!=null and categorys!=''">	
+				AND
+			</if>
+			   
+	    	<if test="categorys!=null and categorys!=''">			   
+	     		FIND_IN_SET(it.category, #{categorys}) > 0
+	     	</if>
+	    </where>
+	</select>
+	
+	<!-- inventoryMapper.xml -->
+<select id="searchInventoryByForm" parameterType="InventoryForm" resultType="com.dz.factory.storage.dto.Inventory">
     SELECT
         i.inventory_id,
         i.total,
@@ -66,81 +119,26 @@
         detail_location AS dl ON i.location_code = dl.location_code
     JOIN 
         partner AS pa ON it.partner_code = pa.partner_code
-    WHERE
-		FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
-
+    <where>
+        <if test="storageCode != null and storageCode!='' ">
+            AND i.storage_code = #{storageCode}
+        </if>
+        <if test="locationCode != null and locationCode!='' ">
+            AND i.location_code = #{locationCode}
+        </if>
+        <if test="categoryCode != null and categoryCode!=''">
+            AND it.category = #{categoryCode}
+        </if>
+        <if test="unit != null and unit !=''">
+            AND it.unit = #{unit}
+        </if>
+        <if test="itemCode != null and itemCode!='' ">
+            AND i.item_code = #{itemCode}
+        </if>
+        <if test="partnerCode != null and itemCode!='' ">
+            AND it.partner_code = #{partnerCode}
+        </if>
+    </where>
 </select>
-
-<!-- 로케이션에 따른 재고 검색 쿼리 -->
-<select id="searchInventoryByLocation" parameterType="string" resultType="Inventory">
-    SELECT
-        i.inventory_id,
-        i.total,
-        i.item_code,
-        i.storage_code,
-        i.location_code,
-        i.company_id,
-        it.item_name,
-        it.category,
-        it.width,
-        it.length,
-        it.height,
-        it.volume,
-        it.weight,
-        it.unit, 
-        sl.storage_name,
-        dl.location_name,
-        pa.partner_code, 
-        pa.partner_name
-    FROM
-        inventory AS i
-    JOIN
-        item AS it ON i.item_code = it.item_code
-    JOIN
-        storage AS sl ON i.storage_code = sl.storage_code
-    JOIN
-        detail_location AS dl ON i.location_code = dl.location_code
-    JOIN 
-        partner AS pa ON it.partner_code = pa.partner_code
-    WHERE
-		FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
-        AND FIND_IN_SET(i.location_code, #{locationCodes}) > 0
-</select>
-
-<!-- 카테고리에 따른 재고 검색 쿼리 -->
-<select id="searchInventoryByCategory" parameterType="string" resultType="Inventory">
-    SELECT
-        i.inventory_id,
-        i.total,
-        i.item_code,
-        i.storage_code,
-        i.location_code,
-        i.company_id,
-        it.item_name,
-        it.category,
-        it.width,
-        it.length,
-        it.height,
-        it.volume,
-        it.weight,
-        it.unit, 
-        sl.storage_name,
-        dl.location_name,
-        pa.partner_code, 
-        pa.partner_name
-    FROM
-        inventory AS i
-    JOIN
-        item AS it ON i.item_code = it.item_code
-    JOIN
-        storage AS sl ON i.storage_code = sl.storage_code
-    JOIN
-        detail_location AS dl ON i.location_code = dl.location_code
-    JOIN 
-        partner AS pa ON it.partner_code = pa.partner_code
-    WHERE
-		FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
-        AND FIND_IN_SET(i.location_code, #{locationCodes}) > 0
-         AND FIND_IN_SET(it.category, #{categorys}) > 0
-</select>
+	
 </mapper>

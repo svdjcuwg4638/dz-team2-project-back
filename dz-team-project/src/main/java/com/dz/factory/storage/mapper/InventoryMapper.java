@@ -9,14 +9,12 @@ import org.apache.ibatis.annotations.Param;
 import com.dz.factory.common.domain.Location;
 import com.dz.factory.common.domain.Storage;
 import com.dz.factory.storage.dto.Inventory;
+import com.dz.factory.storage.dto.InventoryForm;
 
 @Mapper
 public interface InventoryMapper {
 
 	ArrayList<Inventory> selectInventoryAll();
-	List<Inventory> searchInventoryByStorage(@Param("storageCodes") String storageCodes);
-    List<Inventory> searchInventoryByLocation(@Param("locationCodes") String locationCodes, @Param("storageCodes") String storageCodes);
-    List<Inventory> searchInventoryByCategory(@Param("locationCodes") String locationCodes, @Param("storageCodes") String storageCodes, @Param("categorys") String categorys);
-
-	    //	ArrayList<Inventory> selectSearchInventorybyStorage(Storage storage);
+    List<Inventory> searchInventoryByTable(@Param("locationCodes") String locationCodes, @Param("storageCodes") String storageCodes, @Param("categorys") String categorys);
+    List<Inventory> searchInventoryByForm(InventoryForm searchinventorydata);
 }

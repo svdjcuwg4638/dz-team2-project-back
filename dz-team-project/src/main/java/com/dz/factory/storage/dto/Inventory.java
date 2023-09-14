@@ -31,5 +31,4 @@ public class Inventory {
 	private String partner_code; 
 	private String partner_name; 
 	private String unit;
-	
 	}

@@ -17,6 +17,7 @@ import com.dz.factory.common.domain.CMRespDto;
 import com.dz.factory.common.domain.Location;
 import com.dz.factory.common.domain.Storage;
 import com.dz.factory.storage.dto.Inventory;
+import com.dz.factory.storage.dto.InventoryForm;
 import com.dz.factory.storage.service.CodeListService;
 import com.dz.factory.storage.service.InventoryService;
 
@@ -46,54 +47,25 @@ public class InventoryController {
 		        return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryList),HttpStatus.CREATED);
 
 	}
-//	@GetMapping("/inventory/search")
-//	public ResponseEntity<?> searchInventory(@RequestParam  Map<String, String> params){
-//		List<Inventory> inventoryList = new ArrayList<>();
-//		if (params != null && !params.isEmpty()) {
-//	        // params 맵에서 storageCodes 및 locationCodes 값을 추출합니다.
-//	        String storageList = params.get("storageCodes");
-//	        String locationList= params.get("locationCodes");
-//	        
-//	        List<String> storageCodes = Arrays.asList(storageList.split(","));
-//	        List<String> locationCodes = Arrays.asList(locationList.split(","));
-//	        
-//	        for (String storage_code : storageCodes) {
-//		        for (String location_code : locationCodes) {
-//		        	inventoryService.searchByLocation(storage_code, location_code);
-//		        }
-//	        }
-//		}
-//				return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryList),HttpStatus.OK);
-//
-//	}
 	
-	@GetMapping("/inventory/search")
+	@PostMapping("/inventory/searchForm")
+	public ResponseEntity<?> searchInventoryByForm(@RequestBody  InventoryForm searchinventorydata){
+	    List<Inventory> inventoryList = new ArrayList<>();
+	    List<Inventory> inventory = inventoryService.searchInventoryByForm(searchinventorydata);
+	    inventoryList.addAll(inventory);	    
+	    return new ResponseEntity<>(new CMRespDto<>(1, "성공", inventoryList), HttpStatus.OK);
+
+	}
+
+	
+	@GetMapping("/inventory/searchTable")
 	public ResponseEntity<?> searchInventory(
 	    @RequestParam(name = "storageCodes", required = false) String storageCodes,
 	    @RequestParam(name = "locationCodes", required = false) String locationCodes,
 	    @RequestParam(name = "categorys", required = false) String categorys) {
 	    List<Inventory> inventoryList = new ArrayList<>();
-
-	    
-	    if (storageCodes != null && !storageCodes.isEmpty() && (locationCodes == null || locationCodes.isEmpty())&&(categorys == null || categorys.isEmpty())) {
-	    	List<Inventory> inventory =inventoryService.searchInventoryByStorage(storageCodes);	  
-	    	inventoryList.addAll(inventory);
-	    	}
-
-	    if (storageCodes != null && !storageCodes.isEmpty() &&locationCodes != null && !locationCodes.isEmpty() &&(categorys == null || categorys.isEmpty())) {
-	        // locationCodes를 사용하여 로케이션에 대한 검색 쿼리를 작성하고 실행
-	    	List<Inventory> inventory =inventoryService.searchInventoryByLocation(locationCodes, storageCodes);	  
-	    	inventoryList.addAll(inventory);
-
-	    }
-	    
-	    if (storageCodes != null && !storageCodes.isEmpty() &&locationCodes != null && !locationCodes.isEmpty() && categorys != null || !categorys.isEmpty()) {
-	    	List<Inventory> inventory =inventoryService.searchInventoryByCategory(locationCodes, storageCodes, categorys);	  
-	    	inventoryList.addAll(inventory);
-
-	    }
-
-	    // 검색 결과를 inventoryList에 추가
+    	List<Inventory> inventory =inventoryService.searchInventoryByTable(locationCodes, storageCodes, categorys);	  
+    	inventoryList.addAll(inventory);
 
 	    return new ResponseEntity<>(new CMRespDto<>(1, "성공", inventoryList), HttpStatus.OK);
 	}
