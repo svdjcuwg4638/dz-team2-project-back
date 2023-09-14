@@ -25,6 +25,7 @@ public class ItemService {
 	@Transactional
 	public void itemAdd(Item item) {
 		itemMapper.insertItem(item);
+		itemMapper.insertUnitPrice(item);
 	}
 
 	@Transactional
@@ -36,6 +37,10 @@ public class ItemService {
 
 	public ArrayList<Item> getSearch(HashMap<String, String> map) {
 		return itemMapper.selectSearchItem(map);
+	}
+
+	public int itemModify(Item item) {
+		return itemMapper.updateItem(item);
 	}
 	
 }

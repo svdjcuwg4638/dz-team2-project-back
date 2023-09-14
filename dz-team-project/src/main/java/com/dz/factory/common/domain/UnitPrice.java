@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 public class UnitPrice {
 
 	private int unit_price_id;
-	private int partner_id;
-	private int item_id;
-	private int unit_price;
+	private String item_code;
+	private String partner_code;
+	private String unit_price;
 	private LocalDate start_date;
 	private LocalDate end_date;
 	private String type;
