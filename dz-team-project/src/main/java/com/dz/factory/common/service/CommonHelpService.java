@@ -70,8 +70,6 @@ public class CommonHelpService {
 			data.setColumn_code("common_code");
 			data.setColumn_name("common_name");
 			data.setForCommonType(flag.toUpperCase());
-			System.out.println("------------------------");
-			System.out.println(data.toString());
 			ArrayList<HashMap<String, Object>> listMap = commonHelpMapper.getValue(data);
 			for(HashMap<String, Object> map : listMap) {
 				HelpResultDto dto = new HelpResultDto();
