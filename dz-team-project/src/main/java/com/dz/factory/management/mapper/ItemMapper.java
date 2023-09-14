@@ -18,4 +18,8 @@ public interface ItemMapper {
 	void deleteItem(String id);
 
 	ArrayList<Item> selectSearchItem(HashMap<String, String> map);
+
+	int updateItem(Item item);
+
+	void insertUnitPrice(Item item);
 }
