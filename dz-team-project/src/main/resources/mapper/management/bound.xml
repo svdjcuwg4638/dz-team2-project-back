@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dz.factory.management.api.BoundMapper">
+
+	<select id="getFind_id" resultType="hashmap">
+		SELECT max(bound_id) AS
+		top_bound_Id
+		FROM
+		bound WHERE emp_id = #{i}
+	</select>
+
+</mapper>
