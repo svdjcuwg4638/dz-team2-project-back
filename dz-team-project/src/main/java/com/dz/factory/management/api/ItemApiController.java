@@ -31,8 +31,6 @@ public class ItemApiController {
 	
 	@PostMapping("/item/add")
 	public ResponseEntity<?> itemAdd(@RequestBody Item item){
-		System.out.println("-------------------------------");
-		System.out.println(item.toString());
 		itemService.itemAdd(item);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",item),HttpStatus.OK);
 	}
