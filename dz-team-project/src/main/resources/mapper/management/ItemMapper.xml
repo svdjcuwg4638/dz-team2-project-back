@@ -10,9 +10,9 @@
 		INSERT INTO item
 		(company_id, item_code, item_name,
 		location_code,storage_code,width,length,height
-		,volume,weight,unit,description,partner_code,category )
+		,volume,weight,unit,description,category )
 		VALUES
-		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{partner_code},#{category});
+		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{category});
 	</insert>
 
 	<delete id="deleteItem" parameterType="string">
@@ -44,19 +44,11 @@
 		SET
 		item_name=#{item_name}, category=#{category} ,
 		description=#{description}
-		,partner_code=#{partner_code} ,width=#{width} ,length=#{length} ,height=#{height}
+		,width=#{width} ,length=#{length} ,height=#{height}
 		,volume=#{volume} ,weight=#{weight} ,unit=#{unit} ,storage_code=#{storage_code}
 		,location_code=#{location_code}
 		WHERE
 		item_code =#{item_code}
 	</update>
-
-	<insert id="insertUnitPrice" parameterType="Item">
-		INSERT INTO unit_price
-		(company_id, item_code,
-		partner_code,unit_price,end_date, type )
-		VALUES
-		(#{company_id},#{item_code},#{partner_code},#{unit_price},DATE_ADD(CURRENT_DATE, INTERVAL 99 YEAR),#{type});
-	</insert>
 
 </mapper>
