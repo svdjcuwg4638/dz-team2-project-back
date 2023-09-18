@@ -12,9 +12,10 @@ import lombok.NoArgsConstructor;
 public class ProductRelation {
 
 	private int relation_id;
-	private int item_id;
+	private String item_code;
+	private int company_id;
+	private String component_code;
 	private int quantity;
-	private int component_id;
 
 	
 	
