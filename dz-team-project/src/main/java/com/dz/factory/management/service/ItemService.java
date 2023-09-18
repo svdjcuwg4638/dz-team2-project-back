@@ -25,7 +25,6 @@ public class ItemService {
 	@Transactional
 	public void itemAdd(Item item) {
 		itemMapper.insertItem(item);
-		itemMapper.insertUnitPrice(item);
 	}
 
 	@Transactional

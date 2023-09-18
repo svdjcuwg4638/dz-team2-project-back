@@ -4,15 +4,73 @@
 	namespace="com.dz.factory.management.mapper.UnitPriceMapper">
 	<select id="selectAll" resultType="UnitPrice">
 		select * from unit_price
+		order by start_date asc
 	</select>
 
 	<insert id="insert" parameterType="UnitPrice">
 		insert into unit_price
-		(partner_id, item_id, unit_price, start_date, end_date,type,
-		company_id)
-		values(#{partner_id},#{item_id},#{unit_price},
-		#{start_date},#{end_date},#{type},1)
+		(partner_code, item_code, unit_price, start_date,type,
+		company_id, end_date)
+		values(#{partner_code},#{item_code},#{unit_price},
+		#{start_date},#{type},1,#{end_date})
 	</insert>
+
+	<select id="selOldOne" parameterType="UnitPrice" resultType="UnitPrice">
+		SELECT * 
+			FROM unit_price
+			WHERE item_code = #{item_code} 
+			AND #{start_date} >= start_date 
+			ORDER BY start_date DESC , unit_price_id desc
+			LIMIT 1
+	</select>
+
+	<select id="selOverOldOne" parameterType="UnitPrice" resultType="UnitPrice">
+		SELECT * 
+			FROM unit_price
+			WHERE item_code = #{item_code} 
+			AND #{start_date} &lt; start_date 
+			ORDER BY start_date asc
+			LIMIT 1
+	</select>
+
+	<update id="updateEndDate" parameterType="hashmap">
+		update unit_price set 
+		end_date = #{date} 
+		where unit_price_id = #{id}
+	</update>
+	
+	<select id="currnetUnitPrice" resultType="UnitPrice"> 
+		SELECT 
+		    up.*
+		FROM 
+		    unit_price up
+		INNER JOIN 
+		    (SELECT 
+		        item_code, 
+		        MAX(start_date) AS max_start_date,
+		        MAX(unit_price_id) AS max_unit_price_id
+		    FROM 
+		        unit_price 
+		    WHERE 
+		        start_date &lt;= CURRENT_TIMESTAMP 
+		    GROUP BY 
+		        item_code) up1 
+		ON 
+		    up.item_code = up1.item_code 
+		    AND up.start_date = up1.max_start_date
+		    AND up.unit_price_id = up1.max_unit_price_id
+	</select>
+	
+	<select id="expectedPrice" resultType="UnitPrice">
+		SELECT 
+		    * 
+		FROM 
+		    unit_price
+		WHERE 
+		    start_date > CURRENT_TIMESTAMP
+		ORDER BY 
+		    start_date ASC
+	</select>
 
 </mapper>
 	
