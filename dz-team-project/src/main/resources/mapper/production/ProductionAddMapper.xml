@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dz.factory.production.mapper.ProductionAddMapper">
+	<!-- grid02 에 필요한 item -->
 	<select id="getComponentItems" resultType="ComponentItemDto">
 		SELECT 
 			item.item_code,
@@ -28,14 +29,14 @@
 		        WHERE item_code = #{itemCode}
 		    );
 	</select>
-	
+	<!-- 자재관계 -->
 	<select id="getRelation" resultType="RelationDto">
 		select r.item_code, r.component_code, r.quantity, item.item_name
 		 from product_relation r
 		 left join item on item.item_code=r.component_code
 		 WHERE r.item_code=#{itemCode};
 	</select>
-	
+	<!-- 재고 -->
 	<select id="getInventory" resultType="Inventory">
 		select * from inventory
 		<where>
@@ -44,7 +45,21 @@
 		    <if test="locationCode != null"> AND location_code=#{locationCode}</if>
 		</where>
 	</select>
-
+	<!-- 생산등록 -->
+	<insert id="addProduction" parameterType="ProductionDto" useGeneratedKeys="true" keyProperty="production_id">
+		insert into production (company_id, production_date) values (#{company_id},#{production_date})
+	</insert>
+	<insert id="addDetail" parameterType="ProductionDetailDto">
+		insert into production_detail(company_id, item_code, quantity, line_code, production_id, description, storage_code, location_code, emp_id, partner_code, lead_time, work_force, team)
+		values(#{company_id}, #{item_code}, #{quantity}, #{line_code}, #{production_id}, #{description}, #{storage_code}, #{location_code}, #{emp_id}, #{partner_code}, #{lead_time}, #{work_force}, #{team});
+	</insert>
+	<insert id="addComponent" parameterType="ComponentDto" >
+		insert into production_detail_component (item_code,company_id,production_id)
+		values
+		<foreach collection="componentList" item="component" separator=",">
+			 (#{component.item_code},#{component.company_id},#{component.production_id})
+		</foreach>
+	</insert>
 	
 	
 </mapper>
