@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.dz.factory.management.mapper.RelationMapper">
+
+	<select id="getRelationAll" resultType="Relation">
+		SELECT * FROM product_relation
+	</select>
+		
+		<insert id="insertRelation" parameterType="Relation">
+			insert into product_relation (item_code,company_id,quantity,component_code) 
+			values(#{item_code},#{company_id},#{quantity},#{component_code})
+		</insert>
+		
+		
+		<delete id="deleteRelation" parameterType="string">
+			DELETE FROM product_relation WHERE relation_id = #{id}
+		</delete>
+	</mapper>
+	
