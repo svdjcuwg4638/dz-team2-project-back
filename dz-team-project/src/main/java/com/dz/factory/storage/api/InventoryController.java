@@ -18,6 +18,7 @@ import com.dz.factory.common.domain.Location;
 import com.dz.factory.common.domain.Storage;
 import com.dz.factory.storage.dto.Inventory;
 import com.dz.factory.storage.dto.InventoryForm;
+import com.dz.factory.storage.dto.Registration;
 import com.dz.factory.storage.service.CodeListService;
 import com.dz.factory.storage.service.InventoryService;
 
@@ -36,16 +37,17 @@ public class InventoryController {
 	}
 
 	
-	@PostMapping("/inventory/add")
-	public ResponseEntity<?> inventoryAdd(@RequestBody List<Inventory> inventoryList){
-		 if (inventoryList != null && !inventoryList.isEmpty()) {
-		        for (Inventory inventory : inventoryList) {
-		            // 개별 Inventory 객체에 대한 처리 수행
-		            System.out.println(inventory.toString());
-		        }		
-		 }
-		        return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryList),HttpStatus.CREATED);
+	@PostMapping("/inventory/registration")
+	public ResponseEntity<?> inventoryAdd(@RequestBody List<Registration> inventoryList){
 
+		System.out.println(inventoryList);
+//		 if (inventoryList != null && !inventoryList.isEmpty()) {
+//		        for (Registration inventory : inventoryList) {
+//		            // 개별 Inventory 객체에 대한 처리 수행
+//		            System.out.println(inventory);
+//		        }		
+//		 }
+		        return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryList),HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/inventory/searchForm")

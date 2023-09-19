@@ -15,7 +15,8 @@
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
         <typeAlias alias="Inventory" type="com.dz.factory.storage.dto.Inventory"/>
         <typeAlias alias="RelationDto" type="com.dz.factory.production.dto.RelationDto"/>   
-        <typeAlias alias="InventoryForm" type="com.dz.factory.storage.dto.InventoryForm"/>     
+        <typeAlias alias="InventoryForm" type="com.dz.factory.storage.dto.InventoryForm"/>
+        <typeAlias alias="Registration" type="com.dz.factory.storage.dto.Registration"/>     
     </typeAliases>
     
  
