@@ -14,12 +14,13 @@
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
         <typeAlias alias="CommonCodeDto" type="com.dz.factory.production.dto.CommonCodeDto"/>        
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
-        <typeAlias alias="Inventory" type="com.dz.factory.storage.dto.Inventory"/>
         <typeAlias alias="RelationDto" type="com.dz.factory.production.dto.RelationDto"/>        
         <typeAlias alias="ProductionDto" type="com.dz.factory.production.dto.ProductionDto"/>
         <typeAlias alias="ProductionDetailDto" type="com.dz.factory.production.dto.ProductionDetailDto"/>
         <typeAlias alias="ComponentDto" type="com.dz.factory.production.dto.ComponentDto"/>
-                
+        <typeAlias alias="InventoryForm" type="com.dz.factory.storage.dto.InventoryForm"/>
+        <typeAlias alias="Registration" type="com.dz.factory.storage.dto.Registration"/>
+        <typeAlias alias="InventoryDto" type="com.dz.factory.storage.dto.InventoryDto"/>         
     </typeAliases>
     
  
