@@ -31,7 +31,6 @@ public class RelationService {
 		
 		for(String id : ids) {
 			relationMapper.deleteRelation(id);
-			
 		}
 	}
 	

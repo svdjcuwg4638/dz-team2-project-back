@@ -27,4 +27,5 @@ public class Item {
 	private String unit;
 	private String storage_code;
 	private String location_code;
+	private String standard;
 }
