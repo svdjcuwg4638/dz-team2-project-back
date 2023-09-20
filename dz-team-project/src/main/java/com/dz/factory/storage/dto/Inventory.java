@@ -28,7 +28,7 @@ public class Inventory {
 	private String weight; 
 	private String storage_name;
 	private String location_name;
-	private String partner_code; 
-	private String partner_name; 
 	private String unit;
+	
+	private String standard;
 	}

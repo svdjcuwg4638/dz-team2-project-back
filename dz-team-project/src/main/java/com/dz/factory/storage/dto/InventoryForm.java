@@ -18,6 +18,4 @@ public class InventoryForm {
 	private String unit; 
 	private String itemCode; 
 	private String item; 
-	private String partnerCode; 
-	private String partner; 
 }
