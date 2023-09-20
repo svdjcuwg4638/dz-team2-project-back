@@ -21,7 +21,6 @@ public class Item {
 	private LocalDateTime registDate;
 	private String category;
 	private String description;
-	private String partner_code;
 	private String width;
 	private String length;
 	private String height;
@@ -30,4 +29,5 @@ public class Item {
 	private String unit;
 	private String unit_price;
 	private String type;
+
 }

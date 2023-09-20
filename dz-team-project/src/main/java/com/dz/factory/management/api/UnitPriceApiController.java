@@ -27,6 +27,18 @@ public class UnitPriceApiController {
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",unitPriceList),HttpStatus.OK);
 	}
 	
+	@GetMapping("/unitPrice/current")
+	public ResponseEntity<?> unitPriceGetCurrent(){
+		ArrayList<UnitPrice> unitPriceList = unitPriceService.getCurrentList();
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",unitPriceList),HttpStatus.OK);
+	}
+	
+	@GetMapping("/unitPrice/expected")
+	public ResponseEntity<?> unitPriceGetExpected(){
+		ArrayList<UnitPrice> unitPriceList = unitPriceService.getExpectedList();
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",unitPriceList),HttpStatus.OK);
+	}
+	
 	@PostMapping("/unitPrice/add")
 	public ResponseEntity<?> unitPriceAdd(@RequestBody UnitPrice unitPrice){
 		unitPriceService.addUnitPrice(unitPrice);

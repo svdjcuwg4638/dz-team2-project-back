@@ -27,8 +27,7 @@ public class CommonCodeController {
 	
 	@GetMapping("/team")
 	public ResponseEntity<?> getTeamCode(@RequestParam(required = false) String searchOption, String keyword  ) {
-		System.out.println(keyword);
-		System.out.println(searchOption);	
+		
 		if(searchOption==null&&keyword==null) {
 			ArrayList<CommonCodeDto> teamCode = ccService.getAllTeam();
 			return new ResponseEntity<>(new CMRespDto<>(1, "success",teamCode),HttpStatus.OK);
