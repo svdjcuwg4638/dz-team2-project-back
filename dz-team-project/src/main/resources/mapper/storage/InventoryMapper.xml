@@ -33,7 +33,23 @@
 		    detail_location AS dl ON i.location_code = dl.location_code
 
 	</select>
+	<delete id="TempInventoryDestory">
+		DELETE from 
+		temp_inventory
+	</delete>
 
+	<select id="selectTempInventoryAll" resultType="Inventory">
+		SELECT
+			*
+		FROM
+		    temp_inventory 
+	</select>
+
+	 <insert id="TempInventoryRegistration" parameterType="Inventory" >
+	    INSERT INTO temp_inventory (company_id, item_code, total, storage_code, location_code)
+	    VALUES (#{company_id}, #{item_code}, #{total}, #{storage_code}, #{location_code})
+	  </insert>
+  
 	<!-- 재고 검색 쿼리 -->
 	<select id="searchInventoryByTable" parameterType="string" resultType="InventoryDto">
 	    SELECT

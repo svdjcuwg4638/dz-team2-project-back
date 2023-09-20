@@ -29,5 +29,6 @@ public class Item {
 	private String unit;
 	private String unit_price;
 	private String type;
+	private String standard;
 
 }

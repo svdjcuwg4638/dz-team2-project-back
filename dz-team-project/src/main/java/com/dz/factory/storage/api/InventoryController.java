@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dz.factory.common.domain.CMRespDto;
+import com.dz.factory.common.domain.Inventory;
 import com.dz.factory.common.domain.Location;
 import com.dz.factory.common.domain.Storage;
 import com.dz.factory.storage.dto.InventoryDto;
@@ -36,18 +37,23 @@ public class InventoryController {
 
 	}
 
-	
-	@PostMapping("/inventory/registration")
-	public ResponseEntity<?> inventoryAdd(@RequestBody List<Registration> inventoryList){
-
+	@GetMapping("/inventory/registration/temp/all")
+	public ResponseEntity<?> TempInventoryGetAll(){
+		ArrayList<Inventory> inventoryList = inventoryService.getTempInventoryAll();
 		System.out.println(inventoryList);
-//		 if (inventoryList != null && !inventoryList.isEmpty()) {
-//		        for (Registration inventory : inventoryList) {
-//		            // 개별 Inventory 객체에 대한 처리 수행
-//		            System.out.println(inventory);
-//		        }		
-//		 }
-		        return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryList),HttpStatus.CREATED);
+
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryList),HttpStatus.OK);
+
+	}
+	@PostMapping("/inventory/registration/temp/add")
+	public ResponseEntity<?> inventoryAdd(@RequestBody List<Inventory> inventoryTempList){
+		 if (inventoryTempList != null && !inventoryTempList.isEmpty()) {
+			 inventoryService.TempInventoryDestory();
+		        for (Inventory inventoryTemp : inventoryTempList) {
+		        	inventoryService.TempInventoryRegistration(inventoryTemp);	  
+		        }		
+		 }
+		        return new ResponseEntity<>(new CMRespDto<>(1,"성공",inventoryTempList),HttpStatus.CREATED);
 	}
 	
 	@PostMapping("/inventory/searchForm")
