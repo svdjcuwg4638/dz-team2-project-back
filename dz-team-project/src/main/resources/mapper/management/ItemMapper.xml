@@ -10,9 +10,9 @@
 		INSERT INTO item
 		(company_id, item_code, item_name,
 		location_code,storage_code,width,length,height
-		,volume,weight,unit,description,category )
+		,volume,weight,unit,description,category, standard )
 		VALUES
-		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{category});
+		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{category},#{standard});
 	</insert>
 
 	<delete id="deleteItem" parameterType="string">
@@ -46,7 +46,7 @@
 		description=#{description}
 		,width=#{width} ,length=#{length} ,height=#{height}
 		,volume=#{volume} ,weight=#{weight} ,unit=#{unit} ,storage_code=#{storage_code}
-		,location_code=#{location_code}
+		,location_code=#{location_code} , standard=#{standard}
 		WHERE
 		item_code =#{item_code}
 	</update>
