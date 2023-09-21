@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.common.mapper.BookMarkMapper">
+
+    <select id="getBookMark"
+            resultType="com.dz.factory.common.domain.BookMark">
+        SELECT * FROM bookmark
+    </select>
+    
+    <insert id="insertBookMark" parameterType="com.dz.factory.common.domain.BookMark">
+    	insert into bookmark values(#{company_id},#{url})
+    </insert>
+    
+    <delete id="deleteBookMark" parameterType="com.dz.factory.common.domain.BookMark">
+    	delete from bookmark where url = #{url}
+    </delete>
+    
+</mapper>
