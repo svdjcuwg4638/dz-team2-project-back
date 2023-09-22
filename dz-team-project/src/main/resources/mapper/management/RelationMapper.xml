@@ -3,18 +3,18 @@
 <mapper
 	namespace="com.dz.factory.management.mapper.RelationMapper">
 
-	<select id="getRelationAll" resultType="Relation">
-		SELECT * FROM product_relation
+	<select id="getRelationAll" resultType="ProductRelation">
+		SELECT * FROM
+		product_relation
 	</select>
-		
-		<insert id="insertRelation" parameterType="Relation">
-			insert into product_relation (item_code,company_id,quantity,component_code) 
-			values(#{item_code},#{company_id},#{quantity},#{component_code})
-		</insert>
-		
-		
-		<delete id="deleteRelation" parameterType="string">
-			DELETE FROM product_relation WHERE relation_id = #{id}
-		</delete>
-	</mapper>
+
+	<insert id="insertRelation" parameterType="ProductRelation">
+		insert into product_relation (item_code,company_id,quantity,component_code)
+		values(#{item_code},#{company_id},#{quantity},#{component_code})
+	</insert>
+
+	<delete id="deleteRelation" parameterType="string">
+		DELETE FROM product_relation WHERE relation_id = #{id}
+	</delete>
+</mapper>
 	
