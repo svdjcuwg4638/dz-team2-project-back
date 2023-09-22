@@ -3,6 +3,8 @@ package com.dz.factory.management.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,9 @@ public class RelationApiController {
 	}
 	
 	@PostMapping("/relation/add")
-	public ResponseEntity<?> relationAdd(@RequestBody ProductRelation dto){
+	public ResponseEntity<?> relationAdd(@Valid @RequestBody ProductRelation dto){
+		System.out.println("-------------------------");
+		System.out.println(dto.toString());
 		relationService.RelationAdd(dto);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",dto),HttpStatus.OK);
 	}

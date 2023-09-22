@@ -3,11 +3,11 @@
 <mapper namespace="com.dz.factory.management.mapper.ItemMapper">
 
 	<select id="selAllItem" resultType="Item">
-		select * from item
+		select * from item where isdelete = 0
 	</select>
 
 	<insert id="insertItem" parameterType="Item">
-		INSERT INTO item
+		INSERT INTO item 
 		(company_id, item_code, item_name,
 		location_code,storage_code,width,length,height
 		,volume,weight,unit,description,category, standard )
@@ -15,17 +15,17 @@
 		(#{company_id},#{item_code},#{item_name},#{location_code},#{storage_code},#{width},#{length},#{height},#{volume},#{weight},#{unit},#{description},#{category},#{standard});
 	</insert>
 
-	<delete id="deleteItem" parameterType="string">
-		DELETE from
-		item
-		WHERE
+	<update id="deleteItem" parameterType="string">
+		update item set isDelete = 1
+		where  
 		item_code = #{id}
-	</delete>
+	</update>
 
 	<select id="selectSearchItem" parameterType="hashmap"
 		resultType="Item">
 		select * from item
 		<where>
+			isdelete = 0 and
 			<if test="item_code != null and item_code != ''">
 				item_code LIKE CONCAT('%', #{item_code}, '%')
 			</if>
@@ -47,8 +47,15 @@
 		,width=#{width} ,length=#{length} ,height=#{height}
 		,volume=#{volume} ,weight=#{weight} ,unit=#{unit} ,storage_code=#{storage_code}
 		,location_code=#{location_code} , standard=#{standard}
+		<if test="isDelete != null">
+			,isdelete =#{isDelete}
+		</if>
 		WHERE
 		item_code =#{item_code}
 	</update>
+
+	<select id="selSameOne" resultType="Item" parameterType="Item">
+		select * from item where item_code = #{item_code}
+	</select>
 
 </mapper>

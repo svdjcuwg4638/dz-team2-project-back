@@ -22,4 +22,7 @@ public interface ItemMapper {
 	int updateItem(Item item);
 
 	void insertUnitPrice(Item item);
+
+	Item selSameOne(Item item);
+
 }

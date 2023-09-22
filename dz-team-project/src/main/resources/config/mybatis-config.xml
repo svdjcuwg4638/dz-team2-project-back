@@ -18,8 +18,5 @@
         <typeAlias alias="ProductionDto" type="com.dz.factory.production.dto.ProductionDto"/>
         <typeAlias alias="ProductionDetailDto" type="com.dz.factory.production.dto.ProductionDetailDto"/>
         <typeAlias alias="ComponentDto" type="com.dz.factory.production.dto.ComponentDto"/>
-                
     </typeAliases>
-    
- 
 </configuration>
