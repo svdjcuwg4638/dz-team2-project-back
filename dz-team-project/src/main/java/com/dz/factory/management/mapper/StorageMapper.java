@@ -26,8 +26,15 @@ public interface StorageMapper {
 
 	void deleteStorage(String code);
 
-	ArrayList<Storage> selSearchStorage(HashMap<String, String> formData);
+	void storageIsDeleteTrue(String code);
 
-	ArrayList<Storage> selSearchLocation(HashMap<String, String> formData);
+	void locationIsDeleteTrue(Location dto);
+
+	Storage storageSameOne(String storage_code);
+
+	void updateStorage(Storage storage);
+
+	Location locationSameOne(Location locationDto);
+
 	
 }

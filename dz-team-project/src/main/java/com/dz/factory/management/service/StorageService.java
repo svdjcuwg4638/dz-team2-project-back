@@ -20,8 +20,19 @@ public class StorageService {
 	private final StorageMapper storageMapper;
 
 	@Transactional
-	public void insert(Storage storage) {
-		storageMapper.insertStorage(storage);
+	public int insert(Storage storage) {
+		Storage sameOne = storageMapper.storageSameOne(storage.getStorage_code());
+		if(sameOne != null) {
+			if(sameOne.getIsDelete() == 1) {
+				storageMapper.updateStorage(storage);
+				return 1;
+			}else {
+				return 0;
+			}
+		}else {
+			storageMapper.insertStorage(storage);
+			return 1;
+		}
 	}
 
 	public ArrayList<Storage> getAll() {
@@ -29,8 +40,19 @@ public class StorageService {
 	}
 
 	@Transactional
-	public void addLocation(Location locationDto) {
-		storageMapper.insertLocation(locationDto);
+	public int addLocation(Location locationDto) {
+		Location sameOne = storageMapper.locationSameOne(locationDto);
+		if(sameOne != null) {
+			if(sameOne.getIsDelete() == 1) {
+				storageMapper.updateLocation(locationDto);
+				return 1;
+			}else {
+				return 0;
+			}
+		}else {
+			storageMapper.insertLocation(locationDto);
+			return 1;
+		}
 	}
 
 	public ArrayList<Location> getLocationAll() {
@@ -43,25 +65,17 @@ public class StorageService {
 	}
 
 	@Transactional
-	public void delLocation(List<Integer> ids) {
-		for (int id : ids) {
-			storageMapper.deleteLocation(id);
+	public void delLocation(ArrayList<Location> dtos) {
+		for (Location dto : dtos) {
+			storageMapper.locationIsDeleteTrue(dto);
 		}
 	}
 
 	@Transactional
 	public void delStorage(List<String> codes) {
 		for (String code : codes) {
-			storageMapper.deleteStorage(code);
+			storageMapper.storageIsDeleteTrue(code);
 		}
-	}
-
-	public ArrayList<Storage> getSearchStorage(HashMap<String, String> formData) {
-		return storageMapper.selSearchStorage(formData);
-	}
-
-	public ArrayList<Storage> getSearchLocation(HashMap<String, String> formData) {
-		return storageMapper.selSearchLocation(formData);
 	}
 
 }

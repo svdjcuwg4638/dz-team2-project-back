@@ -24,7 +24,7 @@ public class BookMarkService {
 		ArrayList<BookMark> list = bookMarkMapper.getBookMark();
 		boolean flag = false;
 		for(BookMark fdto : list) {
-			if(fdto.getUrl().equals(dto.getUrl())) {
+			if(fdto.getPageUrl().equals(dto.getPageUrl())) {
 				flag = true;
 			}
 		}

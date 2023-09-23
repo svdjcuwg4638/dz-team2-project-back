@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dz.factory.common.domain.BookMark;
 import com.dz.factory.common.domain.CMRespDto;
-import com.dz.factory.common.domain.Code;
 import com.dz.factory.common.service.BookMarkService;
 
 import lombok.RequiredArgsConstructor;
