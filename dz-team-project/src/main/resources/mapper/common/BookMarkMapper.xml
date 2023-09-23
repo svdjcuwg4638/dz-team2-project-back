@@ -4,15 +4,15 @@
 
     <select id="getBookMark"
             resultType="com.dz.factory.common.domain.BookMark">
-        SELECT * FROM bookmark
+        SELECT * FROM bookMark
     </select>
     
     <insert id="insertBookMark" parameterType="com.dz.factory.common.domain.BookMark">
-    	insert into bookmark values(#{company_id},#{url})
+    	insert into bookMark values(#{company_id},#{pageUrl})
     </insert>
     
     <delete id="deleteBookMark" parameterType="com.dz.factory.common.domain.BookMark">
-    	delete from bookmark where url = #{url}
+    	delete from bookMark where pageUrl = #{pageUrl}
     </delete>
     
 </mapper>
