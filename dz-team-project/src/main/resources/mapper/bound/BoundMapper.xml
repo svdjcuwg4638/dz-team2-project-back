@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.dz.factory.bound.mapper.BoundMapper">
+	
+	<insert id="insertInbound" parameterType="BoundDto">
+		INSERT INTO BOUND(bound_id, company_id, bound_date, partner_code, bound_type, isDelete, bound_no, emp_id, bound_state, bound_category)
+		VALUES
+		(#{bound_id}, #{company_id}, #{bound_date}, #{partner_code}, #{bound_type}, #{isDelete}, #{bound_no}, #{emp_id}, #{bound_state}, #{bound_category})
+	</insert>
+	
+	<select id="selectInboundAll" resultType="BoundDto">
+		SELECT * FROM BOUND WHERE bound_type = 'inbound'
+	</select>
+	
+	<select id="getMaxBoundId" resultType="Long">
+		SELECT Max(bound_id) from bound
+	</select>
+</mapper>

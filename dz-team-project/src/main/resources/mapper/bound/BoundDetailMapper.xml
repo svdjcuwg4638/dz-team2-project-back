@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.dz.factory.bound.mapper.BoundDetailMapper">
+	
+	<insert id="insertInboundDetail" parameterType="BoundDetailDto">
+		INSERT INTO BOUND_DETAIL(company_id, bound_id, unit_price_id, inventory_id, item_code, item_name, tot_amount, detail_state, detail_date, amount, detail_isDelete, description)
+		VALUES
+		(#{company_id}, #{bound_id}, #{unit_price_id}, #{inventory_id}, #{item_code}, #{item_name}, #{tot_amount}, #{detail_state}, #{detail_date}, #{amount}, #{detail_isDelete}, #{description})
+	</insert>
+	
+	<select id="selectInboundDetailAll" resultType="BoundDetailDto">
+		SELECT * FROM BOUND_DETAIL
+	</select>
+	
+
+</mapper>

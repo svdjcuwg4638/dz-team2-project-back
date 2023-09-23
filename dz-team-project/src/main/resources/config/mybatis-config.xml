@@ -11,8 +11,11 @@
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
         <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
-        <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
+        <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>
+        <typeAlias alias="BoundDto" type="com.dz.factory.bound.dto.BoundDto"/>  
+        <typeAlias alias="BoundDetailDto" type="com.dz.factory.bound.dto.BoundDetailDto"/>
+        <typeAlias alias="OutBoundDto" type="com.dz.factory.bound.dto.OutBoundDto"/>  
+        <typeAlias alias="OutBoundDetailDto" type="com.dz.factory.bound.dto.OutBoundDetailDto"/>
     </typeAliases>
     
- 
 </configuration>
