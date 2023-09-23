@@ -18,7 +18,7 @@ public class Item {
 
 	@NotEmpty(message = "item_code")
 	private String item_code;
-	@NotEmpty(message = "company_id")
+	@NotNull(message = "company_id")
 	private String company_id;
 	@NotEmpty(message = "item_name")
 	private String item_name;

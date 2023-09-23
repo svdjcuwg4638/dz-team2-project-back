@@ -26,8 +26,6 @@ public class ItemService {
 	public int itemAdd(Item item) {
 		Item findItem = itemMapper.selSameOne(item);
 		int result = 1;
-		System.out.println("==============================");
-		System.out.println(findItem.toString());
 		if(findItem != null) {
 			if(findItem.getIsDelete() ==  1) {
 				findItem.setIsDelete(0);

@@ -13,6 +13,10 @@ public interface RelationMapper {
 
 	void insertRelation(ProductRelation dto);
 
-	void deleteRelation(String id);
+	void deleteRelation(ProductRelation dto);
+
+	ProductRelation selSameOne(ProductRelation dto);
+
+	void updateRelation(ProductRelation findItem);
 
 }

@@ -25,16 +25,16 @@
 		resultType="Item">
 		select * from item
 		<where>
-			isdelete = 0 and
+			isdelete = 0 
 			<if test="item_code != null and item_code != ''">
-				item_code LIKE CONCAT('%', #{item_code}, '%')
+				and item_code LIKE CONCAT('%', #{item_code}, '%')
 			</if>
 			<if test="item_name != null and item_name != ''">
 				<choose>
 					<when test="item_code != null and item_code != ''">AND</when>
 					<otherwise></otherwise>
 				</choose>
-				item_name LIKE CONCAT('%', #{item_name}, '%')
+				and item_name LIKE CONCAT('%', #{item_name}, '%')
 			</if>
 		</where>
 	</select>

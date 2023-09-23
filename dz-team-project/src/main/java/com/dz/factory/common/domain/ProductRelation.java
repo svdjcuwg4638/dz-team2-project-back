@@ -1,9 +1,9 @@
 package com.dz.factory.common.domain;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,8 +21,10 @@ public class ProductRelation {
 	@NotBlank(message="component_code")
 	private String component_code;
 	
-	@NotBlank(message="quantity")
+	@NotNull(message="quantity")
 	private int quantity;
+	
+	private int isDelete;
 
 	
 	
