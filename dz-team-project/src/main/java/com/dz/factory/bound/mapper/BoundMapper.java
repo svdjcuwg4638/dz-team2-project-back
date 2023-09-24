@@ -14,4 +14,6 @@ public interface BoundMapper {
 	public List<BoundDto> selectInboundAll();
 	
 	public Long getMaxBoundId();
+	
+	public String getMaxBoundNo(String prefix);
 }

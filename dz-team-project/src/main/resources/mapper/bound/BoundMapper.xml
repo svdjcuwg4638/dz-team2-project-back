@@ -16,4 +16,10 @@
 	<select id="getMaxBoundId" resultType="Long">
 		SELECT Max(bound_id) from bound
 	</select>
+	
+	<select id="getMaxBoundNo" resultType="String">
+	    SELECT MAX(bound_no)
+	    FROM bound
+	    WHERE bound_no LIKE CONCAT(#{prefix}, '%')
+	</select>
 </mapper>

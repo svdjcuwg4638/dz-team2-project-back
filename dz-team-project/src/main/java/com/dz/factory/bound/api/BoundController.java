@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dz.factory.bound.dto.BoundDto;
@@ -29,6 +30,11 @@ public class BoundController {
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",boundService.getMaxBoundId()),HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/inbound/getboundno")
+	public ResponseEntity<?> getMaxBoundNo(@RequestParam String prefix){
+		System.out.println(prefix);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",boundService.getMaxBoundNo(prefix)),HttpStatus.CREATED);
+	}
 	@PostMapping("/inbound/masterAdd")
 	public ResponseEntity<?>  insertInbound(@RequestBody BoundDto boundDto) {
 		boundService.insertInBound(boundDto);

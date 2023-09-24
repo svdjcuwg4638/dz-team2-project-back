@@ -28,4 +28,9 @@ public class BoundService {
 	public Long getMaxBoundId() {
 		return boundMapper.getMaxBoundId();
 	}
+	
+	public String getMaxBoundNo(String prefix) {
+		System.out.println("service에서"+prefix);
+		return boundMapper.getMaxBoundNo(prefix);
+	}
 }
