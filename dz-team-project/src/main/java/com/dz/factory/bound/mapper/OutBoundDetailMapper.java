@@ -13,3 +13,4 @@ public interface OutBoundDetailMapper {
 	
 	public List<OutBoundDetailDto> selectOutboundDetailAll();
 }
+ 

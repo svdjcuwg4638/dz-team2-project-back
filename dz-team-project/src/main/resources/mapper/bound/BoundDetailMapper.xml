@@ -4,9 +4,9 @@
 	namespace="com.dz.factory.bound.mapper.BoundDetailMapper">
 	
 	<insert id="insertInboundDetail" parameterType="BoundDetailDto">
-		INSERT INTO BOUND_DETAIL(company_id, bound_id, unit_price_id, inventory_id, item_code, item_name, tot_amount, detail_state, detail_date, amount, detail_isDelete, description)
+		INSERT INTO BOUND_DETAIL(bound_id, item_code, item_name, unit_price, stock, amount, tot_amount, detail_date, storage_code, location_code, description, detail_state, detail_isDelete)
 		VALUES
-		(#{company_id}, #{bound_id}, #{unit_price_id}, #{inventory_id}, #{item_code}, #{item_name}, #{tot_amount}, #{detail_state}, #{detail_date}, #{amount}, #{detail_isDelete}, #{description})
+		(#{bound_id}, #{item_code}, #{item_name}, #{unit_price}, #{stock}, #{amount}, #{tot_amount}, #{detail_date}, #{storage_code}, #{location_code}, #{description}, #{detail_state}, #{detail_isDelete})
 	</insert>
 	
 	<select id="selectInboundDetailAll" resultType="BoundDetailDto">

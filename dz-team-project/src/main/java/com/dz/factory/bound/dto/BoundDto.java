@@ -15,13 +15,13 @@ public class BoundDto {
 
 	private int bound_id;
 	private int company_id;
-	private LocalDate bound_date;
-	private String partner_code;
-	private String bound_type;
-	private int isDelete;
-	private String bound_no;
 	private int emp_id;
-	private String bound_state;
+	private String bound_no;
 	private String bound_category;
+	private String partner_code;
+	private LocalDate bound_date;
+	private String bound_type;
+	private String bound_state;
+	private int isDelete;
 	
 }
