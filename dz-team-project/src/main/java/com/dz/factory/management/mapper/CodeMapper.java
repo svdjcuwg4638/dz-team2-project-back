@@ -17,14 +17,8 @@ public interface CodeMapper {
 
 	void insertCode(Code data);
 
-	void insertManageCode(ManageCode data);
-
-	ArrayList<ManageCode> selManageSearchAll(HashMap<String, Object> codes);
-
-	void deleteManageCode(String code);
-
-	ArrayList<ManageCode> selSearchCodeList(HashMap<String, Object> codes);
-
 	void deleteCode(String code);
+
+	Code selSameOne(Code data);
 
 }

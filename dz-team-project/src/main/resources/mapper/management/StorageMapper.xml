@@ -9,7 +9,7 @@
 		VALUES (#{storage_code},
 		#{storage_name},#{company_id})
 	</insert>
-
+	
 	<select id="selectAll" resultType="Storage">
 		select * from storage where
 		isDelete = 0

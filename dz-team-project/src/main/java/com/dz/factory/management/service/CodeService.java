@@ -28,28 +28,14 @@ public class CodeService {
 	}
 
 	@Transactional
-	public void addCode(Code data) {
-		codeMapper.insertCode(data);
-	}
-
-	@Transactional
-	public void addManageCode(ManageCode data) {
-		codeMapper.insertManageCode(data);
-	}
-
-	public ArrayList<ManageCode> getSearchList(HashMap<String, Object> codes) {
-		return codeMapper.selManageSearchAll(codes);
-	}
-
-	@Transactional
-	public void delManageCode(List<String> codes) {
-		for(String code : codes) {
-			codeMapper.deleteManageCode(code);
+	public int addCode(Code data) {
+		Code sameOne = codeMapper.selSameOne(data);
+		if(sameOne != null) {
+			return 0;
+		}else {
+			codeMapper.insertCode(data);
+			return 1;
 		}
-	}
-
-	public ArrayList<ManageCode> getSearchCodeList(HashMap<String, Object> codes) {
-		return codeMapper.selSearchCodeList(codes);
 	}
 
 	@Transactional

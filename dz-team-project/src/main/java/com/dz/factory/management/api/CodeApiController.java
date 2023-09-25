@@ -33,14 +33,8 @@ public class CodeApiController {
 	
 	@PostMapping("/code/add")
 	public ResponseEntity<?> CodeAdd(@RequestBody Code data){
-		codeService.addCode(data);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",data),HttpStatus.OK);
-	}
-	
-	@PostMapping("/code/search")
-	public ResponseEntity<?> codeSearch(@RequestBody HashMap<String, Object> codes){
-		ArrayList<ManageCode> list = codeService.getSearchCodeList(codes);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",list),HttpStatus.OK);
+		int result = codeService.addCode(data);
+		return new ResponseEntity<>(new CMRespDto<>(result,"성공",data),HttpStatus.OK);
 	}
 	
 	@PostMapping("/code/delete")
@@ -57,22 +51,6 @@ public class CodeApiController {
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",manageCodeList),HttpStatus.OK);
 	}
 	
-	@PostMapping("/managecode/add")
-	public ResponseEntity<?> manageCodeAdd(@RequestBody ManageCode data){
-		codeService.addManageCode(data);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",data),HttpStatus.OK);
-	}
-	@PostMapping("/managecode/search")
-	public ResponseEntity<?> manageCodeSearch(@RequestBody HashMap<String, Object> codes){
-		ArrayList<ManageCode> list = codeService.getSearchList(codes);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",list),HttpStatus.OK);
-	}
-	
-	@PostMapping("/managecode/delete")
-	public ResponseEntity<?> manageCodeDelete(@RequestBody List<String> codes){
-		codeService.delManageCode(codes);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",codes),HttpStatus.OK);
-	}
 	
 	
 

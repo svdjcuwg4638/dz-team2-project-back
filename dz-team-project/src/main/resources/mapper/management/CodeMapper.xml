@@ -16,50 +16,14 @@
 		values(#{common_code},#{common_name},#{management_code},#{company_id})
 	</insert>
 
-	<select id="selManageSearchAll" parameterType="hashmap"
-		resultType="ManageCode">
-		SELECT * FROM code_management
-		<where>
-			<if test="management_code != null and management_code != ''">
-				management_code LIKE CONCAT('%', #{management_code}, '%')
-			</if>
-			<if test="management_name != null and management_name != ''">
-				<choose>
-					<when test="management_code != null and management_code != ''">AND</when>
-					<otherwise></otherwise>
-				</choose>
-				management_name LIKE CONCAT('%', #{management_name}, '%')
-			</if>
-		</where>
-	</select>
-
-	<select id="selSearchCodeList" parameterType="hashmap"
-		resultType="Code">
-		SELECT * FROM code_common
-		<where>
-			<if test="common_code != null and common_code != ''">
-				common_code LIKE CONCAT('%', #{common_code}, '%')
-			</if>
-			<if test="common_name != null and common_name != ''">
-				<choose>
-					<when test="common_code != null and common_code != ''">AND</when>
-					<otherwise></otherwise>
-				</choose>
-				common_name LIKE CONCAT('%', #{common_name}, '%')
-			</if>
-			
-			<if test="common_name != null and common_name != ''
-					or common_code != null and common_code != '' ">
-				and 
-			</if>
-			management_code like CONCAT('%', #{management_code}, '%')
-		</where>
-	</select>
-	
 	<delete id="deleteCode" parameterType="string">
 		DELETE FROM
 		code_common WHERE common_code = #{code}
 	</delete>
 
+	<select id="selSameOne" parameterType="Code"  resultType="Code">
+		select * from code_common where management_code =#{management_code} and
+		common_code = #{common_code}
+	</select>
 
 </mapper>
