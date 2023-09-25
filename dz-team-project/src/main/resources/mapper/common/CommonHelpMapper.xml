@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.common.mapper.CommonHelpMapper">
+
+    <select id="getValue"
+            parameterType="com.dz.factory.common.dto.CommonHelpDto"
+            resultType="java.util.HashMap">
+        SELECT * FROM ${tableName}
+        <where>
+            <if test="forCommonType != null and forCommonType != ''">
+                management_code = #{forCommonType}
+            </if>
+            <if test="forCommonType != null and forCommonType != ''">
+                AND
+            </if>
+            <choose>
+                <when test="searchOption == 1">
+                    ${column_code} LIKE CONCAT('%', #{keyword}, '%')
+                </when>
+                <when test="searchOption == 2">
+                    ${column_name} LIKE CONCAT('%', #{keyword}, '%')
+                </when>
+                <otherwise>
+                    (${column_code} LIKE CONCAT('%', #{keyword}, '%') OR
+                     ${column_name} LIKE CONCAT('%', #{keyword}, '%'))
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+    
+</mapper>

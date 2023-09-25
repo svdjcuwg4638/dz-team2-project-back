@@ -5,12 +5,14 @@
         <typeAlias alias="Storage" type="com.dz.factory.common.domain.Storage"/>
         <typeAlias alias="Location" type="com.dz.factory.common.domain.Location"/>
         <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
+        <typeAlias alias="Inventory" type="com.dz.factory.common.domain.Inventory"/>        
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
         <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>
-        <typeAlias alias="ProductRelationDto" type="com.dz.factory.production.dto.ProductRelationDto"/>        
+        <typeAlias alias="ComponentItemDto" type="com.dz.factory.production.dto.ComponentItemDto"/>        
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
         <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
+<<<<<<< HEAD
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>
         <typeAlias alias="BoundDto" type="com.dz.factory.bound.dto.BoundDto"/>  
         <typeAlias alias="BoundDetailDto" type="com.dz.factory.bound.dto.BoundDetailDto"/>
@@ -18,4 +20,13 @@
         <typeAlias alias="OutBoundDetailDto" type="com.dz.factory.bound.dto.OutBoundDetailDto"/>
     </typeAliases>
     
+=======
+        <typeAlias alias="CommonCodeDto" type="com.dz.factory.production.dto.CommonCodeDto"/>        
+        <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
+        <typeAlias alias="RelationDto" type="com.dz.factory.production.dto.RelationDto"/>        
+        <typeAlias alias="ProductionDto" type="com.dz.factory.production.dto.ProductionDto"/>
+        <typeAlias alias="ProductionDetailDto" type="com.dz.factory.production.dto.ProductionDetailDto"/>
+        <typeAlias alias="ComponentDto" type="com.dz.factory.production.dto.ComponentDto"/>
+    </typeAliases>
+>>>>>>> b3f6e568fbef3db2140cdca2f41d7a6e626ebef7
 </configuration>
