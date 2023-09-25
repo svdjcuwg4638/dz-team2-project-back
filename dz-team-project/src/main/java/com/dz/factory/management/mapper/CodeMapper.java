@@ -17,7 +17,7 @@ public interface CodeMapper {
 
 	void insertCode(Code data);
 
-	void deleteCode(String code);
+	void deleteCode(Code code);
 
 	Code selSameOne(Code data);
 

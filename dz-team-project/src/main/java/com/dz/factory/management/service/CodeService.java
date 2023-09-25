@@ -39,8 +39,8 @@ public class CodeService {
 	}
 
 	@Transactional
-	public void delCode(List<String> codes) {
-		for(String code : codes) {
+	public void delCode(ArrayList<Code> codes) {
+		for(Code code : codes) {
 			codeMapper.deleteCode(code);
 		}
 	}

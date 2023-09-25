@@ -16,9 +16,9 @@
 		values(#{common_code},#{common_name},#{management_code},#{company_id})
 	</insert>
 
-	<delete id="deleteCode" parameterType="string">
+	<delete id="deleteCode" parameterType="Code">
 		DELETE FROM
-		code_common WHERE common_code = #{code}
+		code_common WHERE common_code = #{common_code} and management_code = #{management_code}
 	</delete>
 
 	<select id="selSameOne" parameterType="Code"  resultType="Code">

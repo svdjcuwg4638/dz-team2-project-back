@@ -38,8 +38,7 @@ public class CodeApiController {
 	}
 	
 	@PostMapping("/code/delete")
-	public ResponseEntity<?> codeDelete(@RequestBody List<String> codes){
-		codes.forEach((data) -> System.out.println(data));
+	public ResponseEntity<?> codeDelete(@RequestBody ArrayList<Code> codes){
 		codeService.delCode(codes);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",codes),HttpStatus.OK);
 	}
