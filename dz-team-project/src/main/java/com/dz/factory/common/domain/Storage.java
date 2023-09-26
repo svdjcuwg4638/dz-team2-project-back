@@ -17,7 +17,6 @@ public class Storage {
 	
 	@NotEmpty(message = "storage_name")
 	private String storage_name;
-	
 	private int company_id;
 	
 	private int isDelete;

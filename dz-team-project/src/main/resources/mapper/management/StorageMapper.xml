@@ -29,7 +29,7 @@
 	<delete id="deleteLocation" parameterType="int">
 		DELETE from
 		detail_location
-		WHERE location_id = #{id}
+		WHERE location_code = #{id}
 	</delete>
 
 	<delete id="deleteStorage" parameterType="string">
