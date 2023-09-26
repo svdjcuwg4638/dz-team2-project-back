@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.dz.factory.storage.mapper.CodehelperMapper">
+
+
+	<select id="selectStorageCode" resultType="Storage">
+		select storage_code, storage_name from storage
+	</select>
+<select id="">
+</select>
+
+
+</mapper>

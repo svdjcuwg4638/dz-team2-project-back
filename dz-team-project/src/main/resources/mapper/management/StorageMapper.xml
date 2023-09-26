@@ -9,13 +9,15 @@
 		VALUES (#{storage_code},
 		#{storage_name},#{company_id})
 	</insert>
-
+	
 	<select id="selectAll" resultType="Storage">
-		select * from storage
+		select * from storage where
+		isDelete = 0
 	</select>
 
 	<select id="selectLocationAll" resultType="Location">
-		SELECT * from detail_location
+		SELECT * from
+		detail_location where isDelete = 0
 	</select>
 
 	<insert id="insertLocation" parameterType="Location">
@@ -24,56 +26,53 @@
 		values(#{storage_code},#{location_code},#{location_name},#{company_id})
 	</insert>
 
-	<update id="updateLocation" parameterType="Location">
-		UPDATE detail_location
-		SET storage_code=#{storage_code}, location_name=#{location_name}
-		WHERE
-		location_id =#{location_id}
-	</update>
-
 	<delete id="deleteLocation" parameterType="int">
 		DELETE from
 		detail_location
-		WHERE location_id = #{id}
+		WHERE location_code = #{id}
 	</delete>
 
 	<delete id="deleteStorage" parameterType="string">
-		CALL
-		DeleteStorageAndDetailLocations(#{code})
+		delete from storage
+		where storage_code = #{storage_code}
 	</delete>
 
-	<select id="selSearchStorage" parameterType="hashmap"
-		resultType="Storage">
-		SELECT * FROM storage
-		<where>
-			<if test="storage_code != null and storage_code != ''">
-				storage_code LIKE CONCAT('%', #{storage_code}, '%')
-			</if>
-			<if test="storage_name != null and storage_name != ''">
-				<choose>
-					<when test="storage_code != null and storage_code != ''">AND</when>
-					<otherwise></otherwise>
-				</choose>
-				storage_name LIKE CONCAT('%', #{storage_name}, '%')
-			</if>
-		</where>
+	<update id="storageIsDeleteTrue" parameterType="string">
+		update storage
+		set isDelete = 1 where storage_code = #{code}
+	</update>
+
+	<update id="locationIsDeleteTrue" parameterType="Location">
+		update detail_location
+		set isDelete = 1 where storage_code = #{storage_code} and
+		location_code = #{location_code}
+	</update>
+	
+	<select id="storageSameOne" resultType="Storage">
+		select * from storage
+		where storage_code = #{storage_code} 
+	</select>
+	
+	<update id="updateStorage" parameterType="Storage">
+		update storage 
+			set 
+				storage_name = #{storage_name},
+				isDelete = 0
+				where storage_code = #{storage_code}
+	</update>
+	
+	<select id="locationSameOne" parameterType="Location" resultType="Location">
+		select * from detail_location
+		where storage_code = #{storage_code} and location_code = #{location_code}
 	</select>
 
-	<select id="selSearchLocation" parameterType="hashmap"
-		resultType="Location">
-		SELECT * FROM detail_location
-		<where>
-			<if test="storage_code != null and storage_code != ''">
-				storage_code LIKE CONCAT('%', #{storage_code}, '%')
-			</if>
-			<if test="location_name != null and location_name != ''">
-				<choose>
-					<when test="storage_code != null and storage_code != ''">AND</when>
-					<otherwise></otherwise>
-				</choose>
-				location_name LIKE CONCAT('%', #{location_name}, '%')
-			</if>
-		</where>
-	</select>
+	<update id="updateLocation" parameterType="Location">
+		UPDATE detail_location
+		SET 
+			location_name=#{location_name},
+			isDelete = 0
+		WHERE
+		 location_code =#{location_code} and storage_code = #{storage_code}
+	</update>
 
 </mapper>

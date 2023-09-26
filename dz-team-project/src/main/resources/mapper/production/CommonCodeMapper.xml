@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.production.mapper.CommonCodeMapper">	
+	<select id="getAllTeam" resultType="CommonCodeDto">
+		  select common_code,common_name from code_common where management_code = 'TEAM';
+	</select>
+	<select id="getByAll" resultType="CommonCodeDto">
+		  select common_code,common_name from code_common where management_code = 'TEAM' and common_name like concat('%',#{keyword},'%') or common_code like concat('%',#{keyword},'%');
+	</select>
+	<select id="getByCodeValue" resultType="CommonCodeDto">
+		  select common_code,common_name from code_common where management_code = 'TEAM' and common_code like concat('%',#{keyword},'%');
+	</select>
+	<select id="getByCodeName" resultType="CommonCodeDto">
+		  select common_code,common_name from code_common where management_code = 'TEAM' and common_name like concat('%',#{keyword},'%');
+	</select>
+	
+</mapper>

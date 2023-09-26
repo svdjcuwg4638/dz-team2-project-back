@@ -3,16 +3,87 @@
 <mapper
 	namespace="com.dz.factory.management.mapper.UnitPriceMapper">
 	<select id="selectAll" resultType="UnitPrice">
-		select * from unit_price
+		SELECT u.*, i.isDelete FROM
+		unit_price u
+		JOIN item i
+		ON i.item_code = u.item_code
+		WHERE i.isDelete = 0 and u.isdelete = 0
 	</select>
 
 	<insert id="insert" parameterType="UnitPrice">
 		insert into unit_price
-		(partner_id, item_id, unit_price, start_date, end_date,type,
-		company_id)
-		values(#{partner_id},#{item_id},#{unit_price},
-		#{start_date},#{end_date},#{type},1)
+		(partner_code, item_code, unit_price, start_date,type,
+		company_id,
+		end_date)
+		values(#{partner_code},#{item_code},#{unit_price},
+		#{start_date},#{type},1,#{end_date})
 	</insert>
+
+	<select id="selOldOne" parameterType="UnitPrice"
+		resultType="UnitPrice">
+		SELECT *
+		FROM unit_price
+		WHERE item_code = #{item_code} and type = #{type}
+		AND #{start_date} >= start_date
+		ORDER BY start_date DESC , unit_price_id desc
+		LIMIT 1
+	</select>
+
+	<select id="selOverOldOne" parameterType="UnitPrice"
+		resultType="UnitPrice">
+		SELECT *
+		FROM unit_price
+		WHERE item_code = #{item_code} and type = #{type}
+		AND #{start_date} &lt; start_date
+		ORDER BY start_date asc
+		LIMIT 1
+	</select>
+
+	<update id="updateEndDate" parameterType="hashmap">
+		update unit_price set
+		end_date = #{date} 
+		where unit_price_id = #{id} 
+	</update>
+
+	<select id="currnetUnitPrice" resultType="UnitPrice">
+		SELECT
+			up.*
+		FROM
+			unit_price up
+		INNER JOIN
+			(SELECT
+				up_sub.item_code,
+				up_sub.type, -- 여기에 type 추가
+				MAX(up_sub.start_date) AS max_start_date,
+				MAX(up_sub.unit_price_id) AS max_unit_price_id
+			FROM
+				unit_price up_sub
+			JOIN item i ON i.item_code = up_sub.item_code
+			WHERE
+				up_sub.start_date &lt;= CURRENT_TIMESTAMP
+			AND i.isDelete = 0
+			GROUP BY
+				up_sub.item_code, up_sub.type) up1 -- 여기에 type 추가
+		ON
+			up.item_code = up1.item_code
+		AND up.type = up1.type -- type에 대한 조건 추가
+		AND up.start_date = up1.max_start_date
+		AND up.unit_price_id = up1.max_unit_price_id
+	</select>
+
+	<select id="expectedPrice" resultType="UnitPrice">
+		SELECT
+			up.*
+		FROM
+			unit_price up
+		JOIN
+			item i ON i.item_code = up.item_code
+		WHERE
+			up.start_date > CURRENT_TIMESTAMP
+		AND i.isDelete = 0
+			ORDER BY
+				up.start_date ASC
+	</select>
 
 </mapper>
 	
