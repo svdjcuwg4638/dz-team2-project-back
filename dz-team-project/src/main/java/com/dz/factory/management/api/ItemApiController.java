@@ -54,7 +54,7 @@ public class ItemApiController {
 	
 	@PostMapping("/item/modify")
 	public ResponseEntity<?> itemModify(@RequestBody Item item){
-		int result  = itemService.itemModify(item);
+		itemService.itemModify(item);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",item),HttpStatus.OK);
 	}
 	
