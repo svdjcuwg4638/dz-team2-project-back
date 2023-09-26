@@ -25,8 +25,13 @@ public class PartnerApiController {
 	
 	@PostMapping("/partner/add")
 	public ResponseEntity<?> partnerAdd(@RequestBody Partner partner) {
-		System.out.println(partner.toString());
-		partnerService.insert(partner);
+		int result = partnerService.insert(partner);
+		return new ResponseEntity<>(new CMRespDto<>(result,"성공",partner),HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/partner/modify")
+	public ResponseEntity<?> partnerModify(@RequestBody Partner partner) {
+		partnerService.modify(partner);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",partner),HttpStatus.CREATED);
 	}
 	

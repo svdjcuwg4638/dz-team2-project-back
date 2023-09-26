@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dz.factory.common.domain.Item;
 import com.dz.factory.common.domain.ProductRelation;
 import com.dz.factory.management.mapper.RelationMapper;
 
@@ -22,19 +23,30 @@ public class RelationService {
 	}
 
 	@Transactional
-	public void RelationAdd(ProductRelation dto) {
-		relationMapper.insertRelation(dto);
+	public int RelationAdd(ProductRelation dto) {
+		ProductRelation findItem = relationMapper.selSameOne(dto);
+		int result = 1;
+		if (dto.getItem_code().equals(dto.getComponent_code())) {
+			return 2;
+		}
+		if (findItem != null) {
+			if (findItem.getIsDelete() == 1) {
+				findItem.setIsDelete(0);
+				relationMapper.updateRelation(findItem);
+			} else {
+				result = 0;
+			}
+		} else {
+			relationMapper.insertRelation(dto);
+		}
+		return result;
 	}
 
 	@Transactional
-	public void RelationDel(List<String> ids) {
-		
-		for(String id : ids) {
-			relationMapper.deleteRelation(id);
-			
+	public void RelationDel(ArrayList<ProductRelation> dtos) {
+		for (ProductRelation dto : dtos) {
+			relationMapper.deleteRelation(dto);
 		}
 	}
-	
-	
-	
+
 }

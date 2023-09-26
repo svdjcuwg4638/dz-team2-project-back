@@ -22,6 +22,4 @@
         <typeAlias alias="Registration" type="com.dz.factory.storage.dto.Registration"/>
         <typeAlias alias="InventoryDto" type="com.dz.factory.storage.dto.InventoryDto"/>         
     </typeAliases>
-    
- 
 </configuration>

@@ -19,4 +19,8 @@ public interface PartnerMapper {
 
 	ArrayList<Partner> selectSearchPartner(HashMap<String, String> search);
 
+	Partner getSameCode(String partner_code);
+
+	void updatePartner(Partner partner);
+
 }

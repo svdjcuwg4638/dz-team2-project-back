@@ -4,17 +4,31 @@
 	namespace="com.dz.factory.management.mapper.RelationMapper">
 
 	<select id="getRelationAll" resultType="ProductRelation">
-		SELECT * FROM product_relation
+		SELECT p.*, i.isDelete FROM
+		product_relation p
+		JOIN item i
+		ON i.item_code = p.component_code
+		WHERE i.isdelete = 0 and p.isDelete = 0
 	</select>
-		
-		<insert id="insertRelation" parameterType="ProductRelation">
-			insert into product_relation (item_code,company_id,quantity,component_code) 
-			values(#{item_code},#{company_id},#{quantity},#{component_code})
-		</insert>
-		
-		
-		<delete id="deleteRelation" parameterType="string">
-			DELETE FROM product_relation WHERE relation_id = #{id}
-		</delete>
-	</mapper>
+
+	<insert id="insertRelation" parameterType="ProductRelation">
+		insert into product_relation (item_code,company_id,quantity,component_code)
+		values(#{item_code},#{company_id},#{quantity},#{component_code})
+	</insert>
+
+	<update id="deleteRelation" parameterType="ProductRelation">
+		update product_relation set isDelete = 1
+		where  
+		component_code = #{component_code} and item_code = #{item_code}
+	</update>
+	
+	<select id="selSameOne" resultType="ProductRelation" parameterType="ProductRelation">
+		select * from product_relation where component_code = #{component_code} and item_code = #{item_code}
+	</select>
+	
+	<update id="updateRelation" parameterType="ProductRelation">
+		update product_relation set isdelete = #{isDelete} where component_code = #{component_code}
+	</update>
+	
+</mapper>
 	
