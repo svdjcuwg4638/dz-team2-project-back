@@ -6,6 +6,14 @@ pipeline {
         DOCKER_TAG = "${env.BUILD_NUMBER}" 
     }
 
+    stage('Build with Maven') {
+        steps {
+            script {
+                sh 'mvn clean package'
+            }
+        }
+    }
+    
     stages {
         stage('Checkout') {
             steps {
