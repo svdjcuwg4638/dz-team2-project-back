@@ -13,10 +13,12 @@ pipeline {
             }
         }
         
-        stage('Build with Maven') {
+         stage('Build with Maven') {
             steps {
                 script {
-                    sh 'mvn clean package'
+                    dir('dz-team-project') {
+                        sh 'mvn clean package'
+                    }
                 }
             }
         }
