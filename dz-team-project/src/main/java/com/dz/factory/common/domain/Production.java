@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Production {
-
 	private int production_id;
 	private String production_code;
 	private int company_id;

@@ -61,6 +61,7 @@ public class ProductionAddService {
 		
 			productionDto.setCompany_id((int) data.get("companyId"));
 			productionDto.setProduction_date(String.valueOf(data.get("date")));
+			productionDto.setProduction_code(String.valueOf(data.get("productionCode")));
 			
 			addMapper.addProduction(productionDto);
 			productionList.add(productionDto);
@@ -74,6 +75,7 @@ public class ProductionAddService {
 			ProductionDetailDto detailDto = new ProductionDetailDto();
 			detailDto.setCompany_id((int) production.get(i).get("companyId"));
 			detailDto.setItem_code((String) production.get(i).get("itemCode"));
+			detailDto.setProduction_code((String) production.get(i).get("productionCode"));
 			detailDto.setQuantity(Integer.parseInt((production.get(i).get("quantity")).toString()));
 			detailDto.setLine_code((String) production.get(i).get("lineCode"));
 			detailDto.setDescription((String) production.get(i).get("description"));
@@ -86,7 +88,6 @@ public class ProductionAddService {
 				detailDto.setWork_force(Integer.parseInt(production.get(i).get("workForce").toString()));
 			}
 			detailDto.setTeam((String) production.get(i).get("teamCode"));
-			
 			detailDto.setProduction_id(productionList.get(i).getProduction_id());
 			//production_detail_component table
 			ArrayList<ComponentDto> componentList = new ArrayList();
@@ -96,9 +97,19 @@ public class ProductionAddService {
 				componentDto.setCompany_id((int) production.get(i).get("companyId"));
 
 				String itemCode = (component.get(i).get(j).get("itemCode")).toString();
+				String locationCode = (component.get(i).get(j).get("locationCode")).toString();
+				String storageCode = (component.get(i).get(j).get("storageCode")).toString();
+				int quantity = Integer.valueOf((component.get(i).get(j).get("quantity")).toString());
+				
+				
 				componentDto.setItem_code(itemCode);
+				componentDto.setLocation_code(locationCode);
+				componentDto.setStorage_code(storageCode);
+				componentDto.setQuantity(quantity);
 				
 				componentDto.setProduction_id(productionList.get(i).getProduction_id());
+				componentDto.setProduction_code(productionList.get(i).getProduction_code());
+				
 				componentList.add(componentDto);
 			}
 			addMapper.addComponent(componentList);
