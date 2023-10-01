@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ProductionListMapper {
-	public ArrayList<HashMap<String,?>> getListByDate(ArrayList<Entry<String,?>> filterList);
-//	public HashMap<String,?> getListByDate(HashMap<String,?> searchFilter);
-	public ArrayList<HashMap<String,?>> getList(HashMap<String,?> searchFilter);
+	public ArrayList<HashMap<String,?>> getProductionList(ArrayList<Entry<String,?>> filterList);
+	public ArrayList<ArrayList<ArrayList<?>>> getComponentList(ArrayList<String> productionCode);
+	
 
 }

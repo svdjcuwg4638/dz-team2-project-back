@@ -18,12 +18,11 @@ import lombok.RequiredArgsConstructor;
 public class ProductionListService {
 	private final ProductionListMapper listMapper;
 
-	public ArrayList<HashMap<String, ?>> getProductionList(HashMap<String, ?> searchFilter) {
-		int length = searchFilter.size();
-		ArrayList<HashMap<String, ?>> list = new ArrayList<>(length);
+	public HashMap<String,ArrayList<?>> getProductionList(HashMap<String, ?> searchFilter) {
+		
+		ArrayList<HashMap<String, ?>> productionList = new ArrayList<>();
 
 		ArrayList<Map.Entry<String, ?>> filterList = new ArrayList<>();
-
 		for (Map.Entry<String, ?> entry : searchFilter.entrySet()) {
 //			System.out.println(entry);
 			if (entry.getKey().equals("date")
@@ -32,8 +31,19 @@ public class ProductionListService {
 				filterList.add(entry);
 		}
 
-		list = listMapper.getListByDate(filterList);
-		return list;
+		productionList = listMapper.getProductionList(filterList);
+		
+		ArrayList<String> productionCode = new ArrayList<String>();
+		for(HashMap<String,?> map : productionList) {
+			productionCode.add((map.get("production_code")).toString());
+		}
+		ArrayList<ArrayList<ArrayList<?>>> componentList = listMapper.getComponentList(productionCode);
+		
+		HashMap<String,ArrayList<?>> result=new HashMap<String,ArrayList<?>>();
+		result.put("production", productionList);
+		result.put("component", componentList);
+		
+		return result;
 	}
 
 	public void updateProduction(HashMap<String, ?> searchFilter) {

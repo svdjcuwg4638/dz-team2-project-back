@@ -28,11 +28,12 @@ public class ProductionListController {
 	@GetMapping("/list")
 	//검색 필터에 맞는 조회
 	public ResponseEntity<?> getProductionList(@RequestParam HashMap<String,?> searchFilter){
-//		System.out.println(searchFilter);
-		ArrayList<HashMap<String,?>> productionList=listService.getProductionList(searchFilter);
-		System.out.println(productionList);
-		//HashMap<String,?> productionList=listService.getProductionList(searchFilter);
-		return new ResponseEntity<>(new CMRespDto<>(1,"success",productionList),HttpStatus.OK);
+		
+		HashMap<String,ArrayList<?>> result=listService.getProductionList(searchFilter);
+		System.out.println(result);
+		
+		
+		return new ResponseEntity<>(new CMRespDto<>(1,"success",result),HttpStatus.OK);
 	}
 	
 	
