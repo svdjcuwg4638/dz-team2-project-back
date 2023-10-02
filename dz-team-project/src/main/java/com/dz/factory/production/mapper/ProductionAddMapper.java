@@ -20,7 +20,7 @@ public interface ProductionAddMapper {
 	public ArrayList<ComponentItemDto> getComponentItems(String itemCode);
 	public ArrayList<RelationDto> getRelation(String itemCode);
 	public ArrayList<Inventory> getInventory(String itemCode,String storageCode, String locationCode);
-	public void addProduction(ProductionDto roductionDto);
+	public void addProduction(ProductionDto productionDto);
 	public void addDetail(ProductionDetailDto detailDto);
 	public void addComponent(ArrayList<ComponentDto>componentList);
 }

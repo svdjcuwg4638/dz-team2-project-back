@@ -31,7 +31,7 @@ public class ProductionAddController {
 
 	private final ProductionAddService addService;
 
-	//자재
+	//자재조회
 	@GetMapping("/component")
 	public ResponseEntity<?> getComponentItems(@RequestParam String itemCode) {
 //		List<ComponentItemDto> componentItems= addService.getComponentItems(itemCode);		
@@ -40,7 +40,7 @@ public class ProductionAddController {
 		List<RelationDto> relationList = addService.getRelation(itemCode);
 		return new ResponseEntity<>(new CMRespDto<>(1, "seccess", relationList), HttpStatus.OK);
 	}
-	//재고
+	//재고조회
 	@GetMapping("/inventory")
 	public ResponseEntity<?> getInventory(@RequestParam String itemCode,
 			@RequestParam(required = false) String storageCode, String locationCode) {

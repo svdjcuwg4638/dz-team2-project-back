@@ -6,7 +6,7 @@
         <typeAlias alias="Location" type="com.dz.factory.common.domain.Location"/>
         <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
         <typeAlias alias="Inventory" type="com.dz.factory.common.domain.Inventory"/>
-		<typeAlias alias="Production" type="com.dz.factory.common.domain.Inventory"/>
+		<typeAlias alias="Production" type="com.dz.factory.common.domain.Production"/>
 		<typeAlias alias="ProductionDetail" type="com.dz.factory.common.domain.ProductionDetail"/>
 		<typeAlias alias="ProductionDetailComponent" type="com.dz.factory.common.domain.ProductionDetailComponent"/>                
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
