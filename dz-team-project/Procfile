@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=production $JAVA_OPTS -jar "target/prac.jar"
+web: cd dz-team2-project-back/dz-team-project && mvn clean install && java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
