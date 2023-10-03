@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	
 	<dependencies>
 
 		<dependency>
@@ -79,13 +80,15 @@
 
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+
+    <build>
+        <finalName>prac</finalName> <!-- 생성될 jar 파일의 이름을 지정. 여기서는 'prac'로 지정하였음 -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
