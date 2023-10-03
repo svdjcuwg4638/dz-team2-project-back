@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RestController
 public class CodeApiController {
-
 	private final CodeService codeService;
 
 	@GetMapping("/code/all")
