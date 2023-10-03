@@ -19,13 +19,13 @@ import com.dz.factory.production.service.ProductionListService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping(value = "/production")
+@RequestMapping(value = "/production/list")
 @RequiredArgsConstructor
 public class ProductionListController {
 	
 	private final ProductionListService listService;
 
-	@GetMapping("/list")
+	@GetMapping("")
 	//검색 필터에 맞는 조회
 	public ResponseEntity<?> getProductionList(@RequestParam HashMap<String,?> searchFilter){
 		HashMap<String,ArrayList<?>> result=listService.getProductionList(searchFilter);
@@ -33,7 +33,7 @@ public class ProductionListController {
 		return new ResponseEntity<>(new CMRespDto<>(1,"success",result),HttpStatus.OK);
 	}
 	
-	@PutMapping("list/edit")
+	@PutMapping("/edit")
 	public ResponseEntity<?> editProduction(@RequestBody HashMap<String, ArrayList<?>> param ){
 		listService.updateProductionList(param);
 		return new ResponseEntity<>(new CMRespDto<>(1, "success", null), HttpStatus.OK);

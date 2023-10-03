@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dz.factory.production.mapper.ProductionAddMapper">
+<mapper namespace="com.dz.factory.production.mapper.ProductionAddMapper">	
+	<!-- production Code 조회 -->
+   <select id="getMaxProductionCode" resultType="String">
+	   SELECT MAX(production_code)
+	   FROM production
+	   WHERE production_code LIKE CONCAT('%', #{prefix}, '%')
+   </select>
 	<!-- grid02 에 필요한 item -->
 	<select id="getComponentItems" resultType="ComponentItemDto">
 		SELECT 

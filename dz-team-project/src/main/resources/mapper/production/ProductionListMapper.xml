@@ -3,7 +3,7 @@
 <mapper namespace="com.dz.factory.production.mapper.ProductionListMapper">
 	<!-- 생산내역 조회 -->
 	<select id="getProductionList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select production.*, d.*, i.item_name, s.storage_name, l.location_name, p.partner_name, emp.emp_name, c.common_name as team
+		select production.*, d.*, i.item_name, s.storage_name, l.location_name, p.partner_name, emp.emp_name, c.common_name as team, line.line_name
 		from production
 		left join production_detail d on production.production_code = d.production_code
         left join item i on d.item_code=i.item_code
@@ -12,6 +12,7 @@
         left join partner p on p.partner_code=d.partner_code
         left join emp on emp.emp_id=d.emp_id
         left join code_common c on c.management_code='TEAM' and c.common_code=d.team_code
+        left join production_line line on d.line_code=line.line_code
 		<where>
 			production.isDelete=0 and 
 			<foreach collection="filterList" index="key" item="value" separator="and">
@@ -21,6 +22,9 @@
 					</when>
 					<when test= "key.equals('description')">
 						 d.description LIKE CONCAT('%', '${value}', '%')
+					</when>	
+					<when test= "key.equals('production_code')">
+						 production.production_code LIKE CONCAT('%', '${value}', '%')
 					</when>					
 					<otherwise>
 						${key}='${value}'

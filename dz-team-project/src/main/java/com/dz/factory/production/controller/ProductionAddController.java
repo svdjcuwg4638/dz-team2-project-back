@@ -31,6 +31,13 @@ public class ProductionAddController {
 
 	private final ProductionAddService addService;
 
+	//productionCode 조회
+    @GetMapping("/code")
+    public ResponseEntity<?> getMaxBoundNo(@RequestParam String prefix){
+       System.out.println(prefix);
+       return new ResponseEntity<>(new CMRespDto<>(1,"성공",addService.getMaxProductionCode(prefix)),HttpStatus.CREATED);
+    }
+	
 	//자재조회
 	@GetMapping("/component")
 	public ResponseEntity<?> getComponentItems(@RequestParam String itemCode) {

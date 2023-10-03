@@ -28,6 +28,16 @@ public class ProductionAddService {
 
 	private final ProductionAddMapper addMapper;
 	
+	//productionCode 조회
+	public String getMaxProductionCode(String prefix) {
+		if(addMapper.getMaxProductionCode(prefix)==null) {
+			System.out.println("NO DATE");
+			return "P".concat(prefix.concat("5554"));
+		}else{
+			return addMapper.getMaxProductionCode(prefix);
+		}
+	}
+	
 	//item 으로 필요한 것 전부 조회
 	public List<ComponentItemDto> getComponentItems(String itemCode){		
 		return addMapper.getComponentItems(itemCode);

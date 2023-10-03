@@ -23,5 +23,6 @@ public interface ProductionAddMapper {
 	public void addProduction(ProductionDto productionDto);
 	public void addDetail(ProductionDetailDto detailDto);
 	public void addComponent(ArrayList<ComponentDto>componentList);
+	public String getMaxProductionCode(String prefix);
 }
 
