@@ -1,1 +1,1 @@
-web: cd dz-team2-project-back/dz-team-project && mvn clean install && java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
+web: mvn clean install && java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar

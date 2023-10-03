@@ -5365,3 +5365,11 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: Duplicated 
 2023-10-03 15:20:14,939 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-10-03 15:20:14,940 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-10-03 15:20:14,940 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\DZproject\dz-project-back\dz-team-project\src\test\resources
+2023-10-03 16:23:25,728 [Worker-18: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.dz:dz-team-project:0.0.1-SNAPSHOT @ C:\DZproject\dz-project-back\dz-team-project\pom.xml.
+2023-10-03 16:23:26,646 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-03 16:23:26,647 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-03 16:23:26,651 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-03 16:23:26,652 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2023-10-03 16:23:26,657 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-03 16:23:26,657 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-03 16:23:26,657 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\DZproject\dz-project-back\dz-team-project\src\test\resources
