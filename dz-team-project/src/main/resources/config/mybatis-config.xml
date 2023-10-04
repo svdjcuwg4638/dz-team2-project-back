@@ -8,6 +8,7 @@
         <typeAlias alias="Inventory" type="com.dz.factory.common.domain.Inventory"/>
 		<typeAlias alias="Production" type="com.dz.factory.common.domain.Production"/>
 		<typeAlias alias="ProductionLine" type="com.dz.factory.common.domain.ProductionLine"/>
+		<typeAlias alias="ProductionLineDto" type="com.dz.factory.production.dto.ProductionLineDto"/>
 		<typeAlias alias="ProductionDetail" type="com.dz.factory.common.domain.ProductionDetail"/>
 		<typeAlias alias="ProductionDetailComponent" type="com.dz.factory.common.domain.ProductionDetailComponent"/>                
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
