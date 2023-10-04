@@ -36,9 +36,10 @@
 
 
 		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-			<scope>runtime</scope>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		    <version>2.1.2</version>
+		    <scope>runtime</scope>
 		</dependency>
 
 		<dependency>
