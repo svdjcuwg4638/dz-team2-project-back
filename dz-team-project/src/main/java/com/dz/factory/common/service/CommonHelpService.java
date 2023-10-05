@@ -65,7 +65,7 @@ public class CommonHelpService {
 				list.add(dto);
 			}
 		} else if (flag.equalsIgnoreCase("line")) {
-			data.setTableName("productionline");
+			data.setTableName("production_line");
 			data.setColumn_code("line_code");
 			data.setColumn_name("line_name");
 			ArrayList<HashMap<String, Object>> listMap = commonHelpMapper.getValue(data);
