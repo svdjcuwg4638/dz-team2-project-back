@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductionDto {
+	private String production_code;
 	private int company_id;
 	private String production_date;
 	private int production_id;
