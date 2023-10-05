@@ -23,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductionListService {
 	private final ProductionListMapper listMapper;
 
+	//생산내역 조회
 	public HashMap<String,ArrayList<?>> getProductionList(HashMap<String, ?> searchFilter) {
 		
 		ArrayList<HashMap<String, ?>> productionList = new ArrayList<>();
@@ -56,8 +57,9 @@ public class ProductionListService {
 		return result;
 	}
 
+	//생산내역 수정
 	@Transactional
-	public void updateProductionList(HashMap<String, ArrayList<?>> searchFilter) {
+	public void updateProductionList(HashMap<String, ?> searchFilter) {
 		System.out.println(searchFilter);
 
 		if (searchFilter.get("production")!=null) {
@@ -71,7 +73,7 @@ public class ProductionListService {
 		}
 	}
 	
-	//생산내역 수정
+	//production 수정
 	public void editProduction(ArrayList<HashMap<String,?>> edited) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 	
@@ -137,6 +139,7 @@ public class ProductionListService {
 		}	
 	}
 	
+	//생산내역 삭제
 	public void deleteProduction(ArrayList<HashMap<String,?>> delete) {
 		for(HashMap<String,?> data : delete) {
 			ProductionDto productionDto = new ProductionDto();

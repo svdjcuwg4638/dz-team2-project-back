@@ -14,7 +14,7 @@
         left join code_common c on c.management_code='TEAM' and c.common_code=d.team_code
         left join production_line line on d.line_code=line.line_code
 		<where>
-			production.isDelete=0 and 
+			production.isDelete=0 and
 			<foreach collection="filterList" index="key" item="value" separator="and">
 				<choose>
 					<when test= "key.equals('date')">
