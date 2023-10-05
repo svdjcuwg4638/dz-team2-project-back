@@ -23,8 +23,20 @@ public class ItemService {
 	}
 
 	@Transactional
-	public void itemAdd(Item item) {
-		itemMapper.insertItem(item);
+	public int itemAdd(Item item) {
+		Item findItem = itemMapper.selSameOne(item);
+		int result = 1;
+		if(findItem != null) {
+			if(findItem.getIsDelete() ==  1) {
+				findItem.setIsDelete(0);
+				itemMapper.updateItem(findItem);
+			}else {
+				result = 0;
+			}
+		}else {
+			itemMapper.insertItem(item);
+		}
+		return result;
 	}
 
 	@Transactional
@@ -38,6 +50,7 @@ public class ItemService {
 		return itemMapper.selectSearchItem(map);
 	}
 
+	@Transactional
 	public int itemModify(Item item) {
 		return itemMapper.updateItem(item);
 	}

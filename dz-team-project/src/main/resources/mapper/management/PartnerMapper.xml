@@ -5,25 +5,26 @@
 	<insert id="insertPartner" parameterType="Partner">
 		INSERT INTO partner
 		(partner_code, bizNum, partner_name,company_id, representative,
-		address,email,post_num,url,ph_num,account_num,account_holder,collect_date,account_code,address_detail)
+		address,email,post_num,company_url,ph_num,account_num,account_holder,collect_date,account_code,address_detail,fax_num)
 		VALUES
-		(#{partner_code},#{bizNum},#{partner_name},#{company_id},#{representative},#{address},#{email},#{post_num},#{url},#{ph_num},#{account_num},#{account_holder},#{collect_date},#{account_code},#{address_detail})
+		(#{partner_code},#{bizNum},#{partner_name},#{company_id},#{representative},#{address},#{email},#{post_num},#{company_url},#{ph_num},#{account_num},#{account_holder},#{collect_date},#{account_code},#{address_detail},#{fax_num})
 	</insert>
 
 	<select id="seletAllPartner" resultType="Partner">
-		select * from partner
+		select * from partner where isdelete = 0
 	</select>
 
-	<delete id="deletePartner" parameterType="string">
-		DELETE from
-		partner
+	<update id="deletePartner" parameterType="string">
+		update partner set
+			isDelete = 1
 		WHERE partner_code = #{code}
-	</delete>
+	</update>
 
 	<select id="selectSearchPartner" parameterType="hashmap"
 		resultType="Partner">
 		select * from partner
 		<where>
+			isdelete = 0 and
 			<choose>
 				<when test="searchCategory == 'collect_date'">
 					${searchCategory} = #{searchValue}
@@ -34,5 +35,25 @@
 			</choose>
 		</where>
 	</select>
+
+	<select id="getSameCode" parameterType="string"
+		resultType="Partner">
+		select * from partner where partner_code = #{partner_code}
+	</select>
+
+	<update id="updatePartner" parameterType="Partner">
+		update partner set
+		bizNum= #{bizNum} , partner_name= #{partner_name}, representative =
+		#{representative} ,
+		address= #{address} ,email= #{email} ,post_num=
+		#{post_num} ,company_url= #{company_url} ,ph_num= #{ph_num} ,
+		account_num= #{account_num} ,account_holder= #{account_holder}
+		,collect_date= #{collect_date} ,account_code= #{account_code} ,
+		address_detail= #{address_detail} ,fax_num= #{fax_num}
+		<if test="isDelete != null">
+			,isdelete =#{isDelete}
+		</if>
+		where partner_code = #{partner_code}
+	</update>
 
 </mapper>

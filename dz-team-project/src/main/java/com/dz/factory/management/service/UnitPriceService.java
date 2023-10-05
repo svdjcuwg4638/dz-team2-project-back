@@ -37,7 +37,6 @@ public class UnitPriceService {
 		if(oldOverData != null) {
 			unitPrice.setEnd_date(oldOverData.getStart_date());
 		}
-		System.out.println(unitPrice);
 		unitPriceMapper.insert(unitPrice);
 	}
 

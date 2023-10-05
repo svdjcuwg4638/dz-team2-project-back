@@ -11,16 +11,21 @@
         <typeAlias alias="ComponentItemDto" type="com.dz.factory.production.dto.ComponentItemDto"/>        
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
         <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
+<<<<<<< HEAD
         <typeAlias alias="CommonHelpDto" type="com.dz.factory.common.dto.CommonHelpDto"/>
         <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
+=======
+        <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>      
+         
+>>>>>>> 9a89c73f1deb8a1bc98d3e24ffb0a86b9e3d99ed
         <typeAlias alias="CommonCodeDto" type="com.dz.factory.production.dto.CommonCodeDto"/>        
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
         <typeAlias alias="RelationDto" type="com.dz.factory.production.dto.RelationDto"/>        
         <typeAlias alias="ProductionDto" type="com.dz.factory.production.dto.ProductionDto"/>
         <typeAlias alias="ProductionDetailDto" type="com.dz.factory.production.dto.ProductionDetailDto"/>
         <typeAlias alias="ComponentDto" type="com.dz.factory.production.dto.ComponentDto"/>
-                
+        <typeAlias alias="InventoryForm" type="com.dz.factory.storage.dto.InventoryForm"/>
+        <typeAlias alias="Registration" type="com.dz.factory.storage.dto.Registration"/>
+        <typeAlias alias="InventoryDto" type="com.dz.factory.storage.dto.InventoryDto"/>         
     </typeAliases>
-    
- 
 </configuration>

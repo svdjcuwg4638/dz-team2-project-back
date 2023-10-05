@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.common.mapper.BookMarkMapper">
+
+    <select id="getBookMark"
+            resultType="com.dz.factory.common.domain.BookMark">
+        SELECT * FROM bookMark
+    </select>
+    
+    <insert id="insertBookMark" parameterType="com.dz.factory.common.domain.BookMark">
+    	insert into bookMark values(#{company_id},#{pageUrl})
+    </insert>
+    
+    <delete id="deleteBookMark" parameterType="com.dz.factory.common.domain.BookMark">
+    	delete from bookMark where pageUrl = #{pageUrl}
+    </delete>
+    
+</mapper>
