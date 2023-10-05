@@ -31,10 +31,14 @@ public class Item {
 	private String volume;
 	private String weight;
 	private String unit;
+
 	@NotEmpty(message = "storage_code")
 	private String storage_code;
 	@NotEmpty(message = "location_code")
 	private String location_code;
-	private String standard;
 	private int isDelete;
+	private String unit_price;
+	private String type;
+	private String standard;
+
 }
