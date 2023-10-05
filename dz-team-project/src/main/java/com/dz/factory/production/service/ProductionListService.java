@@ -25,19 +25,19 @@ public class ProductionListService {
 
 	//생산내역 조회
 	public HashMap<String,ArrayList<?>> getProductionList(HashMap<String, ?> searchFilter) {
-		
+		System.out.println(searchFilter);
 		ArrayList<HashMap<String, ?>> productionList = new ArrayList<>();
 
-		ArrayList<Map.Entry<String, ?>> filterList = new ArrayList<>();
-		for (Map.Entry<String, ?> entry : searchFilter.entrySet()) {
-//			System.out.println(entry);
-			if (entry.getKey().equals("date")
-					|| entry.getKey().equals("description")
-					|| entry.getKey().toLowerCase().contains("code"))
-				filterList.add(entry);
-		}
+//		for (Map.Entry<String, ?> entry : searchFilter.entrySet()) {
+////			System.out.println(entry);
+//			if (entry.getKey().toLowerCase().contains("date")
+//					|| entry.getKey().equals("description")
+//					|| entry.getKey().toLowerCase().contains("code")) {				
+//				filter.put(entry.getKey().toString(), entry.getValue());
+//			}
+//		}
 
-		productionList = listMapper.getProductionList(filterList);
+		productionList = listMapper.getProductionList(searchFilter);
 		//production 받아온 후 code array get
 		ArrayList<String> productionCode = new ArrayList<String>();
 		for(HashMap<String,?> map : productionList) {

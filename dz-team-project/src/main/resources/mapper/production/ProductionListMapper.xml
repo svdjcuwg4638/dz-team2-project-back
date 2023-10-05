@@ -14,23 +14,40 @@
         left join code_common c on c.management_code='TEAM' and c.common_code=d.team_code
         left join production_line line on d.line_code=line.line_code
 		<where>
-			production.isDelete=0 and
-			<foreach collection="filterList" index="key" item="value" separator="and">
-				<choose>
-					<when test= "key.equals('date')">
-						date(production_date)='${value}'
-					</when>
-					<when test= "key.equals('description')">
-						 d.description LIKE CONCAT('%', '${value}', '%')
-					</when>	
-					<when test= "key.equals('production_code')">
-						 production.production_code LIKE CONCAT('%', '${value}', '%')
-					</when>					
-					<otherwise>
-						${key}='${value}'
-					</otherwise>				
-				</choose>
-			</foreach>
+			production.isDelete=0
+			<if test= "startDate!=null and endDate!=null">
+				and date(production_date) between #{startDate} and #{endDate}
+			</if>
+			<if test= "startDate!=null and endDate==null">
+				and date(production_date) &gt;=#{startDate}
+			</if>
+			<if test= "startDate==null and endDate!=null">
+				and date(production_date) &lt;=#{startDate}
+			</if>
+			<if test= "description!=null">
+				 and d.description LIKE CONCAT('%', #{description}, '%')
+			</if>
+			<if test="production_code!=null">
+				and production.production_code LIKE CONCAT('%', #{production_code}, '%')
+			</if>
+			<if test="item_code!=null">
+				and d.item_code=#{item_code}
+			</if>
+			<if test="emp_code!=null">
+				and d.emp_id=#{emp_code}
+			</if>
+			<if test="location_code!=null">
+				and d.location_code=#{location_code}
+			</if>
+			<if test="partner_code!=null">
+				and d.partner_code=#{partner_code}
+			</if>
+			<if test="storage_code!=null">
+				and d.storage_code=#{storage_code}
+			</if>
+			<if test="team_code!=null">
+				and d.team_code=#{team_code}
+			</if>
 		</where>
 	</select>
 	<!-- 생산내역 자재 조회 -->
