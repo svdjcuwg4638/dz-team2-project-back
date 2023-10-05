@@ -1,8 +1,6 @@
 package com.dz.factory.management.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,33 +26,19 @@ public class CodeService {
 	}
 
 	@Transactional
-	public void addCode(Code data) {
-		codeMapper.insertCode(data);
-	}
-
-	@Transactional
-	public void addManageCode(ManageCode data) {
-		codeMapper.insertManageCode(data);
-	}
-
-	public ArrayList<ManageCode> getSearchList(HashMap<String, Object> codes) {
-		return codeMapper.selManageSearchAll(codes);
-	}
-
-	@Transactional
-	public void delManageCode(List<String> codes) {
-		for(String code : codes) {
-			codeMapper.deleteManageCode(code);
+	public int addCode(Code data) {
+		Code sameOne = codeMapper.selSameOne(data);
+		if(sameOne != null) {
+			return 0;
+		}else {
+			codeMapper.insertCode(data);
+			return 1;
 		}
 	}
 
-	public ArrayList<ManageCode> getSearchCodeList(HashMap<String, Object> codes) {
-		return codeMapper.selSearchCodeList(codes);
-	}
-
 	@Transactional
-	public void delCode(List<String> codes) {
-		for(String code : codes) {
+	public void delCode(ArrayList<Code> codes) {
+		for(Code code : codes) {
 			codeMapper.deleteCode(code);
 		}
 	}

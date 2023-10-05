@@ -1,7 +1,6 @@
 package com.dz.factory.management.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -31,6 +30,12 @@ public class StorageService {
 			}
 		}else {
 			storageMapper.insertStorage(storage);
+			Location zeroLocation = new Location();
+			zeroLocation.setCompany_id(storage.getCompany_id());
+			zeroLocation.setStorage_code(storage.getStorage_code());
+			zeroLocation.setLocation_code("0");
+			zeroLocation.setLocation_name("미지정");
+			storageMapper.insertLocation(zeroLocation);
 			return 1;
 		}
 	}

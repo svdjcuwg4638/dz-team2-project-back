@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.dz.factory.storage.mapper.InventoryMapper">
+
+
+	<select id="selectInventoryAll" resultType="InventoryDto">
+		SELECT
+		    i.inventory_id,
+		    i.total,
+		    i.item_code,
+		    i.storage_code,
+		    i.location_code,
+		    i.company_id,
+		    it.item_name,
+		    it.category,
+		    it.width,
+		    it.length,
+		    it.height,
+		    it.volume,
+		    it.weight,
+		    it.standard,
+		    it.unit, 
+		    sl.storage_name,
+		    dl.location_name
+		FROM
+		    inventory AS i
+		JOIN
+		    item AS it ON i.item_code = it.item_code
+		JOIN
+		    storage AS sl ON i.storage_code = sl.storage_code
+		JOIN
+		    detail_location AS dl ON i.location_code = dl.location_code
+
+	</select>
+
+	<!-- 재고 검색 쿼리 -->
+	<select id="searchInventoryByTable" parameterType="string" resultType="InventoryDto">
+	    SELECT
+	        i.inventory_id,
+	        i.total,
+	        i.item_code,
+	        i.storage_code,
+	        i.location_code,
+	        i.company_id,
+	        it.item_name,
+	        it.category,
+	        it.width,
+	        it.length,
+	        it.height,
+	        it.volume,
+	        it.weight,
+	        it.standard,
+	        it.unit, 
+	        sl.storage_name,
+	        dl.location_name
+	    FROM
+	        inventory AS i
+	    JOIN
+	        item AS it ON i.item_code = it.item_code
+	    JOIN
+	        storage AS sl ON i.storage_code = sl.storage_code
+	    JOIN
+	        detail_location AS dl ON i.location_code = dl.location_code
+
+	    <where>
+	    	<if test="storageCodes!=null and storageCodes!=''">
+				FIND_IN_SET(i.storage_code, #{storageCodes}) > 0
+			</if>		
+	    	<if test="locationCodes!=null and locationCodes!=''">
+		    	AND
+			</if>		
+			
+	    	<if test="locationCodes!=null and locationCodes!=''">	
+		        FIND_IN_SET(i.location_code, #{locationCodes}) > 0
+			</if>		
+	    	<if test="categorys!=null and categorys!=''">	
+				AND
+			</if>
+			   
+	    	<if test="categorys!=null and categorys!=''">			   
+	     		FIND_IN_SET(it.category, #{categorys}) > 0
+	     	</if>
+	    </where>
+	</select>
+	
+	<!-- inventoryMapper.xml -->
+<select id="searchInventoryByForm" parameterType="InventoryForm" resultType="InventoryDto">
+    SELECT
+        i.inventory_id,
+        i.total,
+        i.item_code,
+        i.storage_code,
+        i.location_code,
+        i.company_id,
+        it.item_name,
+        it.category,
+        it.width,
+        it.length,
+        it.height,
+        it.volume,
+        it.weight,
+        it.standard,
+        it.unit, 
+        sl.storage_name,
+        dl.location_name
+    FROM
+        inventory AS i
+    JOIN
+        item AS it ON i.item_code = it.item_code
+    JOIN
+        storage AS sl ON i.storage_code = sl.storage_code
+    JOIN
+        detail_location AS dl ON i.location_code = dl.location_code
+
+    <where>
+        <if test="storageCode != null and storageCode!='' ">
+            AND i.storage_code = #{storageCode}
+        </if>
+        <if test="locationCode != null and locationCode!='' ">
+            AND i.location_code = #{locationCode}
+        </if>
+        <if test="categoryCode != null and categoryCode!=''">
+            AND it.category = #{categoryCode}
+        </if>
+        <if test="unit != null and unit !=''">
+            AND it.unit = #{unit}
+        </if>
+        <if test="itemCode != null and itemCode!='' ">
+            AND i.item_code = #{itemCode}
+        </if>
+
+    </where>
+</select>
+	
+</mapper>

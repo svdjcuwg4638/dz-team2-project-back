@@ -1,12 +1,10 @@
 package com.dz.factory.management.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dz.factory.common.domain.Item;
 import com.dz.factory.common.domain.ProductRelation;
 import com.dz.factory.management.mapper.RelationMapper;
 
