@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.bound.mapper.SearchBoundMapper">
+
+    <select id="searchBounds" resultType="BoundDto">
+        SELECT * FROM bound
+        WHERE bound_state = 'end'
+        AND bound_type = 'inbound'
+        <if test="bound_no != null and bound_no != ''">
+            AND bound_no=#{bound_no}
+        </if>
+        <if test="bound_category != null and bound_category != ''">
+            AND bound_category=#{bound_category}
+        </if>
+        <if test="partner_code != null and partner_code != ''">
+            AND partner_code=#{partner_code}
+        </if>
+        <if test="bound_start_date != null and bound_end_date != null">
+            AND bound_date BETWEEN #{bound_start_date} AND #{bound_end_date}
+        </if>
+        <if test="bound_start_date != null and bound_end_date == null">
+            AND bound_date &gt;= #{bound_start_date}
+        </if>
+        <if test="bound_start_date == null and bound_end_date != null">
+            AND bound_date &lt;= #{bound_end_date}
+        </if>
+    </select>
+    
+        <select id="searchOutBounds" resultType="BoundDto">
+        SELECT * FROM bound
+        WHERE bound_state = 'end'
+        AND bound_type = 'outbound'
+        <if test="bound_no != null and bound_no != ''">
+            AND bound_no=#{bound_no}
+        </if>
+        <if test="bound_category != null and bound_category != ''">
+            AND bound_category=#{bound_category}
+        </if>
+        <if test="partner_code != null and partner_code != ''">
+            AND partner_code=#{partner_code}
+        </if>
+        <if test="bound_start_date != null and bound_end_date != null">
+            AND bound_date BETWEEN #{bound_start_date} AND #{bound_end_date}
+        </if>
+        <if test="bound_start_date != null and bound_end_date == null">
+            AND bound_date &gt;= #{bound_start_date}
+        </if>
+        <if test="bound_start_date == null and bound_end_date != null">
+            AND bound_date &lt;= #{bound_end_date}
+        </if>
+    </select>
+
+    <select id="searchBoundDetailsWithMaster" resultType="BoundDto">
+        SELECT 
+            b.*
+        FROM bound_detail d
+        JOIN bound b ON d.bound_id = b.bound_id
+        WHERE b.bound_state = 'end'
+        <if test="item_code != null and item_code != ''">
+            AND d.item_code=#{item_code}
+        </if>
+        <if test="item_name != null and item_name != ''">
+            AND d.item_name=#{item_name}
+        </if>
+        <if test="detail_start_date != null and detail_end_date != null">
+            AND d.detail_date BETWEEN #{detail_start_date} AND #{detail_end_date}
+        </if>
+        <if test="detail_start_date != null and detail_end_date == null">
+            AND d.detail_date &gt;= #{detail_start_date}
+        </if>
+        <if test="detail_start_date == null and detail_end_date != null">
+            AND d.detail_date &lt;= #{detail_end_date}
+        </if>
+    </select>
+
+</mapper>

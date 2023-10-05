@@ -12,9 +12,10 @@ public class CommonHelpDto {
 	private String searchOption ;
 	private String keyword;
 	private String codeType;
+	private String forCommonType;
+	
 	private String tableName;
 	private String column_name;
 	private String column_code;
-	private String forCommonType;
 	
 }
