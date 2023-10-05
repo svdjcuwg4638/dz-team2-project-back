@@ -25,5 +25,9 @@ public class BoundDetailService {
 		return boundDetailMapper.selectInboundDetailAll();
 	}
 	
+	public void updateByDetailId (BoundDetailDto boundDetailDto) {
+		boundDetailMapper.updateByDetailId(boundDetailDto);
+	}
+	
 	
 }

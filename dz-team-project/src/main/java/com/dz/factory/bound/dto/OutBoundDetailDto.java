@@ -13,16 +13,20 @@ import lombok.NoArgsConstructor;
 @Data
 public class OutBoundDetailDto {
 
-	private int company_id;
+	private int detail_id;
 	private int bound_id;
-	private int unit_price_id;
-	private int inventory_id;
 	private String item_code;
 	private String item_name;
-	private int tot_amount;
-	private String detail_state;
-	private LocalDate detail_date;
+	private int unit_price;
+	private int stock;
 	private int amount;
-	private int detail_isDelete;
+	private String tot_amount;
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate detail_date;
+	private String storage_code;
+	private String location_code;
 	private String description;
+	private String detail_state;
+	private int detail_isDelete;
+	private String detail_type;
 }

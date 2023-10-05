@@ -11,16 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OutBoundDto {
-
-	private int bound_id;
-	private int company_id;
-	private int emp_id;
+public class SearchInboundDto {
+	
 	private String bound_no;
 	private String bound_category;
 	private String partner_code;
-	private LocalDate bound_date;
-	private String bound_type;
-	private String bound_state;
-	private int isDelete;
+	private LocalDate bound_start_date;
+	private LocalDate bound_end_date;
+	
 }

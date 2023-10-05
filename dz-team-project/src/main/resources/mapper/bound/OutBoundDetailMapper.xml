@@ -11,6 +11,14 @@
 	
 	<select id="selectOutboundDetailAll" resultType="OutBoundDetailDto">
 		SELECT * FROM BOUND_DETAIL
+		where detail_type = 'outbound'
 	</select>
 	
+	<select id="getStock" resultType="java.lang.Integer">
+        SELECT total
+        FROM inventory
+        WHERE storage_code = #{storage_code}
+        AND location_code = #{location_code}
+        AND item_code = #{item_code}
+    </select>
 </mapper>

@@ -23,4 +23,8 @@ private final OutBoundDetailMapper outBoundDetailMapper;
 	public List<OutBoundDetailDto> selectOutboundDetailAll(){
 		return outBoundDetailMapper.selectOutboundDetailAll();
 	}
+	
+	public Integer getStock(String item_code, String storage_code, String location_code) {
+		return outBoundDetailMapper.getStock(item_code, storage_code, location_code);
+	}
 }

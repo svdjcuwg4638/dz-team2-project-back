@@ -34,4 +34,13 @@ public class BoundDetailController {
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",inboundDetailList),HttpStatus.CREATED);
 	}
 	
+	@PostMapping("/inbound/updateOngoing")
+	public ResponseEntity<?> updateByDetailId(@RequestBody List<BoundDetailDto> boundDetailDtos){
+		System.out.println("지금시간"+boundDetailDtos);
+	    for (BoundDetailDto boundDetailDto : boundDetailDtos) {
+	        boundDetailService.updateByDetailId(boundDetailDto);
+	    }
+	    return new ResponseEntity<>(new CMRespDto<>(1,"성공", boundDetailDtos), HttpStatus.CREATED);
+	}
+
 }

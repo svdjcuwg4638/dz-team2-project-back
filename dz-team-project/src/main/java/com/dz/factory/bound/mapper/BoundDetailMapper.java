@@ -12,4 +12,6 @@ public interface BoundDetailMapper {
 	void insertInboundDetail(BoundDetailDto boundDetailDto);
 	
 	public List<BoundDetailDto> selectInboundDetailAll();
+	
+	void updateByDetailId (BoundDetailDto boundDetailDto);
 }
