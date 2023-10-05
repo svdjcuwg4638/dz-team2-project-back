@@ -6,7 +6,6 @@
 
 	<select id="selectInventoryAll" resultType="InventoryDto">
 		SELECT
-		    i.inventory_id,
 		    i.total,
 		    i.item_code,
 		    i.storage_code,
@@ -33,11 +32,33 @@
 		    detail_location AS dl ON i.location_code = dl.location_code
 
 	</select>
+	<delete id="TempInventoryDestory">
+		DELETE from 
+		temp_inventory
+	</delete>
+	<insert id="TempInventoryRegistration" parameterType="TempInventory">
+		INSERT INTO temp_inventory(storage_code, location_code, item_code, total, company_id)
+		values (#{storage_code}, #{location_code}, #{item_code}, #{total}, 1)
+	</insert>
+
+	<select id="selectTempInventoryAll" resultType="TempInventory">
+		SELECT
+			*
+		FROM
+		    temp_inventory 
+	</select>
+
+
+	<update id="InventoryRegistrationUpdate" parameterType="Inventory">
+	            INSERT INTO inventory (storage_code, location_code, item_code, total, company_id)
+	            VALUES (#{storage_code}, #{location_code}, #{item_code}, #{total}, 1)
+	            ON DUPLICATE KEY UPDATE total = total + #{total}
+	</update>
+
 
 	<!-- 재고 검색 쿼리 -->
 	<select id="searchInventoryByTable" parameterType="string" resultType="InventoryDto">
 	    SELECT
-	        i.inventory_id,
 	        i.total,
 	        i.item_code,
 	        i.storage_code,
@@ -87,7 +108,6 @@
 	<!-- inventoryMapper.xml -->
 <select id="searchInventoryByForm" parameterType="InventoryForm" resultType="InventoryDto">
     SELECT
-        i.inventory_id,
         i.total,
         i.item_code,
         i.storage_code,
@@ -133,4 +153,115 @@
     </where>
 </select>
 	
+	<select id="searchMovementStock" parameterType="String" resultType="String">
+	 select total AS movement from inventory 
+	 where storage_code =#{storage_code} AND location_code = #{location_code} AND item_code = #{item_code}
+	</select>
+	
+<update id="MovementUpdate">
+    <choose>
+        <when test="Type == '입고'">
+    INSERT INTO inventory (storage_code, location_code, item_code, total, company_id)
+    VALUES (#{storage_code}, #{location_code}, #{item_code}, #{movement}, 1)
+    ON DUPLICATE KEY UPDATE total = total + #{movement}
+        </when>
+        <when test="Type == '출고'">
+    INSERT INTO inventory (storage_code, location_code, item_code, total, company_id)
+    VALUES (#{storage_code}, #{location_code}, #{item_code}, #{movement}, 1)
+    ON DUPLICATE KEY UPDATE total = total - #{movement}
+        </when>
+    </choose>
+</update>
+
+<insert id="MovementInsert" parameterType="Movement" >
+	    INSERT INTO Movement(company_id, item_code, outbound_storage_code, outbound_location_code, inbound_storage_code, inbound_location_code, movement_date, movement, description, emp_id)
+	    VALUES (1, #{item_code}, #{outbound_storage_code}, #{outbound_location_code}, #{inbound_storage_code}, #{inbound_location_code}, #{movement_date}, #{movement}, #{description}, #{emp_id})
+	 </insert>
+	 
+	 <!-- movement-mapper.xml -->
+    <select id="searchMovements" resultType="MovementDto">
+	    SELECT
+		    m.movement_id, 
+		    m.company_id, 
+		    m.item_code, 
+		    it.item_name, 
+		    m.outbound_storage_code, 
+		    osto.storage_name AS outbound_storage_name,
+		    m.outbound_location_code, 
+		    dl.location_name AS outbound_location_name,
+		    m.inbound_storage_code,
+		    isto.storage_name AS inbound_storage_name,
+		    m.inbound_location_code,
+		    il.location_name AS inbound_location_name,
+		    m.emp_id,
+		    e.emp_name,
+		    m.description,
+		    m.movement,
+		    DATE(m.movement_date) as movement_date
+	    FROM movement AS m
+	    JOIN item AS it ON m.item_code = it.item_code
+	    JOIN storage AS osto ON m.outbound_storage_code = osto.storage_code
+	    JOIN detail_location AS dl ON m.outbound_location_code = dl.location_code
+	    JOIN storage AS isto ON m.inbound_storage_code = isto.storage_code
+	    JOIN detail_location AS il ON m.inbound_location_code = il.location_code
+	    JOIN emp AS e ON m.emp_id = e.emp_id
+	<where>
+		<if test="outbound_storage_code != null and outbound_storage_code != ''">
+		    outbound_storage_code = #{outbound_storage_code}
+		</if>
+		<if test="outbound_location_code != null and outbound_location_code != ''">
+		    AND outbound_location_code = #{outbound_location_code}
+		</if>
+		<if test="inbound_storage_code != null and inbound_storage_code != ''">
+		    AND inbound_storage_code = #{inbound_storage_code}
+		</if>
+		<if test="inbound_location_code != null and inbound_location_code != ''">
+		    AND inbound_location_code = #{inbound_location_code}
+		</if>
+		<if test="item_code !=null and item_code !=''">
+		    AND m.item_code = #{item_code}
+		</if>
+		<if test="movement_date !=null and movement_date!='' ">
+	       AND m.movement_date LIKE CONCAT('%', #{movement_date}, '%')
+		</if>
+		<if test="emp_id != null and emp_id!='' ">
+		    AND m.emp_id=#{emp_id}
+	</if>
+	</where>
+ 	<choose>
+        <when test="pageSize > 0">
+            ORDER BY m.movement_date
+            LIMIT #{pageSize} OFFSET #{startRow}
+        </when>
+    </choose>
+    </select>
+    
+    <select id="countSearchMovements" resultType="int">
+        SELECT COUNT(*)
+        FROM movement
+      <where>
+        <if test="outbound_storage_code != null and outbound_storage_code != ''">
+            AND outbound_storage_code = #{outbound_storage_code}
+        </if>
+        <if test="outbound_location_code != null and outbound_location_code != ''">
+            AND outbound_location_code = #{outbound_location_code}
+        </if>
+        <if test="inbound_storage_code != null and inbound_storage_code != ''">
+            AND inbound_storage_code = #{inbound_storage_code}
+        </if>
+        <if test="inbound_location_code != null and inbound_location_code != ''">
+            AND inbound_location_code = #{inbound_location_code}
+        </if>
+        <if test="item_code !=null and item_code !=''">
+         	AND item_code = #{item_code}
+        </if>
+        <if test="movement_date !=null and movement_date!='' ">
+        	AND movement_date LIKE CONCAT('%', #{movement_date}, '%')
+        </if>
+        <if test="emp_id != null and emp_id!='' ">
+        	AND emp_id=#{emp_id}
+        </if>
+        </where>
+    </select>
+	 
 </mapper>
