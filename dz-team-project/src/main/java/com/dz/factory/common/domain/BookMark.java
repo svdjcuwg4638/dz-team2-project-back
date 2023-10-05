@@ -11,5 +11,5 @@ public class BookMark {
 
 	
 	private String pageUrl;
-	private String company_id;
+	private int company_id;
 }

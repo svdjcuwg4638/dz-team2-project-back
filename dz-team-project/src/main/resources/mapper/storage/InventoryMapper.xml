@@ -230,7 +230,7 @@
 	</where>
  	<choose>
         <when test="pageSize > 0">
-            ORDER BY m.movement_date
+            ORDER BY m.movement_date desc
             LIMIT #{pageSize} OFFSET #{startRow}
         </when>
     </choose>
