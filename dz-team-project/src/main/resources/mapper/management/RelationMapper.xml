@@ -4,21 +4,6 @@
 	namespace="com.dz.factory.management.mapper.RelationMapper">
 
 	<select id="getRelationAll" resultType="ProductRelation">
-<<<<<<< HEAD
-		SELECT * FROM product_relation
-	</select>
-		
-		<insert id="insertRelation" parameterType="ProductRelation">
-			insert into product_relation (item_code,company_id,quantity,component_code) 
-			values(#{item_code},#{company_id},#{quantity},#{component_code})
-		</insert>
-		
-		
-		<delete id="deleteRelation" parameterType="string">
-			DELETE FROM product_relation WHERE relation_id = #{id}
-		</delete>
-	</mapper>
-=======
 		SELECT p.*, i.isDelete FROM
 		product_relation p
 		JOIN item i
@@ -46,5 +31,4 @@
 	</update>
 	
 </mapper>
->>>>>>> 9a89c73f1deb8a1bc98d3e24ffb0a86b9e3d99ed
 	

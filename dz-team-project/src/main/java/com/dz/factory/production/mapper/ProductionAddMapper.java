@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 package com.dz.factory.production.mapper;
 
 import java.util.ArrayList;
@@ -27,5 +25,3 @@ public interface ProductionAddMapper {
 	public void addComponent(ArrayList<ComponentDto>componentList);
 	public String getMaxProductionCode(String prefix);
 }
-
->>>>>>> b70f3cdc0c677fe61ba40db1397cd2f826cd63e5
