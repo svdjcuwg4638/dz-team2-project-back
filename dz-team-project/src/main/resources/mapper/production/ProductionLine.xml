@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.production.mapper.ProductionLineMapper">
+	<!-- 생산라인 조회 -->
+	<select id="getAllLine" resultType="ProductionLineDto">
+		select l.*,emp.emp_name from production_line l
+		left join emp on l.emp_id=emp.emp_id
+		where isDelete=0;
+	</select>
+	
+	<!-- 생산라인 추가 -->
+	<insert id="addLine" parameterType="ProductionLine">
+		insert into production_line (line_code, line_name, company_id,emp_id,uses,place,description)
+		values(#{line_code}, #{line_name}, #{company_id},#{emp_id},#{uses},#{place},#{description})
+	</insert>
+	
+	<!-- 생산라인 수정 -->
+	<update id="updateLine" parameterType="ProductionLine">
+		update production_line
+		SET
+		    line_name = #{line_name},
+		    company_id = #{company_id},
+		    emp_id = #{emp_id},
+		    uses = #{uses},
+		    place = #{place},
+		    description = #{description}
+		WHERE
+		    line_code = #{line_code}
+	</update>
+	
+	<!-- 생산라인 삭제 -->
+	<update id="deleteLine" parameterType="java.util.ArrayList">
+		update production_line set isDelete=1
+		<where>
+			<foreach collection="keyList" item="item"> 
+				line_code = ${item} and company_id=1
+			</foreach> 			
+		</where>
+	</update>
+</mapper>

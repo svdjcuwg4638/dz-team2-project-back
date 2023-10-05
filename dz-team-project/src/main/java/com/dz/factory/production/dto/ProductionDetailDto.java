@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductionDetailDto {
 	private int company_id;
 	private String item_code;
+	private String production_code;
 	private int quantity;
 	private String line_code;
 	private int production_id;
