@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Inventory {
+public class TempInventory {
+	private int temp_inventory_id;
 	private int company_id;
 	private String item_code;
 	private int total;
