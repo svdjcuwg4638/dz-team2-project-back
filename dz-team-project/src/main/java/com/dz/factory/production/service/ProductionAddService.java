@@ -31,7 +31,7 @@ public class ProductionAddService {
 	//productionCode 조회
 	public String getMaxProductionCode(String prefix) {
 		if(addMapper.getMaxProductionCode(prefix)==null) {
-			System.out.println("NO DATE");
+			//System.out.println("NO DATE");
 			return "P".concat(prefix.concat("5554"));
 		}else{
 			return addMapper.getMaxProductionCode(prefix);

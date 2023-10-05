@@ -41,8 +41,8 @@ public class ProductionLineController {
 		String duplicateKey="";
 		
 		if (addData.size()>0) {
-			System.out.println("===================");
-			System.out.println(addData.size());
+//			System.out.println("===================");
+//			System.out.println(addData.size());
 			duplicateKey = lineService.addLine(addData);
 		}
 		if(editData.size()>0){
