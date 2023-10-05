@@ -23,20 +23,21 @@ import lombok.RequiredArgsConstructor;
 public class ProductionListService {
 	private final ProductionListMapper listMapper;
 
+	//생산내역 조회
 	public HashMap<String,ArrayList<?>> getProductionList(HashMap<String, ?> searchFilter) {
-		
+		System.out.println(searchFilter);
 		ArrayList<HashMap<String, ?>> productionList = new ArrayList<>();
 
-		ArrayList<Map.Entry<String, ?>> filterList = new ArrayList<>();
-		for (Map.Entry<String, ?> entry : searchFilter.entrySet()) {
-//			System.out.println(entry);
-			if (entry.getKey().equals("date")
-					|| entry.getKey().equals("description")
-					|| entry.getKey().toLowerCase().contains("code"))
-				filterList.add(entry);
-		}
+//		for (Map.Entry<String, ?> entry : searchFilter.entrySet()) {
+////			System.out.println(entry);
+//			if (entry.getKey().toLowerCase().contains("date")
+//					|| entry.getKey().equals("description")
+//					|| entry.getKey().toLowerCase().contains("code")) {				
+//				filter.put(entry.getKey().toString(), entry.getValue());
+//			}
+//		}
 
-		productionList = listMapper.getProductionList(filterList);
+		productionList = listMapper.getProductionList(searchFilter);
 		//production 받아온 후 code array get
 		ArrayList<String> productionCode = new ArrayList<String>();
 		for(HashMap<String,?> map : productionList) {
@@ -56,8 +57,9 @@ public class ProductionListService {
 		return result;
 	}
 
+	//생산내역 수정
 	@Transactional
-	public void updateProductionList(HashMap<String, ArrayList<?>> searchFilter) {
+	public void updateProductionList(HashMap<String, ?> searchFilter) {
 		System.out.println(searchFilter);
 
 		if (searchFilter.get("production")!=null) {
@@ -71,7 +73,7 @@ public class ProductionListService {
 		}
 	}
 	
-	//생산내역 수정
+	//production 수정
 	public void editProduction(ArrayList<HashMap<String,?>> edited) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 	
@@ -137,6 +139,7 @@ public class ProductionListService {
 		}	
 	}
 	
+	//생산내역 삭제
 	public void deleteProduction(ArrayList<HashMap<String,?>> delete) {
 		for(HashMap<String,?> data : delete) {
 			ProductionDto productionDto = new ProductionDto();

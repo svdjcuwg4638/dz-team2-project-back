@@ -25,3 +25,4 @@ public interface ProductionAddMapper {
 	public void addComponent(ArrayList<ComponentDto>componentList);
 	public String getMaxProductionCode(String prefix);
 }
+
