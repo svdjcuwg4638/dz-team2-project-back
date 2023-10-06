@@ -24,9 +24,18 @@ public class ProductionListService {
 	private final ProductionListMapper listMapper;
 
 	//생산내역 조회
-	public HashMap<String,ArrayList<?>> getProductionList(HashMap<String, ?> searchFilter) {
+	public HashMap<String,ArrayList<String>> getProductionList(HashMap<String, String> searchFilter) {
 		System.out.println(searchFilter);
-		ArrayList<HashMap<String, ?>> productionList = new ArrayList<>();
+		ArrayList<String> productionList = new ArrayList<>();
+
+//		for (Map.Entry<String, String> entry : searchFilter.entrySet()) {
+////			System.out.println(entry);
+//			if (entry.getKey().toLowerCase().contains("date")
+//					|| entry.getKey().equals("description")
+//					|| entry.getKey().toLowerCase().contains("code")) {				
+//				filter.put(entry.getKey().toString(), entry.getValue());
+//			}
+//		}
 
 //		for (Map.Entry<String, ?> entry : searchFilter.entrySet()) {
 ////			System.out.println(entry);
@@ -40,17 +49,17 @@ public class ProductionListService {
 		productionList = listMapper.getProductionList(searchFilter);
 		//production 받아온 후 code array get
 		ArrayList<String> productionCode = new ArrayList<String>();
-		for(HashMap<String,?> map : productionList) {
+		for(HashMap<String,String> map : productionList) {
 			productionCode.add((map.get("production_code")).toString());
 		}
 		//production code로 select 쿼리
-		ArrayList<ArrayList<HashMap<String,?>>> componentList = new ArrayList<ArrayList<HashMap<String,?>>>();
+		ArrayList<ArrayList<HashMap<String, String>>> componentList = new ArrayList<ArrayList<HashMap<String,String>>>();
 		for(String code : productionCode) {
 			
 			componentList.add(listMapper.getComponentList(code));
 		}
 		
-		HashMap<String,ArrayList<?>> result=new HashMap<String,ArrayList<?>>();
+		HashMap<String,ArrayList<String>> result=new HashMap<String,ArrayList<String>>();
 		result.put("production", productionList);
 		result.put("component", componentList);
 		
@@ -74,16 +83,16 @@ public class ProductionListService {
 	}
 	
 	//production 수정
-	public void editProduction(ArrayList<HashMap<String,?>> edited) {
+	public void editProduction(ArrayList<HashMap<String,String>> edited) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
 	
 		//production table
 		ArrayList<Integer> productionIdList =new ArrayList<Integer>();
-		for(HashMap<String,?> data : edited) {
+		for(HashMap<String,String> data : edited) {
 			ProductionDto productionDto = new ProductionDto();
 			ProductionDetailDto detailDto = new ProductionDetailDto();
 		
-			productionDto.setCompany_id((int) data.get("companyId"));
+			productionDto.setCompany_id( data.get("companyId"));
 			productionDto.setProduction_date(String.valueOf(data.get("date")));
 			productionDto.setProduction_code(String.valueOf(data.get("productionCode")));
 			
@@ -94,20 +103,20 @@ public class ProductionListService {
 		//production_detail table
 		for(int i=0;i<edited.size();i++) {
 			ProductionDetailDto detailDto = new ProductionDetailDto();
-			detailDto.setCompany_id((int) edited.get(i).get("companyId"));
-			detailDto.setProduction_id((int)edited.get(i).get("productionId"));
+			detailDto.setCompany_id( edited.get(i).get("companyId"));
+			detailDto.setProduction_id(edited.get(i).get("productionId"));
 			detailDto.setProduction_code((String) edited.get(i).get("productionCode"));
 			detailDto.setItem_code((String) edited.get(i).get("itemCode"));
-			detailDto.setQuantity(Integer.parseInt((edited.get(i).get("quantity")).toString()));
+			detailDto.setQuantity((edited.get(i).get("quantity")).toString());
 			detailDto.setLine_code((String) edited.get(i).get("lineCode"));
 			detailDto.setDescription((String) edited.get(i).get("description"));
 			detailDto.setStorage_code((String) edited.get(i).get("storageCode"));
 			detailDto.setLocation_code((String) edited.get(i).get("locationCode"));
-			detailDto.setEmp_id(Integer.parseInt(edited.get(i).get("empId").toString()));
+			detailDto.setEmp_id((edited.get(i).get("empId").toString()));
 			detailDto.setPartner_code((String) edited.get(i).get("partnerCode"));
 			detailDto.setLead_time((String) edited.get(i).get("leadTime"));
 			if(!((String)edited.get(i).get("workForce")).isEmpty()) {
-				detailDto.setWork_force(Integer.parseInt(edited.get(i).get("workForce").toString()));
+				detailDto.setWork_force((edited.get(i).get("workForce").toString()));
 			}
 			detailDto.setTeam((String) edited.get(i).get("teamCode"));
 			
@@ -115,20 +124,20 @@ public class ProductionListService {
 		}			
 	}
 	//자재 수정
-	public void editComponent(ArrayList<HashMap<String,?>> component) {
+	public void editComponent(ArrayList<HashMap<String,String>> component) {
 		//production_detail_component table
 		ArrayList<ComponentDto> componentList = new ArrayList();
 		for(int i=0; i<component.size(); i++) {				
 			ComponentDto componentDto = new ComponentDto();
 			
-			componentDto.setCompany_id((int) component.get(i).get("companyId"));
+			componentDto.setCompany_id( component.get(i).get("companyId"));
 
 			String itemCode = (component.get(i).get("itemCode")).toString();
 			String locationCode = (component.get(i).get("locationCode")).toString();
 			String storageCode = (component.get(i).get("storageCode")).toString();
 			String productionCode = (component.get(i).get("productionCode")).toString();
-			int productionId = (int)((component.get(i).get("productionId")));
-			int quantity = (int)(component.get(i).get("quantity"));
+			String productionId = ((component.get(i).get("productionId")));
+			String quantity = (component.get(i).get("quantity"));
 			
 			componentDto.setItem_code(itemCode);
 			componentDto.setLocation_code(locationCode);
@@ -140,12 +149,12 @@ public class ProductionListService {
 	}
 	
 	//생산내역 삭제
-	public void deleteProduction(ArrayList<HashMap<String,?>> delete) {
-		for(HashMap<String,?> data : delete) {
+	public void deleteProduction(ArrayList<HashMap<String,String>> delete) {
+		for(HashMap<String,String> data : delete) {
 			ProductionDto productionDto = new ProductionDto();
 			
-			productionDto.setCompany_id((int) data.get("companyId"));
-			productionDto.setProduction_id((int) data.get("productionId"));
+			productionDto.setCompany_id( String.valueOf(data.get("companyId"));
+			productionDto.setProduction_id(String.valueOf(data.get("productionId"));
 			productionDto.setProduction_code(String.valueOf(data.get("productionCode")));
 			System.out.println("======delete======");
 			System.out.println(productionDto);

@@ -13,8 +13,8 @@ import com.dz.factory.production.dto.ProductionDto;
 @Mapper
 public interface ProductionListMapper {
 	//내역조회
-	public ArrayList<HashMap<String,?>> getProductionList(HashMap<String,?> searchFilter);
-	public ArrayList<HashMap<String,?>> getComponentList(String code);
+	public ArrayList<HashMap<String, String>> getProductionList(HashMap<String,?> searchFilter);
+	public ArrayList<HashMap<String,String>> getComponentList(String code);
 	
 	//내역 수정
 	public void updateProduction(ProductionDto productionDto);
