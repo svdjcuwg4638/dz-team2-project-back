@@ -16,7 +16,7 @@
 
 	<update id="deletePartner" parameterType="string">
 		update partner set
-			isDelete = 1
+			isdelete = 1
 		WHERE partner_code = #{code}
 	</update>
 

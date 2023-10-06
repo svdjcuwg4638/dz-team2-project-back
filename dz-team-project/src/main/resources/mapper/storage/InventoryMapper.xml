@@ -174,7 +174,7 @@
 </update>
 
 <insert id="MovementInsert" parameterType="Movement" >
-	    INSERT INTO Movement(company_id, item_code, outbound_storage_code, outbound_location_code, inbound_storage_code, inbound_location_code, movement_date, movement, description, emp_id)
+	    INSERT INTO movement(company_id, item_code, outbound_storage_code, outbound_location_code, inbound_storage_code, inbound_location_code, movement_date, movement, description, emp_id)
 	    VALUES (1, #{item_code}, #{outbound_storage_code}, #{outbound_location_code}, #{inbound_storage_code}, #{inbound_location_code}, #{movement_date}, #{movement}, #{description}, #{emp_id})
 	 </insert>
 	 
