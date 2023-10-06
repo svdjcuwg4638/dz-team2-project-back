@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class ComponentDto {
 	private String production_code;
 	private String item_code;	
-	private String company_id;
-	private String production_id;
+	private int company_id;
+	private int production_id;
 	private String location_code;
 	private String storage_code;
-	private String quantity;
+	private int quantity;
 }

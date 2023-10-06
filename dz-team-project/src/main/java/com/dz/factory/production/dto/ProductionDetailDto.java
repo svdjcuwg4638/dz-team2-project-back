@@ -12,18 +12,18 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductionDetailDto {
-	private String company_id;
+	private int company_id;
 	private String item_code;
 	private String production_code;
-	private String quantity;
+	private int quantity;
 	private String line_code;
-	private String production_id;
+	private int production_id;
 	private String description;
 	private String storage_code;
 	private String location_code;
-	private String emp_id;
+	private int emp_id;
 	private String partner_code;
 	private String lead_time;
-	private String work_force;
+	private int work_force;
 	private String team;	
 }

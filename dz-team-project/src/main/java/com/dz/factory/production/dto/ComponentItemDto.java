@@ -8,12 +8,12 @@ import lombok.Data;
 public class ComponentItemDto {
 	private String item_code;
 	private String item_name;
-	private String quantity;
+	private int quantity;
 	private String storage_code;
 	private String storage_name;
 	private String location_code;
 	private String location_name;
-	private String total;
+	private int total;
 	private String description;
 }
 

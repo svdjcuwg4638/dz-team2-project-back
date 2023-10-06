@@ -8,6 +8,6 @@ import lombok.Data;
 public class RelationDto {
 	private String item_code;
 	private String component_code;
-	private String quantity;
+	private int quantity;
 	private String component_name;
 }

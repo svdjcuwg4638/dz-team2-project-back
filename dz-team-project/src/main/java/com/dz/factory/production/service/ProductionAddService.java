@@ -69,7 +69,7 @@ public class ProductionAddService {
 			ProductionDto productionDto = new ProductionDto();
 			ProductionDetailDto detailDto = new ProductionDetailDto();
 		
-			productionDto.setCompany_id( data.get("companyId"));
+			productionDto.setCompany_id((int) data.get("companyId"));
 			productionDto.setProduction_date(String.valueOf(data.get("date")));
 			productionDto.setProduction_code(String.valueOf(data.get("productionCode")));
 			
@@ -83,19 +83,19 @@ public class ProductionAddService {
 		ArrayList<ProductionDetailDto> detailList = new ArrayList<ProductionDetailDto>();
 		for(int i=0;i<production.size();i++) {
 			ProductionDetailDto detailDto = new ProductionDetailDto();
-			detailDto.setCompany_id( production.get(i).get("companyId"));
+			detailDto.setCompany_id((int) production.get(i).get("companyId"));
 			detailDto.setItem_code((String) production.get(i).get("itemCode"));
 			detailDto.setProduction_code((String) production.get(i).get("productionCode"));
-			detailDto.setQuantity(((production.get(i).get("quantity")).toString()));
+			detailDto.setQuantity(Integer.parseInt((production.get(i).get("quantity")).toString()));
 			detailDto.setLine_code((String) production.get(i).get("lineCode"));
 			detailDto.setDescription((String) production.get(i).get("description"));
 			detailDto.setStorage_code((String) production.get(i).get("storageCode"));
 			detailDto.setLocation_code((String) production.get(i).get("locationCode"));
-			detailDto.setEmp_id((production.get(i).get("empCode").toString()));
+			detailDto.setEmp_id(Integer.parseInt(production.get(i).get("empCode").toString()));
 			detailDto.setPartner_code((String) production.get(i).get("partnerCode"));
 			detailDto.setLead_time((String) production.get(i).get("leadTime"));
 			if(!((String)production.get(i).get("workForce")).isEmpty()) {
-				detailDto.setWork_force((production.get(i).get("workForce").toString()));
+				detailDto.setWork_force(Integer.parseInt(production.get(i).get("workForce").toString()));
 			}
 			detailDto.setTeam((String) production.get(i).get("teamCode"));
 			detailDto.setProduction_id(productionList.get(i).getProduction_id());
@@ -104,7 +104,7 @@ public class ProductionAddService {
 			for(int j=0; j<component.get(i).size(); j++) {				
 				ComponentDto componentDto = new ComponentDto();
 				
-				componentDto.setCompany_id( production.get(i).get("companyId"));
+				componentDto.setCompany_id((int) production.get(i).get("companyId"));
 
 				String itemCode = (component.get(i).get(j).get("itemCode")).toString();
 				String locationCode = (component.get(i).get(j).get("locationCode")).toString();

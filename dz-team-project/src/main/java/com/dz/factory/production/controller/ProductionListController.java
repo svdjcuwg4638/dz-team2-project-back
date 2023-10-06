@@ -27,16 +27,16 @@ public class ProductionListController {
 
 	@GetMapping("")
 	//검색 필터에 맞는 조회
-	public ResponseEntity<?> getProductionList(@RequestParam HashMap<String,String> searchFilter){
+	public ResponseEntity<?> getProductionList(@RequestParam HashMap<String,?> searchFilter){
 		System.out.println("+++++++filter+++++++");
 		System.out.println(searchFilter);
-		HashMap<String, ArrayList<String>> result=listService.getProductionList(searchFilter);
+		HashMap<String,ArrayList<?>> result=listService.getProductionList(searchFilter);
 //		System.out.println(result);
 		return new ResponseEntity<>(new CMRespDto<>(1,"success",result),HttpStatus.OK);
 	}
 	
 	@PutMapping("/edit")
-	public ResponseEntity<?> editProduction(@RequestBody HashMap<String,String> param ){
+	public ResponseEntity<?> editProduction(@RequestBody HashMap<String,?> param ){
 		System.out.println(param);
 		listService.updateProductionList(param);
 		return new ResponseEntity<>(new CMRespDto<>(1, "success", null), HttpStatus.OK);
