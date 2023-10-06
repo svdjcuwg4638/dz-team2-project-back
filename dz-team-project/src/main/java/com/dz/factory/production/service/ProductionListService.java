@@ -74,7 +74,10 @@ public class ProductionListService {
 			ProductionDto productionDto = new ProductionDto();
 			ProductionDetailDto detailDto = new ProductionDetailDto();
 		
-			productionDto.setCompany_id((int) data.get("companyId"));
+			
+			Integer productionId = (Integer) data.get("companyId");
+			productionDto.setCompany_id(productionId != null ? productionId : 0);
+			
 			productionDto.setProduction_date(String.valueOf(data.get("date")));
 			productionDto.setProduction_code(String.valueOf(data.get("productionCode")));
 			
