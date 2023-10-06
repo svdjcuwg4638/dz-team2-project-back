@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.production.mapper.ProductionListMapper">
+	<!-- 생산내역 조회 -->
+	<select id="getProductionList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select production.*, d.*, i.item_name, s.storage_name, l.location_name, p.partner_name, emp.emp_name, c.common_name as team, line.line_name
+		from production
+		left join production_detail d on production.production_code = d.production_code
+        left join item i on d.item_code=i.item_code
+        left join storage s on d.storage_code=s.storage_code
+        left join detail_location l on l.location_code=d.location_code
+        left join partner p on p.partner_code=d.partner_code
+        left join emp on emp.emp_id=d.emp_id
+        left join code_common c on c.management_code='TEAM' and c.common_code=d.team_code
+        left join production_line line on d.line_code=line.line_code
+		<where>
+			production.isDelete=0
+			<if test= "startDate!=null and endDate!=null">
+				and date(production_date) between #{startDate} and #{endDate}
+			</if>
+			<if test= "startDate!=null and endDate==null">
+				and date(production_date) &gt;=#{startDate}
+			</if>
+			<if test= "startDate==null and endDate!=null">
+				and date(production_date) &lt;=#{startDate}
+			</if>
+			<if test= "description!=null">
+				 and d.description LIKE CONCAT('%', #{description}, '%')
+			</if>
+			<if test="production_code!=null">
+				and production.production_code LIKE CONCAT('%', #{production_code}, '%')
+			</if>
+			<if test="item_code!=null">
+				and d.item_code=#{item_code}
+			</if>
+			<if test="emp_code!=null">
+				and d.emp_id=#{emp_code}
+			</if>
+			<if test="location_code!=null">
+				and d.location_code=#{location_code}
+			</if>
+			<if test="partner_code!=null">
+				and d.partner_code=#{partner_code}
+			</if>
+			<if test="storage_code!=null">
+				and d.storage_code=#{storage_code}
+			</if>
+			<if test="team_code!=null">
+				and d.team_code=#{team_code}
+			</if>
+		</where>
+	</select>
+	<!-- 생산내역 자재 조회 -->
+	<select id="getComponentList" parameterType="string" resultType="java.util.HashMap">
+		select c.*, item.item_name, l.location_name, s.storage_name, i.total
+		from production_detail_component c
+		left join item on c.item_code= item.item_code
+		left join detail_location l on c.location_code=l.location_code
+		left join storage s on c.storage_code=s.storage_code
+		left join inventory i on c.item_code=i.item_code and c.location_code=i.location_code and c.storage_code=i.storage_code
+		where production_code=#{code};
+	</select>
+	
+	<!-- 생산내역 수정 -->
+	<update id="updateProduction" parameterType="ProductionDto">
+		update production
+		set production_date = #{production_date}
+		where company_id= #{company_id} and production_code=#{production_code} and production_id=#{production_id}
+	</update>
+	<!-- 생산내역 detail 수정 -->
+	<update id="updateDetail" parameterType="ProductionDetailDto">
+		update production_detail
+		set item_code=#{item_code}, quantity=#{quantity}, line_code=#{line_code},description=#{description}, storage_code=#{storage_code}, location_code=#{location_code}, emp_id=#{emp_id}, partner_code=#{partner_code}, lead_time=#{lead_time}, work_force=#{work_force}, team_code=#{team}
+		where company_id=#{company_id} and production_code = #{production_code} and production_id=#{production_id};
+	</update>
+	<!-- 생산내역 component 수정 -->
+	<update id="updateComponent" parameterType="ComponentDto">
+		update production_detail
+		set location_code=#{location_code}, storage_code=#{storage_code}, quantity=#{quantity}
+		where company_id=#{company_id} and production_code = #{production_code} and production_id=#{production_id} and item_code=#{item_code};
+	</update>
+	<!-- 생산 내역 삭제 -->
+	<update id="deleteProduction" parameterType="ProductionDto">
+		update production
+		set isDelete = 1
+		where production_code=#{production_code} and company_id=#{company_id} and production_id=#{production_id}
+	</update>
+	
+	
+</mapper>

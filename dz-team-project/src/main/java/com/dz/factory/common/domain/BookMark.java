@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class BookMark {
 
 	
+	private int company_id;
 	private String pageUrl;
-	private String company_id;
 }

@@ -5,14 +5,26 @@
         <typeAlias alias="Storage" type="com.dz.factory.common.domain.Storage"/>
         <typeAlias alias="Location" type="com.dz.factory.common.domain.Location"/>
         <typeAlias alias="Partner" type="com.dz.factory.common.domain.Partner"/>
-        <typeAlias alias="Inventory" type="com.dz.factory.common.domain.Inventory"/>        
+        <typeAlias alias="Inventory" type="com.dz.factory.common.domain.Inventory"/>
+		<typeAlias alias="Production" type="com.dz.factory.common.domain.Production"/>
+		<typeAlias alias="ProductionLine" type="com.dz.factory.common.domain.ProductionLine"/>
+		<typeAlias alias="ProductionLineDto" type="com.dz.factory.production.dto.ProductionLineDto"/>
+		<typeAlias alias="ProductionDetail" type="com.dz.factory.common.domain.ProductionDetail"/>
+		<typeAlias alias="ProductionDetailComponent" type="com.dz.factory.common.domain.ProductionDetailComponent"/>                
         <typeAlias alias="Item" type="com.dz.factory.common.domain.Item"/>
         <typeAlias alias="ProductRelation" type="com.dz.factory.common.domain.ProductRelation"/>
         <typeAlias alias="ComponentItemDto" type="com.dz.factory.production.dto.ComponentItemDto"/>        
         <typeAlias alias="UnitPrice" type="com.dz.factory.common.domain.UnitPrice"/>
         <typeAlias alias="Code" type="com.dz.factory.common.domain.Code"/>
-        <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>      
-         
+        <typeAlias alias="CommonHelpDto" type="com.dz.factory.common.dto.CommonHelpDto"/>   
+        <typeAlias alias="ManageCode" type="com.dz.factory.common.domain.ManageCode"/>       
+        <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>
+        <typeAlias alias="BoundDto" type="com.dz.factory.bound.dto.BoundDto"/>  
+        <typeAlias alias="BoundDetailDto" type="com.dz.factory.bound.dto.BoundDetailDto"/>
+        <typeAlias alias="SearchInboundDetailDto" type="com.dz.factory.bound.dto.SearchInboundDetailDto"/>
+        <typeAlias alias="SearchInboundDto" type="com.dz.factory.bound.dto.SearchInboundDto"/>
+        <typeAlias alias="OutBoundDto" type="com.dz.factory.bound.dto.OutBoundDto"/>  
+        <typeAlias alias="OutBoundDetailDto" type="com.dz.factory.bound.dto.OutBoundDetailDto"/>
         <typeAlias alias="CommonCodeDto" type="com.dz.factory.production.dto.CommonCodeDto"/>        
         <typeAlias alias="CodeDto" type="com.dz.factory.production.dto.CodeDto"/>        
         <typeAlias alias="RelationDto" type="com.dz.factory.production.dto.RelationDto"/>        
@@ -21,6 +33,9 @@
         <typeAlias alias="ComponentDto" type="com.dz.factory.production.dto.ComponentDto"/>
         <typeAlias alias="InventoryForm" type="com.dz.factory.storage.dto.InventoryForm"/>
         <typeAlias alias="Registration" type="com.dz.factory.storage.dto.Registration"/>
-        <typeAlias alias="InventoryDto" type="com.dz.factory.storage.dto.InventoryDto"/>         
+        <typeAlias alias="InventoryDto" type="com.dz.factory.storage.dto.InventoryDto"/>
+        <typeAlias alias="Movement" type="com.dz.factory.common.domain.Movement"/>     
+        <typeAlias alias="TempInventory" type="com.dz.factory.common.domain.TempInventory"/>        
+        <typeAlias alias="MovementDto" type="com.dz.factory.storage.dto.MovementDto"/>            
     </typeAliases>
 </configuration>
