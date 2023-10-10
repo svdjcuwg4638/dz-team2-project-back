@@ -15,4 +15,5 @@ public class ComponentDto {
 	private String location_code;
 	private String storage_code;
 	private int quantity;
+	private int total_quantity;
 }
