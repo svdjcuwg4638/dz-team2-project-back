@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BookMark {
 
-	
-	private int company_id;
 	private String pageUrl;
+	private int company_id;
+
 }

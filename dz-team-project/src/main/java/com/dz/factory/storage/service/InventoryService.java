@@ -64,7 +64,8 @@ public class InventoryService {
             String inboundStorageCode,
             String inboundLocationCode,
             String itemCode,
-            String movementDate,
+            String startDate,
+            String endDate,
             String empId,
             int page,
             int pageSize) {
@@ -74,7 +75,8 @@ public class InventoryService {
 				                                    inboundStorageCode,
 				                                    inboundLocationCode,
 				                                    itemCode,
-				                                    movementDate,
+				                                    startDate, 
+				                                    endDate,
 				                                    empId,
 				                                    startRow,
 				                                    pageSize);
@@ -86,14 +88,16 @@ public int countSearchMovements(String outboundStorageCode,
        String inboundStorageCode,
        String inboundLocationCode,
        String itemCode,
-       String movementDate,
+       String startDate, 
+       String endDate,
        String empId) {
 return inventorymapper.countSearchMovements(outboundStorageCode,
                      outboundLocationCode,
                      inboundStorageCode,
                      inboundLocationCode,
                      itemCode,
-                     movementDate,
+                     startDate,
+                     endDate,
                      empId);
 }
 }
