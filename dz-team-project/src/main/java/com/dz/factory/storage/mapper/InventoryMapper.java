@@ -42,7 +42,8 @@ public interface InventoryMapper {
             @Param("inbound_storage_code") String inboundStorageCode,
             @Param("inbound_location_code") String inboundLocationCode,
             @Param("item_code") String itemCode,
-            @Param("movement_date") String movementDate,
+            @Param("start_date") String startDate,
+            @Param("end_date") String endDate,
             @Param("emp_id") String empId,
             @Param("startRow") int startRow,
             @Param("pageSize") int pageSize);
@@ -52,6 +53,7 @@ int countSearchMovements(@Param("outbound_storage_code") String outboundStorageC
       @Param("inbound_storage_code") String inboundStorageCode,
       @Param("inbound_location_code") String inboundLocationCode,
       @Param("item_code") String itemCode,
-      @Param("movement_date") String movementDate,
+      @Param("start_date") String startDate,
+      @Param("end_date") String endDate,
       @Param("emp_id") String empId);
 }
