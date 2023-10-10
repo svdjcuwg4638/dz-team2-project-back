@@ -37,8 +37,13 @@ public class StorageApiController {
 	
 	@PostMapping("/storage/delete")
 	public ResponseEntity<?> storageDelete(@RequestBody List<String> codes){
-		storageService.delStorage(codes);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",codes),HttpStatus.OK);
+		ArrayList<String> list = storageService.delStorage(codes);
+		if (list  == null) {
+			return new ResponseEntity<>(new CMRespDto<>(1,"성공",codes),HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(new CMRespDto<>(2,"실패",list),HttpStatus.OK);
+		}
+		
 	}
 	
 	@PostMapping("/storage/locationAdd")
@@ -55,8 +60,12 @@ public class StorageApiController {
 	
 	@PostMapping("location/delete")
 	public ResponseEntity<?> locationDelete(@RequestBody ArrayList<Location> dtos){
-		storageService.delLocation(dtos);
-		return new ResponseEntity<>(new CMRespDto<>(1,"성공",dtos),HttpStatus.OK);
+		ArrayList<String > list =  storageService.delLocation(dtos);
+		if (list  == null) {
+			return new ResponseEntity<>(new CMRespDto<>(1,"성공",dtos),HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(new CMRespDto<>(2,"실패",list),HttpStatus.OK);
+		}
 	}
 	
 	

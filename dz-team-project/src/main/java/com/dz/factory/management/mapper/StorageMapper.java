@@ -36,5 +36,7 @@ public interface StorageMapper {
 
 	Location locationSameOne(Location locationDto);
 
-	
+	String findStorageTotal(String code);
+
+	String findLocationTotal(Location location);
 }
