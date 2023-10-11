@@ -26,7 +26,8 @@ public class UnitPriceService {
 		
 		// 바로 이전것의 end_date를 수정
 		UnitPrice oldData = unitPriceMapper.selOldOne(unitPrice);
-		if(oldData != null) {
+		System.out.println(oldData);
+		if(oldData != null && !unitPrice.getPartner_code().equals(oldData.getPartner_code())) {
 			HashMap<String, Object> map = new HashMap<>();
 			map.put("id",  oldData.getUnit_price_id());
 			map.put("date", unitPrice.getStart_date());
