@@ -221,16 +221,26 @@
 		<if test="item_code !=null and item_code !=''">
 		    AND m.item_code = #{item_code}
 		</if>
-		<if test="movement_date !=null and movement_date!='' ">
-	       AND m.movement_date LIKE CONCAT('%', #{movement_date}, '%')
-		</if>
+		<if test="start_date != null and start_date != ''">
+    <if test="end_date != null and end_date != ''">
+        AND m.movement_date BETWEEN #{start_date} AND #{end_date}
+    </if>
+    <if test="end_date == null or end_date == ''">
+        AND m.movement_date >= #{start_date}
+    </if>
+</if>
+<if test="start_date == null or start_date == ''">
+    <if test="end_date != null and end_date != ''">
+        AND #{end_date}>= m.movement_date 
+    </if>
+</if>
 		<if test="emp_id != null and emp_id!='' ">
 		    AND m.emp_id=#{emp_id}
 	</if>
 	</where>
  	<choose>
         <when test="pageSize > 0">
-            ORDER BY m.movement_date
+            ORDER BY m.movement_date desc
             LIMIT #{pageSize} OFFSET #{startRow}
         </when>
     </choose>
@@ -255,9 +265,19 @@
         <if test="item_code !=null and item_code !=''">
          	AND item_code = #{item_code}
         </if>
-        <if test="movement_date !=null and movement_date!='' ">
-        	AND movement_date LIKE CONCAT('%', #{movement_date}, '%')
-        </if>
+       <if test="start_date != null and start_date != ''">
+    <if test="end_date != null and end_date != ''">
+        AND movement_date BETWEEN #{start_date} AND #{end_date}
+    </if>
+    <if test="end_date == null or end_date == ''">
+        AND movement_date >= #{start_date}
+    </if>
+</if>
+<if test="start_date == null or start_date == ''">
+    <if test="end_date != null and end_date != ''">
+         AND #{end_date}>= movement_date 
+    </if>
+</if>
         <if test="emp_id != null and emp_id!='' ">
         	AND emp_id=#{emp_id}
         </if>

@@ -4,20 +4,31 @@
 	namespace="com.dz.factory.management.mapper.StorageMapper">
 
 	<insert id="insertStorage" parameterType="Storage">
-		INSERT INTO Storage
+		INSERT INTO storage
 		(storage_code,storage_name,company_id)
 		VALUES (#{storage_code},
 		#{storage_name},#{company_id})
 	</insert>
-	
+
 	<select id="selectAll" resultType="Storage">
 		select * from storage where
 		isDelete = 0
 	</select>
 
 	<select id="selectLocationAll" resultType="Location">
-		SELECT * from
-		detail_location where isDelete = 0
+		SELECT
+		d.location_code,
+		d.company_id,
+		d.storage_code,
+		d.location_name,
+		d.isDelete
+
+		from
+		detail_location d
+		JOIN storage s
+		ON s.storage_code = d.storage_code
+		WHERE s.isDelete = 0 AND
+		d.isDelete = 0
 	</select>
 
 	<insert id="insertLocation" parameterType="Location">
@@ -43,36 +54,52 @@
 	</update>
 
 	<update id="locationIsDeleteTrue" parameterType="Location">
-		update detail_location
-		set isDelete = 1 where storage_code = #{storage_code} and
+		update
+		detail_location
+		set isDelete = 1 where storage_code = #{storage_code}
+		and
 		location_code = #{location_code}
 	</update>
-	
+
 	<select id="storageSameOne" resultType="Storage">
 		select * from storage
-		where storage_code = #{storage_code} 
+		where storage_code = #{storage_code}
 	</select>
-	
+
 	<update id="updateStorage" parameterType="Storage">
-		update storage 
-			set 
-				storage_name = #{storage_name},
-				isDelete = 0
-				where storage_code = #{storage_code}
+		update storage
+		set
+		storage_name = #{storage_name},
+		isDelete = 0
+		where storage_code = #{storage_code}
 	</update>
-	
-	<select id="locationSameOne" parameterType="Location" resultType="Location">
+
+	<select id="locationSameOne" parameterType="Location"
+		resultType="Location">
 		select * from detail_location
-		where storage_code = #{storage_code} and location_code = #{location_code}
+		where storage_code =
+		#{storage_code} and location_code = #{location_code}
 	</select>
 
 	<update id="updateLocation" parameterType="Location">
 		UPDATE detail_location
-		SET 
-			location_name=#{location_name},
-			isDelete = 0
+		SET
+		location_name=#{location_name},
+		isDelete = 0
 		WHERE
-		 location_code =#{location_code} and storage_code = #{storage_code}
+		location_code =#{location_code} and storage_code = #{storage_code}
 	</update>
+
+	<select id="findStorageTotal" parameterType="string"
+		resultType="string">
+		SELECT MAX(total) FROM inventory
+		WHERE storage_code = #{code}
+	</select>
+
+	<select id="findLocationTotal" parameterType="hashmap"
+		resultType="string">
+		SELECT MAX(total) FROM inventory
+		WHERE storage_code = #{storage_code} and location_code = #{location_code};
+	</select>
 
 </mapper>
