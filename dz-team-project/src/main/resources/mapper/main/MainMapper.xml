@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dz.factory.main.mapper.MainMapper">
+	<!-- 재고 조회 -->
+	<select id="getInventoryByDate" resultType="int">
+		SELECT COUNT(*) FROM inventory;
+	</select>
+	<select id="getInboundByDate" resultType="int">
+		SELECT COUNT(*) FROM bound WHERE DATE(bound_date) = CURDATE() and bound_type='inbound' and isDelete=0;
+	</select>
+	<select id="getOutBoundByDate" resultType="int">
+		SELECT COUNT(*) FROM bound WHERE DATE(bound_date) = CURDATE() and bound_type='outbound' and isDelete=0;
+	</select>
+	<select id="getProductionByDate" resultType="int">
+		SELECT COUNT(*) FROM production WHERE DATE(production_date) = CURDATE() and isDelete=0;
+	</select>
+</mapper>
