@@ -138,7 +138,8 @@ System.out.println(movementStock);
             @RequestParam(name = "inbound_storage_code", required = false) String inboundStorageCode,
             @RequestParam(name = "inbound_location_code", required = false) String inboundLocationCode,
             @RequestParam(name = "item_code", required = false) String itemCode,
-            @RequestParam(name = "movement_date", required = false) String movementDate,
+            @RequestParam(name = "start_date", required = false) String startDate,
+            @RequestParam(name = "end_date", required = false) String endDate,
             @RequestParam(name = "emp_id", required = false) String empId,
             @RequestParam(name = "page", defaultValue = "1") int page,
             @RequestParam(name = "pageSize", defaultValue = "10") int pageSize) {
@@ -148,11 +149,12 @@ System.out.println(movementStock);
 			                    inboundStorageCode,
 			                    inboundLocationCode,
 			                    itemCode,
-			                    movementDate,
+			                    startDate,
+			                    endDate,
 			                    empId,
 			                    page,
 			                    pageSize);
-			
+			System.out.println(startDate+endDate);
 			System.out.println(movements);
 //		    if (movements == null || movements.isEmpty()) {
 //		        // 검색 결과가 없을 때의 처리
@@ -168,7 +170,8 @@ System.out.println(movementStock);
 	    @RequestParam(name = "inbound_storage_code", required = false) String inboundStorageCode,
 	    @RequestParam(name = "inbound_location_code", required = false) String inboundLocationCode,
 	    @RequestParam(name = "item_code", required = false) String itemCode,
-	    @RequestParam(name = "movement_date", required = false) String movementDate,
+        @RequestParam(name = "start_date", required = false) String startDate,
+        @RequestParam(name = "end_date", required = false) String endDate,
 	    @RequestParam(name = "emp_id", required = false) String empId) {
 
 	    int totalCount = inventoryService.countSearchMovements(
@@ -177,7 +180,8 @@ System.out.println(movementStock);
 	        inboundStorageCode,
 	        inboundLocationCode,
 	        itemCode,
-	        movementDate,
+	        startDate, 
+	        endDate, 
 	        empId);
 
 	    System.out.println("토탈카운트 " + totalCount);
