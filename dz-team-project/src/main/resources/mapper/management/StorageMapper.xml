@@ -4,7 +4,7 @@
 	namespace="com.dz.factory.management.mapper.StorageMapper">
 
 	<insert id="insertStorage" parameterType="Storage">
-		INSERT INTO Storage
+		INSERT INTO storage
 		(storage_code,storage_name,company_id)
 		VALUES (#{storage_code},
 		#{storage_name},#{company_id})
