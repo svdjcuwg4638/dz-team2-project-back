@@ -4,13 +4,13 @@
 	namespace="com.dz.factory.bound.mapper.OutBoundMapper">
 	
 	<insert id="insertOutbound" parameterType="OutBoundDto">
-		INSERT INTO BOUND(bound_id, company_id, bound_date, partner_code, bound_type, isDelete, bound_no, emp_id, bound_state, bound_category)
+		INSERT INTO bound(bound_id, company_id, bound_date, partner_code, bound_type, isDelete, bound_no, emp_id, bound_state, bound_category)
 		VALUES
 		(#{bound_id}, #{company_id}, #{bound_date}, #{partner_code}, #{bound_type}, #{isDelete}, #{bound_no}, #{emp_id}, #{bound_state}, #{bound_category})
 	</insert>
 	
 	<select id="selectOutboundAll" resultType="OutBoundDto">
-		SELECT * FROM BOUND WHERE bound_type = 'outbound'
+		SELECT * FROM bound WHERE bound_type = 'outbound'
 	</select>
 	
 	<select id="getMaxBoundId" resultType="Long">

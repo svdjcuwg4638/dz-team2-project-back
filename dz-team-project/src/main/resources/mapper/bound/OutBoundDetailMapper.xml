@@ -4,13 +4,13 @@
 	namespace="com.dz.factory.bound.mapper.OutBoundDetailMapper">
 	
 	<insert id="insertOutboundDetail" parameterType="OutBoundDetailDto">
-		INSERT INTO BOUND_DETAIL(company_id, bound_id, unit_price_id, inventory_id, item_code, item_name, tot_amount, detail_state, detail_date, amount, detail_isDelete, description)
+		INSERT INTO bound_detail(company_id, bound_id, unit_price_id, inventory_id, item_code, item_name, tot_amount, detail_state, detail_date, amount, detail_isDelete, description)
 		VALUES
 		(#{company_id}, #{bound_id}, #{unit_price_id}, #{inventory_id}, #{item_code}, #{item_name}, #{tot_amount}, #{detail_state}, #{detail_date}, #{amount}, #{detail_isDelete}, #{description})
 	</insert>
 	
 	<select id="selectOutboundDetailAll" resultType="OutBoundDetailDto">
-		SELECT * FROM BOUND_DETAIL
+		SELECT * FROM bound_detail
 		where detail_type = 'outbound'
 	</select>
 	
