@@ -74,5 +74,15 @@
 		WHERE
 		 location_code =#{location_code} and storage_code = #{storage_code}
 	</update>
+	
+	<select id="findStorageTotal" parameterType="string" resultType="string">
+		   SELECT MAX(total) FROM inventory
+	 		WHERE storage_code = #{code}
+	</select>
+	
+	<select id="findLocationTotal" parameterType="hashmap" resultType="string">
+			SELECT MAX(total) FROM inventory
+			WHERE storage_code = #{storage_code} and location_code = #{location_code};
+	</select>
 
 </mapper>

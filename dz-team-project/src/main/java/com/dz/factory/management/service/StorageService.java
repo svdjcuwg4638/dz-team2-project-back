@@ -70,16 +70,44 @@ public class StorageService {
 	}
 
 	@Transactional
-	public void delLocation(ArrayList<Location> dtos) {
-		for (Location dto : dtos) {
-			storageMapper.locationIsDeleteTrue(dto);
+	public ArrayList<String> delLocation(ArrayList<Location> dtos) {
+		ArrayList<String> list = new ArrayList<>();
+		for (Location code : dtos) {
+			String max = storageMapper.findLocationTotal(code);
+			if(max != null && Integer.valueOf(max) > 0 ) {
+				list.add(code.getLocation_code()+"");
+			}
 		}
+		
+		if(list.size() > 0) {
+			return list;
+		}else {
+			for (Location dto : dtos) {
+				storageMapper.locationIsDeleteTrue(dto);
+			}
+			return null;
+		}
+		
 	}
 
 	@Transactional
-	public void delStorage(List<String> codes) {
+	public ArrayList<String> delStorage(List<String> codes) {
+		ArrayList<String> list = new ArrayList<>();
+		
 		for (String code : codes) {
-			storageMapper.storageIsDeleteTrue(code);
+			String max = storageMapper.findStorageTotal(code);
+			if(max != null && Integer.valueOf(max) > 0 ) {
+				list.add(code+"");
+			}
+		}
+		
+		if(list.size() > 0) {
+			return list;
+		}else {
+			for (String code : codes) {
+				storageMapper.storageIsDeleteTrue(code);
+			}
+			return null;
 		}
 	}
 
