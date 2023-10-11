@@ -8,7 +8,7 @@
     </select>
     
     <insert id="insertBookMark" parameterType="com.dz.factory.common.domain.BookMark">
-    	insert into bookMark values(#{company_id},#{pageUrl})
+    	insert into bookMark values(#{company_id}, #{pageUrl})
     </insert>
     
     <delete id="deleteBookMark" parameterType="com.dz.factory.common.domain.BookMark">

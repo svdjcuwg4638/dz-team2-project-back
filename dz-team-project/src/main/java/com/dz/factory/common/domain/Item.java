@@ -31,7 +31,6 @@ public class Item {
 	private String volume;
 	private String weight;
 	private String unit;
-
 	@NotEmpty(message = "storage_code")
 	private String storage_code;
 	@NotEmpty(message = "location_code")
