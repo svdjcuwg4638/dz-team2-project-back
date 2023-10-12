@@ -7116,3 +7116,18 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.mariadb.j
 2023-10-11 20:36:49,269 [Worker-182: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-10-11 20:36:49,269 [Worker-182: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\DZproject\dz-project-back\dz-team-project\src\test\resources
 2023-10-12 08:49:50,444 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-10-12 08:59:51,188 [Worker-14: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.dz:dz-team-project:0.0.1-SNAPSHOT @ C:\DZproject\dz-project-back\dz-team-project\pom.xml.
+2023-10-12 08:59:57,423 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-12 08:59:57,423 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-12 08:59:57,430 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-10-12 08:59:57,477 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 23 resources
+2023-10-12 08:59:57,756 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-12 08:59:57,756 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-12 08:59:57,757 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\DZproject\dz-project-back\dz-team-project\src\test\resources
+2023-10-12 09:00:04,112 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-12 09:00:04,118 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-12 09:00:04,130 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-10-12 09:00:04,143 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2023-10-12 09:00:04,232 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-12 09:00:04,233 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-12 09:00:04,233 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\DZproject\dz-project-back\dz-team-project\src\test\resources
