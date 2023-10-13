@@ -26,9 +26,7 @@ public class SearchBoundController {
 	
 	@PostMapping("/inbound/searchMaster")
 	public ResponseEntity<?> searchBound(@RequestBody SearchInboundDto searchInboundDto ){
-		System.out.println("데이터들어왓나?"+searchInboundDto);
 		List<BoundDto> responseData = searchBoundService.searchBounds(searchInboundDto);
-		System.out.println(responseData);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",responseData),HttpStatus.CREATED);
 	}
 	
@@ -40,9 +38,7 @@ public class SearchBoundController {
 	
 	@PostMapping("outbound/searchMaster")
 	public ResponseEntity<?> searchOutBound(@RequestBody SearchInboundDto searchInboundDto ){
-		System.out.println("데이터들어왓나?"+searchInboundDto);
 		List<BoundDto> responseData = searchBoundService.searchOutBounds(searchInboundDto);
-		System.out.println(responseData);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",responseData),HttpStatus.CREATED);
 	}
 	
