@@ -17,5 +17,5 @@ public interface ProductionLineMapper {
 	ArrayList<ProductionLineDto> getAllLine();
 	void addLine(ProductionLine lineDto);
 	void updateLine(ProductionLine lineDto);
-	void deleteLine(ArrayList<String> keyList);
+	void deleteLine(String key);
 }
