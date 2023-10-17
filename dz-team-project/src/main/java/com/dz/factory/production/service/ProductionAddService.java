@@ -99,6 +99,7 @@ public class ProductionAddService {
 			}
 			detailDto.setTeam((String) production.get(i).get("teamCode"));
 			detailDto.setProduction_id(productionList.get(i).getProduction_id());
+			
 			//production_detail_component table
 			ArrayList<ComponentDto> componentList = new ArrayList();
 			for(int j=0; j<component.get(i).size(); j++) {				
@@ -110,12 +111,14 @@ public class ProductionAddService {
 				String locationCode = (component.get(i).get(j).get("locationCode")).toString();
 				String storageCode = (component.get(i).get(j).get("storageCode")).toString();
 				int quantity = Integer.valueOf((component.get(i).get(j).get("quantity")).toString());
+				int totalQuantity = Integer.valueOf((component.get(i).get(j).get("totalQuantity")).toString());
 				
 				
 				componentDto.setItem_code(itemCode);
 				componentDto.setLocation_code(locationCode);
 				componentDto.setStorage_code(storageCode);
 				componentDto.setQuantity(quantity);
+				componentDto.setTotal_quantity(totalQuantity);
 				
 				componentDto.setProduction_id(productionList.get(i).getProduction_id());
 				componentDto.setProduction_code(productionList.get(i).getProduction_code());
