@@ -11,7 +11,7 @@ import com.dz.factory.production.dto.ComponentDto;
 import com.dz.factory.production.dto.ProductionDetailDto;
 import com.dz.factory.production.dto.ProductionDto;
 import com.dz.factory.production.dto.ProductionLineDto;
-
+//
 @Mapper
 public interface ProductionLineMapper {
 	ArrayList<ProductionLineDto> getAllLine();
