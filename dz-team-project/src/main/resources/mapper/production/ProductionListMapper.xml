@@ -15,14 +15,14 @@
         left join production_line line on d.line_code=line.line_code
 		<where>
 			production.isDelete=0
-			<if test= "startDate!=null and endDate!=null">
-				and date(production_date) between #{startDate} and #{endDate}
+			<if test= "start_date!=null and end_date!=null">
+				and date(production_date) between #{start_date} and #{end_date}
 			</if>
-			<if test= "startDate!=null and endDate==null">
-				and date(production_date) &gt;=#{startDate}
+			<if test= "start_date!=null and end_date==null">
+				and date(production_date) &gt;=#{start_date}
 			</if>
-			<if test= "startDate==null and endDate!=null">
-				and date(production_date) &lt;=#{startDate}
+			<if test= "start_date==null and end_date!=null">
+				and date(production_date) &lt;=#{start_date}
 			</if>
 			<if test= "description!=null">
 				 and d.description LIKE CONCAT('%', #{description}, '%')

@@ -74,7 +74,7 @@ public class ProductionLineService {
 		return errorMsg;
 	}
 
-	
+//	==============생산라인 수정==============
 	public void editLine(ArrayList<HashMap<String, ?>> editData) {
 		
 		//ArrayList<ProductionLine> editList = new ArrayList<ProductionLine>();
@@ -113,8 +113,10 @@ public class ProductionLineService {
 		}
 //		return errorMsg;
 	}
-	
+	//==========생산라인 삭제===============
 	public void deleteLine(ArrayList<String> keyList) {
-		lineMapper.deleteLine(keyList);
+		for(String key : keyList) {			
+			lineMapper.deleteLine(key);
+		}
 	}
 }

@@ -11,11 +11,11 @@ import com.dz.factory.production.dto.ComponentDto;
 import com.dz.factory.production.dto.ProductionDetailDto;
 import com.dz.factory.production.dto.ProductionDto;
 import com.dz.factory.production.dto.ProductionLineDto;
-
+//
 @Mapper
 public interface ProductionLineMapper {
 	ArrayList<ProductionLineDto> getAllLine();
 	void addLine(ProductionLine lineDto);
 	void updateLine(ProductionLine lineDto);
-	void deleteLine(ArrayList<String> keyList);
+	void deleteLine(String key);
 }
