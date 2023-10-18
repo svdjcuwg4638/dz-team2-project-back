@@ -25,7 +25,6 @@ private final OutBoundService outboundService;
 	
 	@GetMapping("/outbound/getid")
 	public ResponseEntity<?> getMaxBoundId() {
-		System.out.println("BoundID요청들어옴");
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",outboundService.getMaxBoundId()),HttpStatus.CREATED);
 	}
 	

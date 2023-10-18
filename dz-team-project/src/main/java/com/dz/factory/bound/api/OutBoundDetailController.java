@@ -24,7 +24,6 @@ private final OutBoundDetailService outboundDetailService;
 	
 	@PostMapping("/outbound/detailAdd")
 	public ResponseEntity<?> insertOutboundDetail(@RequestBody OutBoundDetailDto outboundDetailDto){
-		System.out.println(outboundDetailDto);
 		outboundDetailService.insertOutboundDetail(outboundDetailDto);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",outboundDetailDto),HttpStatus.CREATED);
 	}

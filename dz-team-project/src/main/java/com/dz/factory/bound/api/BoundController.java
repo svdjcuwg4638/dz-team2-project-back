@@ -26,13 +26,11 @@ public class BoundController {
 	
 	@GetMapping("/inbound/getid")
 	public ResponseEntity<?> getMaxBoundId() {
-		System.out.println("BoundID요청들어옴");
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",boundService.getMaxBoundId()),HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/inbound/getboundno")
 	public ResponseEntity<?> getMaxBoundNo(@RequestParam String prefix){
-		System.out.println(prefix);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",boundService.getMaxBoundNo(prefix)),HttpStatus.CREATED);
 	}
 	@PostMapping("/inbound/masterAdd")
