@@ -26,9 +26,6 @@ public class UnitPriceService {
 		
 		// 바로 이전것의 end_date를 수정
 		UnitPrice oldData = unitPriceMapper.selOldOne(unitPrice);
-		System.out.println(oldData.toString());
-		System.out.println("================================");
-		System.out.println(unitPrice.toString());
 		if(oldData != null && unitPrice.getPartner_code().equals(oldData.getPartner_code())) {
 			HashMap<String, Object> map = new HashMap<>();
 			map.put("id",  oldData.getUnit_price_id());
@@ -37,7 +34,7 @@ public class UnitPriceService {
 		}
 		// 입력되는 날짜보다 예정되어있는 데이터가 있다면 예정되어있는 데이터의 start_date가 unitprice에 입력됨
 		UnitPrice oldOverData = unitPriceMapper.selOverOldOne(unitPrice);
-		if(oldOverData != null && unitPrice.getPartner_code().equals(oldData.getPartner_code())) {
+		if(oldOverData != null && unitPrice.getPartner_code().equals(oldOverData.getPartner_code())) {
 			unitPrice.setEnd_date(oldOverData.getStart_date());
 		}
 		unitPriceMapper.insert(unitPrice);
