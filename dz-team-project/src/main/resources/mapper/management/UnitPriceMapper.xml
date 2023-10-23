@@ -46,30 +46,33 @@
 	</update>
 
 	<select id="currnetUnitPrice" resultType="UnitPrice">
-		SELECT
-			up.*
-		FROM
-			unit_price up
-		INNER JOIN
-			(SELECT
-				up_sub.item_code,
-				up_sub.type, -- 여기에 type 추가
-				MAX(up_sub.start_date) AS max_start_date,
-				MAX(up_sub.unit_price_id) AS max_unit_price_id
-			FROM
-				unit_price up_sub
-			JOIN item i ON i.item_code = up_sub.item_code
-			WHERE
-				up_sub.start_date &lt;= CURRENT_TIMESTAMP
-			AND i.isDelete = 0
-			GROUP BY
-				up_sub.item_code, up_sub.type) up1 -- 여기에 type 추가
-		ON
-			up.item_code = up1.item_code
-		AND up.type = up1.type -- type에 대한 조건 추가
-		AND up.start_date = up1.max_start_date
-		AND up.unit_price_id = up1.max_unit_price_id
+	    SELECT
+	        up.*
+	    FROM
+	        unit_price up
+	    INNER JOIN
+	        (SELECT
+	            up_sub.item_code,
+	            up_sub.type,
+	            up_sub.partner_code,
+	            MAX(up_sub.start_date) AS max_start_date,
+	            MAX(up_sub.unit_price_id) AS max_unit_price_id
+	        FROM
+	            unit_price up_sub
+	        JOIN item i ON i.item_code = up_sub.item_code
+	        WHERE
+	            up_sub.start_date &lt;= CURRENT_TIMESTAMP
+	        AND i.isDelete = 0
+	        GROUP BY
+	            up_sub.item_code, up_sub.type, up_sub.partner_code) up1 
+	    ON
+	        up.item_code = up1.item_code
+	    AND up.type = up1.type 
+	    AND up.partner_code = up1.partner_code  -- partner_code 조건 추가
+	    AND up.start_date = up1.max_start_date
+	    AND up.unit_price_id = up1.max_unit_price_id
 	</select>
+
 
 	<select id="expectedPrice" resultType="UnitPrice">
 		SELECT
