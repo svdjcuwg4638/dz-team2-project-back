@@ -25,4 +25,5 @@ public interface UnitPriceMapper {
 
 	ArrayList<UnitPrice> expectedPrice();
 
+	void deletePrice(int i);
 }

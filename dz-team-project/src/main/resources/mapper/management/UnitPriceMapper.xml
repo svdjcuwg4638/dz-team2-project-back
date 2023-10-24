@@ -87,6 +87,10 @@
 			ORDER BY
 				up.start_date ASC
 	</select>
+	
+	<delete id="deletePrice" parameterType="int">
+		delete from unit_price where unit_price_id = #{id}
+	</delete>
 
 </mapper>
 	

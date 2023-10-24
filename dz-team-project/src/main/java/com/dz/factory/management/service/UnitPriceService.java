@@ -2,6 +2,9 @@ package com.dz.factory.management.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,5 +49,11 @@ public class UnitPriceService {
 
 	public ArrayList<UnitPrice> getExpectedList() {
 		return unitPriceMapper.expectedPrice();
+	}
+
+	public void deleteUnitPrice(@Valid List<Integer> unitPriceList) {
+		for(int id : unitPriceList) {
+			unitPriceMapper.deletePrice(id);
+		}
 	}
 }
