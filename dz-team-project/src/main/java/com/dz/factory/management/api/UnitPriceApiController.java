@@ -1,6 +1,7 @@
 package com.dz.factory.management.api;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -45,5 +46,11 @@ public class UnitPriceApiController {
 	public ResponseEntity<?> unitPriceAdd(@Valid @RequestBody UnitPrice unitPrice){
 		unitPriceService.addUnitPrice(unitPrice);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",unitPrice),HttpStatus.OK);
+	}
+	
+	@PostMapping("/unitprice/delete")
+	public ResponseEntity<?> unitPriceDelete(@Valid @RequestBody List<Integer> unitPriceList){
+		unitPriceService.deleteUnitPrice(unitPriceList);
+		return new ResponseEntity<>(new CMRespDto<>(1,"성공",unitPriceList),HttpStatus.OK);
 	}
 }
