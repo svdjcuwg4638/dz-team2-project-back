@@ -97,7 +97,7 @@ public class InventoryController {
 		for(Movement movement : movementList) {
 			if(movement.getOutbound_storage_code()!=null && movement.getOutbound_location_code()!=null &&
 					movement.getInbound_storage_code()!=null && movement.getInbound_location_code()!=null &&
-					movement.getItem_code()!=null ) {
+					movement.getItem_code()!=null && movement.getItem_code()!= "" ) {
 				System.out.println(movement);
 
 			 inventoryService.MovementUpdate("출고", movement.getOutbound_storage_code(), movement.getOutbound_location_code(), movement.getItem_code(), movement.getMovement());
