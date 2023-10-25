@@ -23,7 +23,6 @@ public class BoundDetailController {
 	
 	@PostMapping("/inbound/detailAdd")
 	public ResponseEntity<?> insertInboundDetail(@RequestBody BoundDetailDto boundDetailDto){
-		System.out.println(boundDetailDto);
 		boundDetailService.insertInboundDetail(boundDetailDto);
 		return new ResponseEntity<>(new CMRespDto<>(1,"성공",boundDetailDto),HttpStatus.CREATED);
 	}
@@ -36,7 +35,6 @@ public class BoundDetailController {
 	
 	@PostMapping("/inbound/updateOngoing")
 	public ResponseEntity<?> updateByDetailId(@RequestBody List<BoundDetailDto> boundDetailDtos){
-		System.out.println("지금시간"+boundDetailDtos);
 	    for (BoundDetailDto boundDetailDto : boundDetailDtos) {
 	        boundDetailService.updateByDetailId(boundDetailDto);
 	    }

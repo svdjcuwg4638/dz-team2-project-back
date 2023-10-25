@@ -6,10 +6,10 @@
 		SELECT COUNT(*) FROM inventory;
 	</select>
 	<select id="getInboundByDate" resultType="int">
-		SELECT COUNT(*) FROM bound WHERE DATE(bound_date) = CURDATE() and bound_type='inbound' and isDelete=0;
+		SELECT COUNT(*) FROM bound WHERE DATE(bound_regdate) = CURDATE() and bound_type='inbound' and isDelete=0;
 	</select>
 	<select id="getOutBoundByDate" resultType="int">
-		SELECT COUNT(*) FROM bound WHERE DATE(bound_date) = CURDATE() and bound_type='outbound' and isDelete=0;
+		SELECT COUNT(*) FROM bound WHERE DATE(bound_regdate) = CURDATE() and bound_type='outbound' and isDelete=0;
 	</select>
 	<select id="getProductionByDate" resultType="int">
 		SELECT COUNT(*) FROM production WHERE DATE(production_date) = CURDATE() and isDelete=0;
